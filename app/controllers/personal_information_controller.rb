@@ -1,5 +1,5 @@
 class PersonalInformationController < ApplicationController
-  layout "formpages"
+  layout "FormPages"
   def index
   end
 end
