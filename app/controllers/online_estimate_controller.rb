@@ -1,5 +1,5 @@
 class OnlineEstimateController < ApplicationController
-  layout "FormPages"
+  layout "form_pages"
   def index
 
   end
