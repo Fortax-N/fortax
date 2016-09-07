@@ -1,2 +1,0 @@
-module OnlineestimateHelper
-end

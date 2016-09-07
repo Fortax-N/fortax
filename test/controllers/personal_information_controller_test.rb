@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StaticpagesControllerTest < ActionDispatch::IntegrationTest
+class PersonalInformationControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
