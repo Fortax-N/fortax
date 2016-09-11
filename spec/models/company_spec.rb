@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Company, type: :model do
+  it {should validate_presence_of :email}
+  it {should validate_presence_of :phone_number}
+  
   describe "phone number" do
-  	context "phone number is blank" do
-  	  company = FactoryGirl.build(:company, phone_number: nil)
-	  it {should validate_presence_of :phone_number}
-	end
-
 	context "format is +1 222-222-2222" do
 	  it "is valid" do
 	    company = FactoryGirl.build(:company)
@@ -44,11 +42,6 @@ RSpec.describe Company, type: :model do
   end
 
   describe "email" do
-  	context "when email is blank" do
-      company = FactoryGirl.build(:company, email: nil)
-	  it {should validate_presence_of :email}
-  	end
-
   	context "format is john@example.com" do
   	  it "is valid" do
         company = FactoryGirl.build(:company)
