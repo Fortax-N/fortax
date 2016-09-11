@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+# Gem for country select plugin
+gem 'country_select'
 # Use active admin for web adaministration
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
