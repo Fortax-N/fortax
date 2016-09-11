@@ -52,3 +52,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'
 end
+
+gem 'factory_girl_rails'
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+end
