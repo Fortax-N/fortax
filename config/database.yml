@@ -88,6 +88,6 @@ production:
 
 test:
   adapter: postgresql
-  database: travis_ci_test
+  database: fortax_test
   username: travis
   encoding: utf8
