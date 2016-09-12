@@ -191,11 +191,6 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.2)
-<<<<<<< HEAD
-  factory_girl_rails
-=======
-  font-awesome-sass
->>>>>>> 792d29de26e3d98b68bc978f7ada0a0bd18ad3c9
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
