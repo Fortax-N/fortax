@@ -64,3 +64,5 @@ gem 'factory_girl_rails'
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
 end
+
+gem "figaro"
