@@ -137,7 +137,7 @@
           <div class="col-md-12">
             <h3>About Us</h3>
           </div>
-          <div class="col-md-6 col-sm-6 wow bounceInRight" id="flexbox">
+          <div class="col-md-6 col-sm-6 wow bounceInRight">
             <p><%= @company.about_us %></p>
             <p class="icon-about">
             <!-- <a href="#"><i class="fa fa-weibo"></i></a> -->
@@ -431,10 +431,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-sm-3 wow bounceInLeft">
-          <br>
-          <p class="mail"><i class="fa fa-map-marker"></i><br>
-          <%= @company.address_line_1 %>, <%= @company.address_line_2 %><br>
-          <%= @company.city %>, <%= @company.state %>, <%= @company.country %>, </p>
+          <br><p class="mail"><i class="fa fa-map-marker"></i><br>
+          <%= @company.address_line_1 %>, <br> <%= @company.address_line_2 %><br>
+          <%= @company.city %>, <%= @company.state %>, <%= @company.country %>,<br><%= @company.postal_code %> </p>
         </div>
         <div class="col-md-3 col-sm-3 wow bounceInLeft">
           <p class="mail"><i class="fa fa-phone"></i><br>
@@ -448,8 +447,7 @@
         </div>
         <div class="col-md-3 col-sm-3 wow bounceInLeft">
           <p class="mail"><i class="fa fa-clock-o"></i><br>
-          Office Hours:<br>
-          <%= @company.office_hours %>
+          Office Hours:<br><%= @company.office_hours %>
         </div>
       </div>
       <div class="row">
