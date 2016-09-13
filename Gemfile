@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-source 'https://rubygems.org'
-# Gem for country select plugin
-gem 'country_select'
-# Use active admin for web adaministration
-gem 'activeadmin', '~> 1.0.0.pre4'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-# Use devise for user authentication
-gem 'devise'
-=======
-source 'http://rubygems.org'
 
 
->>>>>>> 0445c929b343a16f79743b9d4444595f80d1a3be
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
@@ -37,6 +25,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+# Gem for country select plugin
+gem 'country_select'
+# Use active admin for web adaministration
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+# Use devise for user authentication
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
