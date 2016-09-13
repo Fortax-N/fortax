@@ -1,17 +1,6 @@
-<<<<<<< HEAD
 source 'https://rubygems.org'
-# Gem for country select plugin
-gem 'country_select'
-# Use active admin for web adaministration
-gem 'activeadmin', '~> 1.0.0.pre4'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-# Use devise for user authentication
-gem 'devise'
-=======
-source 'http://rubygems.org'
 
 
->>>>>>> 0445c929b343a16f79743b9d4444595f80d1a3be
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
@@ -41,20 +30,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-#bootstrap
-gem 'bootstrap-sass', '~> 3.3.6'
-
-#fontawesome
-gem 'font-awesome-sass'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
 
 group :development do
-
-  gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
@@ -65,13 +46,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-group :development, :test do
-  gem 'rspec-rails', '~> 3.4'
-end
-
-gem 'factory_girl_rails'
-
-group :test do
-  gem 'shoulda-matchers', '~> 3.1'
-end
