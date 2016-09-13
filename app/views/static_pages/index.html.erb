@@ -137,23 +137,8 @@
           <div class="col-md-12">
             <h3>About Us</h3>
           </div>
-          <div class="col-md-6 col-sm-6 wow bounceInLeft">
-            <p>We are a Canadian based company who provide Income tax return
-            services. We know that tax season is not always an easy time, and
-            this is why we are here to assist you. Our mission is to provide
-            Multi-lingual services you can trust at a reasonable cost.</p>
-            <p>We believe in helping our society, and want to make a
-            difference, and this is why we are going to choose a charitable
-            foundation worthy of helping. After all, you allow us to provide
-            you the service you deserve, and we assist you with your tax return
-            and together we can all help those in need.</p>
-          </div>
-          <div class="col-md-6 col-sm-6 wow bounceInRight">
-            <p>We believe in Faith, Hope, and Charity and this is the reason
-            why we want to help charitable foundations reach their goal of
-            assisting others in need. The more Income tax return we prepare,
-            the more financial help we will be able to provide to those in
-            need.</p>
+          <div class="col-md-6 col-sm-6 wow bounceInRight" id="flexbox">
+            <p><%= @company.about_us %></p>
             <p class="icon-about">
             <!-- <a href="#"><i class="fa fa-weibo"></i></a> -->
              <a href="https://www.facebook.com/Fortaxcorp"><i class=
@@ -448,28 +433,23 @@
         <div class="col-md-3 col-sm-3 wow bounceInLeft">
           <br>
           <p class="mail"><i class="fa fa-map-marker"></i><br>
-          2 St. Clair Ave. West , Floor 18<br>
-          Toronto, Ontario, Canada, M4V 1L5</p>
+          <%= @company.address_line_1 %>, <%= @company.address_line_2 %><br>
+          <%= @company.city %>, <%= @company.state %>, <%= @company.country %>, </p>
         </div>
         <div class="col-md-3 col-sm-3 wow bounceInLeft">
           <p class="mail"><i class="fa fa-phone"></i><br>
-          &nbsp; +1 416-220-6428</p>
+          &nbsp; <%= @company.phone_number %></p>
         </div>
         <div class="col-md-3 col-sm-3 wow bounceInLeft">
           <p class="mail"><i class="fa fa-envelope"></i><br>
-          Info@Fortax.ca<br>
+          <%= @company.email %><br>
           You can e-mail us your documents, mail them or either drop them
           off.</p>
         </div>
         <div class="col-md-3 col-sm-3 wow bounceInLeft">
           <p class="mail"><i class="fa fa-clock-o"></i><br>
           Office Hours:<br>
-          <b>Monday-Friday :</b><br>
-          9 AM - 6 PM<br>
-          <b>Saturday :</b><br>
-          By appointment<br>
-          <b>Sunday :</b><br>
-          By appointment<br></p>
+          <%= @company.office_hours %>
         </div>
       </div>
       <div class="row">

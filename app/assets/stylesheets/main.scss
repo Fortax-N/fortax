@@ -840,3 +840,17 @@ button.close {
 .no-padding-top{
    padding-top: 0;
 }
+
+
+#flexbox{
+   -moz-column-width: 300px !important;
+-webkit-column-width: 300px !important;
+column-width: 100px !important;
+    -webkit-column-count: 2 !important;
+      -moz-column-count: 2 !important;
+           column-count: 2 !important;
+
+   -webkit-column-gap: 20px !important;
+      -moz-column-gap: 20px !important;
+           column-gap: 20px !important;
+}
