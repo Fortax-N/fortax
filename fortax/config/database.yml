@@ -83,11 +83,3 @@ production:
   database: fortax_production
   username: fortax
   password: <%= ENV['FORTAX_DATABASE_PASSWORD'] %>
-
-
-
-test:
-  adapter: postgresql
-  database: fortax_test
-  username: travis
-  encoding: utf8
