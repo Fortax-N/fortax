@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def index
-  	@company = Company.find(1)
+  	@company = Company.first
   end
 end
