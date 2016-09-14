@@ -32,48 +32,11 @@
             <div class="row">
               <div class="col-lg-6">
                 <label for="formAdd">Select Form</label>
-                <div class="form-group personalInformation" id="formAdd">
-                  <select class="form-control" id="form-select">
-                      <option value="">
-                        Select Forms
-                      </option>
-                      <option value="T3 FORMS">
-                        T3 FORMS
-                      </option>
-                      <option value="T4 FORMS">
-                        T4 FORMS
-                      </option>
-                      <option value="T4A FORMS">
-                        T4A FORMS
-                      </option>
-                      <option value="T4A(OAS) FORMS">
-                        T4A(OAS) FORMS
-                      </option>
-                      <option value="T4A P FORMS">
-                        T4A P FORMS
-                      </option>
-                      <option value="T4E FORMS">
-                        T4E FORMS
-                      </option>
-                      <option value="T4RIF FORMS">
-                        T4RIF FORMS
-                      </option>
-                      <option value="T4RSP FORMS">
-                        T4RSP FORMS
-                      </option>
-                      <option value="T5 FORMS">
-                        T5 FORMS
-                      </option>
-                      <option value="T5007 FORMS">
-                        T5007 FORMS
-                      </option>
-                      <option value="RC62 FORMS">
-                        RC62 FORMS
-                      </option>
-                      <option value="RC210 FORMS">
-                        RC210 FORMS
-                      </option>
-                  </select>
+                <div class="form-group personalInformation">
+                  <%= simple_form_for :form, url: '' do |f| %>
+                    <%= f.input :form_type, collection: Form::FORM_TYPES.map{|k,v| [k,v]},
+                                input_html: {class: 'form-control',id: 'form-select'},label: false,include_blank: false %>
+                  <% end %>
                 </div>
               </div>
               <div class="col-lg-3 ">
