@@ -55,8 +55,11 @@ $(document).ready(function(){
       );
       isDataAdded();
       cost += numOfForms * 4;
+      $('#errorMessage').css('display','none');
       $('#costDisplay').text( cost );
       $('#totalCost').text( cost + 2.99 );
+    } else {
+      $('#errorMessage').css('display','block');
     }
   });
 });

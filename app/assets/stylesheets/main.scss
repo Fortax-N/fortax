@@ -849,4 +849,15 @@ button.close {
   border-radius: 50%;
   border: none;
   background-color: #30A9DE;
+  margin-top: 25%;
+}
+
+#errorMessage {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .addFormButton{
+    margin-top: 0;
+  }
 }
