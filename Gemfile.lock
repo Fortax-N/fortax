@@ -194,6 +194,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   factory_girl_rails
+  figaro
   font-awesome-sass
   jbuilder (~> 2.5)
   jquery-rails
