@@ -1,4 +1,3 @@
-// Place all the styles related to the staticpages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 :root {
@@ -841,6 +840,27 @@ button.close {
    padding-top: 0;
 }
 
+
+/* online estimate style added by rabin */
+.addFormButton{
+  height: 33px;
+  width: 33px;
+  border-radius: 50%;
+  border: none;
+  background-color: #30A9DE;
+  margin-top: 25%;
+}
+
+#errorMessage {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .addFormButton{
+    margin-top: 0;
+  }
+}
+
 #about_us_col{
    -moz-column-count: 2;
    -webkit-column-count: 2;
@@ -852,12 +872,12 @@ button.close {
    font-family: 'Open Sans', sans-serif;
    font-size: 1.3em;
    font-weight: 300;
-   color: #444;  
+   color: #444;
 }
 
 .office_text{
    font-size: 1.4em;
    font-family: 'Open Sans', sans-serif;
    font-weight: 300;
-   color: #000;  
+   color: #000;
 }
