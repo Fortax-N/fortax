@@ -10,7 +10,7 @@ ActionMailer::Base.smtp_settings = {
   :password => 'z23755tk6452',
   :domain => 'fortax.com',
   :address => 'smtp.sendgrid.net',
-  :port => 587
+  :port => 587,
   :authentication => :plain,
   :enable_starttls_auto => true
 }
