@@ -86,4 +86,21 @@
         </div>
       </div>
     </section>
-  </main>
+
+  <section id="client_data">
+    <%= simple_fields_for :infos do |f| %>
+      <%= f.input :first_name, as: :string, label: 'First Name' %>
+      <%= f.input :last_name, as: :string, label: 'Last Name' %>
+      <%= f.input :social_insurance, as: :integer %>
+      <%= f.input :date_of_birth, as: :date %>
+      <%= f.input :status, collection: ["Single","Common Law Spouse","Married","Widowed","Separated","Divorced"], as: :select %>
+      <%= f.collection_radio_buttons :change_in_status_during_year, [[true,'Yes'], [false,'No']], :first, :last %>
+      <%= f.input :date_of_change_of_status, as: :integer %>
+      <%= f.input :status_before_date, collection: ["Single","Common Law Spouse","Married","Widowed","Separated","Divorced"], as: :select %>
+      <%= f.input :gender, as: :string %>
+       
+
+
+    <% end %>       
+  </section>
+</main>
