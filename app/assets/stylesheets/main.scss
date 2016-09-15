@@ -1,4 +1,3 @@
-// Place all the styles related to the staticpages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 :root {
@@ -860,4 +859,25 @@ button.close {
   .addFormButton{
     margin-top: 0;
   }
+}
+
+#about_us_col{
+   -moz-column-count: 2;
+   -webkit-column-count: 2;
+   column-count: 2;
+   width: 100%;
+}
+
+.about_us_text{
+   font-family: 'Open Sans', sans-serif;
+   font-size: 1.3em;
+   font-weight: 300;
+   color: #444;
+}
+
+.office_text{
+   font-size: 1.4em;
+   font-family: 'Open Sans', sans-serif;
+   font-weight: 300;
+   color: #000;
 }
