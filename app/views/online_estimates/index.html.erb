@@ -86,4 +86,57 @@
         </div>
       </div>
     </section>
+
+
+  <section id="client_data">
+    <%= simple_fields_for :infos do |f| %>
+      <div class="client_information">
+        <%= f.input :first_name, as: :string, label: 'First Name' %>
+        <%= f.input :last_name, as: :string, label: 'Last Name' %>
+        *Note: Please use the full name you use for government communication.
+        <%= f.input :social_insurance, as: :integer %>
+        <%= f.input :date_of_birth, as: :date %>
+        <%= f.input :status, collection: OnlineEstimate::STATUSES, as: :select %>
+        <%= f.input :change_in_status_during_year, as: :radio_buttons,label: 'Change in status during the year?' %>
+        <%= f.input :date_of_change_of_status, as: :integer, required: false %>
+        <%= f.input :status_before_date, collection: OnlineEstimate::STATUSES, as: :select, required: false %>
+        <%= f.input :gender, as: :string %>
+        <%= f.input :address_line_1,as: :string, label: 'Number and Street' %>
+        <%= f.input :unit, as: :string, required: false %>
+        <%= f.input :city, as: :string %>
+        <%= f.input :province, as: :string %>
+        <%= f.input :country, as: :string %>
+        <%= f.input :postal_code, as: :integer %>
+        <%= f.input :phone_number, as: :string %>
+        <%= f.input :email, as: :email, name: "email" %>
+        <%= f.input :receive_notice_of_assessment_by_email, as: :radio_buttons, label: 'Would you like onto receive your notice of assessment by email?' %>
+        <%=  f.input :branch, as: :string, input_html: { maxlength: 3} %>
+        <%= f.input :financial_institution, as: :string, input_html: { maxlength: 5} %>
+        <%= f.input :account, as: :string %>
+      </div>
+
+      <div class="spouse_information">
+        Information about your spouse:
+        <%= f.input :spouse_name, as: :string, label: 'Spouse or common law name' %>
+        <%= f.input :spouse_last_name, as: :string, label: 'Last Name' %>
+        <%= f.input :spouse_date_of_birth, as: :string, label: 'Date of Birth' %>
+        <%= f.input :spouse_social_insurance, as: :integer, label: 'SIN' %>
+        <%= f.input :spouse_phone_number, as: :string %>
+        <%= f.input :spouse_email, as: :email, name: "email", label: "Email" %>
+        Residence:
+        <%= f.collection_radio_buttons :residence, [['Owner'], ['Tenant']], :first, :last,label: 'Residence' %>
+        <%= f.input :property_tax_paid, as: :float %>
+        <%= f.input :rent_paid, as: :float %>
+      </div>
+
+      <div class="children_information">
+        Children
+        <%= f.input :child_name, as: :string %>
+        <%= f.input :child_last_name, as: :string %>
+        <%= f.input :child_date_of_birth, as: :string %>
+        <%= f.input :child_social_insurance, as: :integer, required: false %>
+      </div>
+      
+    <% end %>       
+  </section>
 </main>
