@@ -1,4 +1,4 @@
-// They will automatically be included in application.css.
+n// They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 :root {
   --navBlue : #1b93c7;
@@ -880,4 +880,32 @@ button.close {
    font-family: 'Open Sans', sans-serif;
    font-weight: 300;
    color: #000;
+}
+.hidden { display: none; }
+.alert-error {
+background-color: #f2dede;
+border-color: #eed3d7;
+color: #b94a48;
+text-align: left;
+}
+
+.alert-alert {
+background-color: #f2dede;
+border-color: #eed3d7;
+color: #b94a48;
+text-align: left;
+}
+
+.alert-success {
+background-color: #dff0d8;
+border-color: #d6e9c6;
+color: #468847;
+text-align: left;
+}
+
+.alert-notice {
+background-color: #dff0d8;
+border-color: #d6e9c6;
+color: #468847;
+text-align: left;
 }

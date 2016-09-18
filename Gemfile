@@ -1,6 +1,5 @@
 # For contact form
 gem 'mail_form'
-gem 'simple_form'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
@@ -68,6 +67,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'
+  gem 'foreman'
 end
 
 gem 'factory_girl_rails'
