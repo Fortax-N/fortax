@@ -22,19 +22,20 @@
                     <th>S.N.</th>
                     <th>Form Type</th>
                     <th>Form Number</th>
+                    <th>Cost(Per each)</th>
                   </tr>
                 </thead>
                 <tbody id="table-data">
                 </tbody>
               </table>
             </div>
-            <label for="formAdd" style="font-size:20px;">Add Form:</label>
+            <span style="font-size:20px;font-weight:bold;">Add Form:</span>
             <div class="row">
               <div class="col-lg-6">
-                <label for="formAdd">Select Form</label>
+                <label for="form-select">Select Form</label>
                 <div class="form-group personalInformation">
                   <%= simple_form_for :form, url: '' do |f| %>
-                    <%= f.input :form_type, collection: Form::FORM_TYPES.map{|k,v| [k,v]},
+                    <%= f.input :form_type, collection: Form::FORM_TYPES.map{|k,v| [k,v[0], data: {cost: v[1]}]},
                                 input_html: {class: 'form-control',id: 'form-select'},label: false,include_blank: false %>
                   <% end %>
                 </div>
@@ -54,6 +55,8 @@
                 </div>
               </div>
             </div>
+
+
             <div class="alert alert-danger" id="errorMessage">
               <strong>Error! </strong>Select any form or take at list one form.
             </div>
