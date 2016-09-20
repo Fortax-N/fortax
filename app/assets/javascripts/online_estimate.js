@@ -33,7 +33,7 @@ var initializeOnlineEstimate = function(){
       $('#totalCost').text( this.totalCost );
     },
     calculateCost: function(numOfForms,price) {
-      this.cost += numOfForms * price;
+      this.cost += (numOfForms * price);
     },
     displayError: function(){
       $('#errorMessage').css('display','block');
@@ -58,7 +58,7 @@ var initializeOnlineEstimate = function(){
     var dropDownData = $('#form-select option:selected').val();
     var numOfForms = $('#numberOfForm').val();
     var price = $('#form-select option:selected').data('cost');
-    if((dropDownData != "") && (numOfForms != 0))
+    if(numOfForms != 0)
     {
       onlineEstimate.index++;
       onlineEstimate.appendToTable(onlineEstimate.index, dropDownData, numOfForms, price);
