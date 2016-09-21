@@ -49,8 +49,12 @@ var initializeOnlineEstimate = function(){
     if(dropDownText == "Student T2202")
     {
       $('#numberOfForm').attr("disabled","disabled");
+      $('#form-add').on('click',function(){
+        $('#form-add').attr("disabled","disabled");
+      });
     } else {
       $('#numberOfForm').removeAttr("disabled");
+      $('#form-add').removeAttr("disabled");
     }
   });
 
