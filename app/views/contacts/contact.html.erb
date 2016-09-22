@@ -1,33 +1,8 @@
-<h1>CONTACT PAGE</h1>
-<div class="col-md-12">
-  <h3>Leave us a Message</h3>
+<div>
+  <% flash.each do |key, value| %>
+    <div>
+      <a href="#" data-dismiss="alert">×</a>
+        <%= value %>
+    </div>
+  <% end %>
 </div>
-</div>
-<div class="row">
-<%= form_for Contact.new do |f| %>
-<div class="col-md-12 col-sm-12 wow bounceInRight">
-  <form action="#" class="frm" method="post">
-    <div class="col-md-12">
-      <div id="success"></div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="Name">Full name *</label> <%= f.text_field :name, required: true %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="Email">Email *</label> <%= f.email_field :email, required: true %>
-      </div>
-    </div>
-    <div class="col-md-12">
-      <div class="form-group">
-        <label for="Message">Messages *</label>
-        <%= f.text_area :message, as: :text, required: true %>
-      </div>
-      <div class="hidden">
-        <label for="nickname">nickname *</label>
-        <%= f.text_field :nickname %>
-      </div><%= f.submit 'Send Message', class: "btn btn-primary btn-lg btn-block btn-biru" %>
-      <% end %>
-    </div>

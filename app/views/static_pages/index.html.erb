@@ -482,6 +482,11 @@
                 <%= f.text_field :nickname %>
               </div><%= f.submit 'Send Message', class: "btn btn-primary btn-lg btn-block btn-biru" %>
               <% end %>
+              <div>
+              <% flash.each do |key, value| %>
+                  <div class="flash <%= key %>"><%= value %></div>
+              <% end %>
+              </div>
             </div>
           </form>
         </div>

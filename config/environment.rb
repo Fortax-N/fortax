@@ -5,12 +5,22 @@ require_relative 'application'
 Rails.application.initialize!
 
 #Configure ActionMailer to use SendGrid
+# ActionMailer::Base.smtp_settings = {
+#  :user_name => 'app56582241@heroku.com',
+#  :password => 'z23755tk6452',
+#  :domain => 'fortax.com',
+#  :address => 'smtp.sendgrid.net',
+#  :port => 587,
+#  :authentication => :plain,
+#  :enable_starttls_auto => true
+# }
+
 ActionMailer::Base.smtp_settings = {
-  :user_name => 'app56582241@heroku.com',
-  :password => 'z23755tk6452',
-  :domain => 'fortax.com',
-  :address => 'smtp.sendgrid.net',
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: "google.com",
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: "cocsthphoenix@gmail.com",
+  password: "phoenix48"
 }
