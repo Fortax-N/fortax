@@ -1,5 +1,6 @@
 class Form < ActiveRecord::Base
   FORM_TYPES = {
+    "Select Form" => ["",""],
     "Basic tax return" => ["Basic tax return",49.99],
     "T3 Forms" => ["T3",4],
     "T4 Forms" => ["T4",4],

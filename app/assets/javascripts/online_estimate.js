@@ -46,31 +46,30 @@ var initializeOnlineEstimate = function(){
   $('#form-select').on('change',function(){
     var dropDownText = $('#form-select option:selected').text();
     $('#numberOfForm').val(1);
-    if(dropDownText == "Student T2202")
+    if(dropDownText === "Student T2202")
     {
-      $('#numberOfForm').attr("disabled","disabled");
+      $('#numberOfForm').prop("disabled", true);
       $('#form-add').on('click',function(){
-        $('#form-add').attr("disabled","disabled");
+        $(this).off("click");
       });
-    } else {
-      $('#numberOfForm').removeAttr("disabled");
-      $('#form-add').removeAttr("disabled");
     }
-  });
-
-  $('#form-add').on('click',function(){
-    var dropDownData = $('#form-select option:selected').val();
-    var numOfForms = $('#numberOfForm').val();
-    var price = $('#form-select option:selected').data('cost');
-    if(numOfForms != 0)
+    else
     {
-      onlineEstimate.index++;
-      onlineEstimate.appendToTable(onlineEstimate.index, dropDownData, numOfForms, price);
-      onlineEstimate.initialize();
-      onlineEstimate.calculateCost(numOfForms,price);
-      onlineEstimate.changeEstimate();
-    } else {
-      onlineEstimate.displayError();
+      $('#form-add').on('click',function(){
+        var dropDownData = $('#form-select option:selected').val();
+        var numOfForms = $('#numberOfForm').val();
+        var price = $('#form-select option:selected').data('cost');
+        if(dropDownData != "" && numOfForms != 0)
+        {
+          onlineEstimate.index++;
+          onlineEstimate.appendToTable(onlineEstimate.index, dropDownData, numOfForms, price);
+          onlineEstimate.initialize();
+          onlineEstimate.calculateCost(numOfForms,price);
+          onlineEstimate.changeEstimate();
+        } else {
+          onlineEstimate.displayError();
+        }
+      });
     }
   });
 }
