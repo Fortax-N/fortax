@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :contact do
-    
+  factory :contact_form do
+
   end
 end
