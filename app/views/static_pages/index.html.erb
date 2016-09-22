@@ -457,39 +457,26 @@
       </div>
       <div class="row">
         <%= form_for ContactForm.new do |f| %>
-        <div class="col-md-12 col-sm-12 wow bounceInRight">
-          <form action="#" class="frm" method="post">
-            <div class="col-md-12">
-              <div id="success"></div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="Name">Full name *</label> <%= f.text_field :name, required: true %>
+          <div class="col-md-12 col-sm-12 wow bounceInRight">
+            <form action="#" class="frm" method="post">
+              <div class="col-md-6">
+                <h4><label for="Name">Full name *</label></h4> <%= f.text_field :name, required: true, style: "height: 50px; width: 100%;" %>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="Email">Email *</label> <%= f.email_field :email, required: true %>
+              <div class="col-md-6">
+                <h4><label for="Email">Email *</label></h4> <%= f.email_field :email, required: true, style: "height: 50px; width: 100%;" %>
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="Message">Messages *</label>
-                <%= f.text_area :message, as: :text, required: true %>
+              <div class="col-md-12">
+                <h4><label for="Message">Messages *</label></h4>
+                <%= f.text_area :message, as: :text, required: true, placeholder: 'Your message here', style: "height: 150px; width: 100%;" %>
+                <%= f.submit 'Send Message', class: "btn btn-primary btn-lg btn-block btn-biru" %>
               </div>
               <div class="hidden">
                 <label for="nickname">nickname *</label>
                 <%= f.text_field :nickname %>
-              </div><%= f.submit 'Send Message', class: "btn btn-primary btn-lg btn-block btn-biru" %>
-              <% end %>
-              <div>
-              <% flash.each do |key, value| %>
-                  <div class="flash <%= key %>"><%= value %></div>
-              <% end %>
               </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
+        <% end %>
       </div>
       <div class="row">
         <div class="col-md-12 footer-social-network">

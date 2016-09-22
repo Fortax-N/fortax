@@ -14,13 +14,3 @@ Rails.application.initialize!
 #  :authentication => :plain,
 #  :enable_starttls_auto => true
 # }
-
-ActionMailer::Base.smtp_settings = {
-  address: "smtp.gmail.com",
-  port: 587,
-  domain: "google.com",
-  authentication: "plain",
-  enable_starttls_auto: true,
-  user_name: "cocsthphoenix@gmail.com",
-  password: "phoenix48"
-}
