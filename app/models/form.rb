@@ -16,6 +16,6 @@ class Form < ActiveRecord::Base
     "RC210 Forms" => ["RC210",4],
     "Charitable donation" => ["Charitable donation",4],
     "Medical expense" => ["Medical expense",2],
-    "Student T2202" => ["Student T2202 <span style=\"color:green\">Discount</span>",-20]
+    "StudentT2202" => ["Student T2202 <span style=\"color:green\">Discount</span>",-20]
   }
 end

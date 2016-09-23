@@ -29,7 +29,7 @@
                 <label for="form-select">Select Form</label>
                 <div class="form-group personalInformation">
                   <%= simple_form_for :form, url: '' do |f| %>
-                    <%= f.input :form_type, collection: Form::FORM_TYPES.map{|k,v| [k,v[0], data: {cost: v[1]}]},
+                    <%= f.input :form_type, collection: Form::FORM_TYPES.map{|k,v| [k,v[0], data: {cost: v[1]},id: k]},
                                 input_html: {class: 'form-control',id: 'form-select'},label: false,include_blank: false %>
                   <% end %>
                 </div>

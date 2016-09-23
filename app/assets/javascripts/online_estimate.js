@@ -4,6 +4,9 @@ var initializeOnlineEstimate = function(){
 
   form = {
     hasSelectedStudentForm: false,
+    studentFormPrice: function(){
+      return $('#StudentT2202').data('cost');
+    },
     dropDownText: function(){
       return $('#form-select option:selected').text();
     },
@@ -30,7 +33,7 @@ var initializeOnlineEstimate = function(){
       }
     },
     isStudentForm: function(){
-      return (form.dropDownText() === "Student T2202");
+      return (form.dropDownText() === "StudentT2202");
     },
     disableButton: function(){
       if (form.isStudentForm() === true) {
@@ -52,19 +55,19 @@ var initializeOnlineEstimate = function(){
     },
     removeForm: function(target){
       var minusPrice = $(target).closest('tr').data('price');
-      
+
       $(target).closest('tr').remove();
 
-      if(form.isStudentForm()) {
-        form.reenableStudentForm(target);
-      }          
-      
+      if(minusPrice === form.studentFormPrice()) {
+        form.reenableStudentForm();
+      }
+
       onlineEstimate.cost -= minusPrice;
       onlineEstimate.changeEstimate();
     },
-    reenableStudentForm: function(target){
+    reenableStudentForm: function(){
       form.enableButton();
-      this.hasSelectedStudentForm = false;      
+      this.hasSelectedStudentForm = false;
     }
   }
 
