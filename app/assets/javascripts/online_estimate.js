@@ -7,16 +7,18 @@ var initializeOnlineEstimate = function(){
     dropDownText: function(){
       return $('#form-select option:selected').text();
     },
+    dropDownValue: function() {
+      return $('#form-select option:selected').val();
+    },
     numOfForms: function(){
       return $('#numberOfForm').val();
     },
     price: function(){
       return $('#form-select option:selected').data('cost');
     },
-    addToForm: function(){      
-      if(form.dropDownText() !== "" && form.numOfForms() !== 0)
+    addToForm: function(){
+      if(form.dropDownValue() !== " " && form.numOfForms() !== 0)
       {
-        onlineEstimate.index++;        
         onlineEstimate.appendToTable();
         onlineEstimate.toggleHelperText();
         onlineEstimate.calculateCost();
@@ -25,27 +27,50 @@ var initializeOnlineEstimate = function(){
         form.disableButton();
       } else {
         onlineEstimate.displayError();
-      }      
+      }
     },
     isStudentForm: function(){
       return (form.dropDownText() === "Student T2202");
     },
     disableButton: function(){
       if (form.isStudentForm() === true) {
-        $('#form-add').off("click");
-        $('.addFormButton').prop("disabled", true);
+        $('#form-add').prop("disabled", true);
       }
     },
     enableButton: function(){
       $("#form-add").removeAttr("disabled");
+    },
+    disableNoOfForm: function() {
+      if (form.isStudentForm() === true) {
+        $('#numberOfForm').prop("disabled", true);
+      }
+    },
+    enableNoOfForm: function() {
+      if (form.isStudentForm() === false) {
+        $('#numberOfForm').removeAttr("disabled");
+      }
+    },
+    removeForm: function(target){
+      $(target).closest('tr').remove();
+      //this code re-enables button for studentform after student form being deleted table so user
+      //could add that again if wanted without refreshing page
+      //start
+      var minusPrice = $(target).closest('tr').data('price');
+      if(minusPrice === -20)
+      {
+        form.enableButton();
+        this.hasSelectedStudentForm = false;
+      }
+      //end
+      onlineEstimate.cost -= minusPrice;
+      onlineEstimate.changeEstimate();
     }
   }
 
   onlineEstimate = {
-    index: 0,
     cost: 0,
     eFileFee: 2.99,
-    totalCost: 0,           
+    totalCost: 0,
     toggleHelperText: function(){
       var tableLength = $('#table-data tr').length;
       if (tableLength === 0) {
@@ -57,11 +82,13 @@ var initializeOnlineEstimate = function(){
     },
     appendToTable: function() {
       $('#table-data').append(
-        '<tr data-row-id="' + this.index + '" data-price="' + form.price() * form.numOfForms() + '">' +
-          '<td>'+ this.index + '</td>' +
-          '<td>'+ form.dropDownText() + '</td>' +
+        '<tr data-price="' + form.price() * form.numOfForms() + '">' +
+          '<td>'+ form.dropDownValue() + '</td>' +
           '<td>'+ form.numOfForms() + '</td>' +
           '<td>'+ '$' + form.price() + '</td>' +
+          '<td><button type="button" class="btn btn-primary btn-xs" id="delete">' +
+            '<i class="fa fa-trash-o" aria-hidden="true"></i>' +
+          '</button></td>' +
         '</tr>'
       );
     },
@@ -94,14 +121,23 @@ var initializeOnlineEstimate = function(){
 
   $('#form-select').on('change',function(){
     onlineEstimate.resetNumOfForms();
-
+    form.disableNoOfForm();
     if(form.hasSelectedStudentForm && form.isStudentForm())
     {
-      form.disableButton();     
+      form.disableButton();
+      form.disableNoOfForm();
     } else {
       form.enableButton();
-      $('#form-add').unbind('click', form.addToForm).bind('click', form.addToForm);
+      form.enableNoOfForm();
     }
+  });
+
+  $(document).on('click','button#form-add',function(){
+    form.addToForm();
+  });
+
+  $(document).on('click','button#delete',function(){
+    form.removeForm(this);
   });
 }
 
