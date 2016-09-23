@@ -100,7 +100,7 @@ var initializeOnlineEstimate = function(){
       form.disableButton();     
     } else {
       form.enableButton();
-      $('#form-add').on('click', form.addToForm);
+      $('#form-add').unbind('click', form.addToForm).bind('click', form.addToForm);
     }
   });
 }
