@@ -68,11 +68,11 @@ var initializeOnlineEstimate = function(){
     changeEstimate: function(){
       $('#errorMessage').css('display','none');
       $('#costDisplay').text( this.cost );
-      this.totalCost = Math.round(this.calculateTotalCost) / 100;
+      this.totalCost = Math.round(this.calculateTotalCost()) / 100;
       $('#totalCost').text( this.totalCost );
     },
     calculateTotalCost: function(){
-      return (this.cost + this.eFileFee) * 100
+      return (this.cost + this.eFileFee) * 100;
     },
     calculateCost: function() {
       this.cost += (form.numOfForms() * form.price());
