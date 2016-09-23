@@ -57,7 +57,7 @@ var initializeOnlineEstimate = function(){
     },
     appendToTable: function() {
       $('#table-data').append(
-        '<tr>' +
+        '<tr data-row-id="' + this.index + '" data-price="' + form.price() * form.numOfForms() + '">' +
           '<td>'+ this.index + '</td>' +
           '<td>'+ form.dropDownText() + '</td>' +
           '<td>'+ form.numOfForms() + '</td>' +
