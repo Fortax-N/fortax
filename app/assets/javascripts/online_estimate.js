@@ -51,19 +51,20 @@ var initializeOnlineEstimate = function(){
       }
     },
     removeForm: function(target){
-      $(target).closest('tr').remove();
-      //this code re-enables button for studentform after student form being deleted table so user
-      //could add that again if wanted without refreshing page
-      //start
       var minusPrice = $(target).closest('tr').data('price');
-      if(minusPrice === -20)
-      {
-        form.enableButton();
-        this.hasSelectedStudentForm = false;
-      }
-      //end
+      
+      $(target).closest('tr').remove();
+
+      if(form.isStudentForm()) {
+        form.reenableStudentForm(target);
+      }          
+      
       onlineEstimate.cost -= minusPrice;
       onlineEstimate.changeEstimate();
+    },
+    reenableStudentForm: function(target){
+      form.enableButton();
+      this.hasSelectedStudentForm = false;      
     }
   }
 
