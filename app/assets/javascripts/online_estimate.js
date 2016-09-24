@@ -61,9 +61,6 @@ var initializeOnlineEstimate = function(){
 
 $(document).on("turbolinks:load", function(){
   initializeOnlineEstimate();
-});
-
-$(document).ready(function(){
   $('#infos_change_in_status_during_year_true').click(function(){
     if($(this).val() === "true"){
       $('#options-for-change-in-status').show('slow');
@@ -103,17 +100,4 @@ $(document).ready(function(){
     }
   });
 });
-
-
-// $(document).ready(function(){
-//     $('#infos_change_in_status_during_year_true').change(function(){
-//       $('#options-for-change-in-status').show('slow');
-//   });
-
-//   $('#infos_register_for_direct_deposit_false').click(function(){
-//      if($(this).val() === "false"){
-//       $('#options-for-bank-info').show('slow');
-//     } 
-//   });
-
-// });
+  
