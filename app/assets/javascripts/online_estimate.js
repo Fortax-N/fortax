@@ -62,3 +62,15 @@ var initializeOnlineEstimate = function(){
 $(document).on("turbolinks:load", function(){
   initializeOnlineEstimate();
 });
+
+
+$('#change-in-status').click(function(){
+  $('input[type="radio"]').click(function(){
+    if($('infos_change_in_status_during_year_true').val() === true){
+      $('#options-for-change-in-status').show();
+    }
+    else{
+      $('#options-for-change-in-status').hide();  
+    }
+  });
+});
