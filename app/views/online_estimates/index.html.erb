@@ -113,13 +113,14 @@
           <div class="col-md-12 col-xs-12">
             <%= f.input :change_in_status_during_year, as: :radio_buttons,label: 'Change in status during the year?',id: 'change-in-status' %>
           </div>
-          <div id="options-for-change-in-status" class="col-md-12 col-xs-12">
+          <div id="options-for-change-in-status" class="col-md-12 col-xs-12" style="display: none;">
             <div class="col-md-6 col-xs-12">
               <%= f.input :date_of_change_of_status, as: :date, required: false %>
             </div>
             <div class="col-md-6 col-xs-12">
               <%= f.input :status_before_date, collection: OnlineEstimate::STATUSES, as: :select, required: false %>
             </div>
+          </div>
           <div class="col-md-12 col-xs-12">
             <%= f.input :gender, as: :string %>
           </div>
@@ -160,17 +161,19 @@
 
           <div class="col-md-12 col-xs-12">
             <%= f.input :register_for_direct_deposit, as: :radio_buttons, label: 'Are you registered for direct deposit?' %>
-            <p>If you are not and want to receive your governement payment by direct deposit, please enter your bank information</p>
           </div>
 
-          <div class="col-md-4 col-xs-12">
-            <%=  f.input :branch, as: :string, input_html: { maxlength: 5}, placeholder: 'Branch', label: false %>
-          </div>
-          <div class="col-md-4 col-xs-12">
-            <%= f.input :financial_institution, as: :string, input_html: { maxlength: 3}, placeholder: 'Financial Institution', label: false %>
-          </div>
-          <div class="col-md-4 col-xs-12">
-            <%= f.input :account, as: :string, placeholder: 'Account', label: false %>
+          <div id="options-for-bank-info" style="display: none;">
+            <p>If you are not and want to receive your government payment by direct deposit, please enter your bank information</p>
+            <div class="col-md-4 col-xs-12">
+              <%=  f.input :branch, as: :string, input_html: { maxlength: 5}, placeholder: 'Branch', label: false %>
+            </div>
+            <div class="col-md-4 col-xs-12">
+              <%= f.input :financial_institution, as: :string, input_html: { maxlength: 3}, placeholder: 'Financial Institution', label: false %>
+            </div>
+            <div class="col-md-4 col-xs-12">
+              <%= f.input :account, as: :string, placeholder: 'Account', label: false %>
+            </div>
           </div>
         </div>
 
@@ -196,10 +199,19 @@
           <div class="col-md-6 col-xs-12">
             <%= f.input :spouse_email, as: :email, name: "email", placeholder: "Email Address", label: false %>
           </div>
-          Residence:
-          <%= f.collection_radio_buttons :residence, [['Owner'], ['Tenant']], :first, :last,label: 'Residence' %>
-          <%= f.input :property_tax_paid, as: :float, placeholder: 'Property Tax Paid', label: false %>
-          <%= f.input :rent_paid, as: :float, placeholder: 'Rent paid during year (12 months)', label: false %>
+
+          <div>
+            <div class="col-md-12 col-xs-12">  
+              Residence:
+              <%= f.collection_radio_buttons :residence, [['Owner'], ['Tenant']], :first, :last,label: 'Residence' %>
+            </div>
+            <div class="col-md-12 col-xs-12" style="display: none;" id="property-tax">
+              <%= f.input :property_tax_paid, as: :float, placeholder: 'Property Tax Paid', label: false %>
+            </div>
+            <div class="col-md-12 col-xs-12" style="display: none;" id="rent-paid">
+              <%= f.input :rent_paid, as: :float, placeholder: 'Rent paid during year (12 months)', label: false %>
+            </div>
+          </div>
         </div>
 
         <div class="children_information col-md-12  col-xs-12">

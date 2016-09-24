@@ -63,14 +63,57 @@ $(document).on("turbolinks:load", function(){
   initializeOnlineEstimate();
 });
 
-
-$('#change-in-status').click(function(){
-  $('input[type="radio"]').click(function(){
-    if($('infos_change_in_status_during_year_true').val() === true){
-      $('#options-for-change-in-status').show();
+$(document).ready(function(){
+  $('#infos_change_in_status_during_year_true').click(function(){
+    if($(this).val() === "true"){
+      $('#options-for-change-in-status').show('slow');
     }
-    else{
-      $('#options-for-change-in-status').hide();  
+  });
+  
+  $('#infos_change_in_status_during_year_false').click(function(){
+    if($(this).val() === "false"){
+      $('#options-for-change-in-status').hide('slow');
+    }
+  });
+
+  $('#infos_register_for_direct_deposit_true').click(function(){
+     if($(this).val() === "true"){
+      $('#options-for-bank-info').hide('slow');
+    } 
+  });
+  
+  $('#infos_register_for_direct_deposit_false').click(function(){
+     if($(this).val() === "false"){
+      $('#options-for-bank-info').show('slow');
+    } 
+  });
+
+  $('#infos_residence_owner').click(function(){
+     if($(this).val() === "Owner"){
+      $('#property-tax').show('slow');
+      $('#rent-paid').hide('fast');
+    }
+  });
+
+
+  $('#infos_residence_tenant').click(function(){
+     if($(this).val() === "Tenant"){
+      $('#property-tax').hide('fast');
+      $('#rent-paid').show('slow');
     }
   });
 });
+
+
+// $(document).ready(function(){
+//     $('#infos_change_in_status_during_year_true').change(function(){
+//       $('#options-for-change-in-status').show('slow');
+//   });
+
+//   $('#infos_register_for_direct_deposit_false').click(function(){
+//      if($(this).val() === "false"){
+//       $('#options-for-bank-info').show('slow');
+//     } 
+//   });
+
+// });
