@@ -147,4 +147,43 @@ var initializeOnlineEstimate = function(){
 
 $(document).on("turbolinks:load", function(){
   initializeOnlineEstimate();
+  $('#infos_change_in_status_during_year_true').click(function(){
+    if($(this).val() === "true"){
+      $('#options-for-change-in-status').show('slow');
+    }
+  });
+  
+  $('#infos_change_in_status_during_year_false').click(function(){
+    if($(this).val() === "false"){
+      $('#options-for-change-in-status').hide('slow');
+    }
+  });
+
+  $('#infos_register_for_direct_deposit_true').click(function(){
+     if($(this).val() === "true"){
+      $('#options-for-bank-info').hide('slow');
+    } 
+  });
+  
+  $('#infos_register_for_direct_deposit_false').click(function(){
+     if($(this).val() === "false"){
+      $('#options-for-bank-info').show('slow');
+    } 
+  });
+
+  $('#infos_residence_owner').click(function(){
+     if($(this).val() === "Owner"){
+      $('#property-tax').show('slow');
+      $('#rent-paid').hide('fast');
+    }
+  });
+
+
+  $('#infos_residence_tenant').click(function(){
+     if($(this).val() === "Tenant"){
+      $('#property-tax').hide('fast');
+      $('#rent-paid').show('slow');
+    }
+  });
 });
+  

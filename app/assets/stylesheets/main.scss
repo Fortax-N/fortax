@@ -169,7 +169,7 @@ body {
 /* dataClient */
 
 #dataClient {
-   background: #273035;;
+   background: #273035;
    color: #fff;
 }
 
@@ -896,4 +896,9 @@ button.close {
 .info-desc {
   padding:2% 2% 2% 10%;
   text-align: justify;
+}
+#client_data{
+   width: 950px;
+   margin: 0 auto;
+   margin-top: 50px;
 }
