@@ -882,6 +882,13 @@ button.close {
    color: #000;
 }
 
+
+#client_data{
+   width: 950px;
+   margin: 0 auto;
+   margin-top: 50px;
+}
+
 .info {
   color: #48494A;
   border-radius: 5px;
@@ -896,9 +903,4 @@ button.close {
 .info-desc {
   padding:2% 2% 2% 10%;
   text-align: justify;
-}
-#client_data{
-   width: 950px;
-   margin: 0 auto;
-   margin-top: 50px;
 }

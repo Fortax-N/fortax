@@ -97,9 +97,9 @@
 
   <section id="client_data">
     <div class="row">
-      <%= simple_fields_for :infos do |f| %>
+      <%= simple_form_for :form, url: online_estimates_path, method: :POST do |f| %>
         <div class="client_information">
-          <div class="col-md-6 col-xs-12">
+        <div class="col-md-6 col-xs-12">
             <%= f.input :first_name, as: :string, placeholder: 'First Name', label: false %>
           </div>
           <div class="col-md-6 col-xs-12">
@@ -131,7 +131,7 @@
           <div class="col-md-12 col-xs-12">
             <%= f.input :gender, as: :string %>
           </div>
-          <div class="col-md-12 col-xs-12">          
+          <div class="col-md-12 col-xs-12">
             <p> Full Address </p>
             <%= f.input :address_line_1,as: :string, placeholder: 'Number and Street', label: false %>
           </div>
@@ -208,7 +208,7 @@
           </div>
 
           <div>
-            <div class="col-md-12 col-xs-12">  
+            <div class="col-md-12 col-xs-12">
               Residence:
               <%= f.collection_radio_buttons :residence, [['Owner'], ['Tenant']], :first, :last,label: 'Residence' %>
             </div>
@@ -238,7 +238,10 @@
             <%= f.input :child_social_insurance, as: :integer, required: false, placeholder: 'Social Insurance Number (should you have it)', label: false %>
           </div>
         </div>
-      <% end %>       
+        <div class="submit-button">
+          <%= f.submit 'Submit', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
     </div>
   </section>
 </main>
