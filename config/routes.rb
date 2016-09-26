@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get '/personal_information', to: 'personal_information#index'
 
   resources :companies
+  match '/contact_forms',     to: 'contact_forms#new',             via: 'get'
+  resources :contact_forms, only: [:new, :create]
 end

@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe Company, type: :model do
   it {should validate_presence_of :email}
   it {should validate_presence_of :phone_number}
-  
+
   describe "phone number" do
 	context "format is +1 222-222-2222" do
 	  it "is valid" do
 	    company = FactoryGirl.build(:company)
-		expect(company).to be_valid	
+		expect(company).to be_valid
 	  end
 	end
 
