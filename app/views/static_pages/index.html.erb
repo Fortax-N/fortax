@@ -447,7 +447,7 @@
         </div>
         <div class="col-md-3 col-sm-3 wow bounceInLeft">
           <div><p class="mail"><i class="fa fa-clock-o"></i>
-          Office Hours:</p></div> 
+          Office Hours:</p></div>
           <div class="office_text"> <%= simple_format(@company.office_hours) %></div>
       </div>
       <div class="row">
@@ -456,34 +456,27 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 col-sm-12 wow bounceInRight">
-          <form action="#" class="frm" method="post">
-            <div class="col-md-12">
-              <div id="success"></div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="Name">Full name *</label> <input class=
-                "form-control" id="Name" name="name" placeholder="Enter name"
-                type="text">
+        <%= form_for ContactForm.new do |f| %>
+          <div class="col-md-12 col-sm-12 wow bounceInRight">
+            <form action="#" class="frm" method="post">
+              <div class="col-md-6">
+                <h4><label for="Name">Full name *</label></h4> <%= f.text_field :name, required: true, style: "height: 50px; width: 100%;" %>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="Email">Email *</label> <input class="form-control"
-                id="Email" name="email" placeholder="Enter email" type="email">
+              <div class="col-md-6">
+                <h4><label for="Email">Email *</label></h4> <%= f.email_field :email, required: true, style: "height: 50px; width: 100%;" %>
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="Message">Messages *</label>
-                <textarea class="form-control" id="Message" name="message"
-                placeholder="Enter messages" rows="3"></textarea>
-              </div><input class="btn btn-primary btn-lg btn-block btn-biru"
-              id="submit" name="submit" type="submit" value="Send Message">
-            </div>
-          </form>
-        </div>
+              <div class="col-md-12">
+                <h4><label for="Message">Messages *</label></h4>
+                <%= f.text_area :message, as: :text, required: true, placeholder: 'Your message here', style: "height: 150px; width: 100%;" %>
+                <%= f.submit 'Send Message', class: "btn btn-primary btn-lg btn-block btn-biru" %>
+              </div>
+              <div class="hidden">
+                <label for="nickname">nickname *</label>
+                <%= f.text_field :nickname %>
+              </div>
+            </form>
+          </div>
+        <% end %>
       </div>
       <div class="row">
         <div class="col-md-12 footer-social-network">
@@ -504,4 +497,4 @@
       "https://www.google.com/maps/embed/v1/place?q=FORTAX++Corp&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"
       style="height:100%;width:100%;border:0;"></iframe>
     </div>
-  </main>
+</main>
