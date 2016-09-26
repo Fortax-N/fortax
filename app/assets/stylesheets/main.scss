@@ -881,4 +881,21 @@ button.close {
    font-weight: 300;
    color: #000;
 }
+
 .hidden { display: none; }
+
+.info {
+  color: #48494A;
+  border-radius: 5px;
+  position: relative;
+}
+.info-icon {
+  position: absolute;
+  top: 50%;
+  left:2%;
+  transform: translateY(-50%);
+}
+.info-desc {
+  padding:2% 2% 2% 10%;
+  text-align: justify;
+}

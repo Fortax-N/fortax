@@ -9,32 +9,27 @@
             <h2>Find your cost for tax filing.</h2>
             <p>Put in the number of forms you have to get an estimate.</p>
             <hr>
-            <!-- <div class="well well-sm ">
-                     <strong style="color:#000;">
-                     <i class="fa fa-asterisk"></i> Required Field
-                  </strong>
-               </div> -->
-
             <div id="addedData" class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
-                    <th>S.N.</th>
                     <th>Form Type</th>
                     <th>Form Number</th>
+                    <th>Cost(Per each)</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody id="table-data">
                 </tbody>
               </table>
             </div>
-            <label for="formAdd" style="font-size:20px;">Add Form:</label>
+            <span style="font-size:20px;font-weight:bold;">Add Form:</span>
             <div class="row">
               <div class="col-lg-6">
-                <label for="formAdd">Select Form</label>
+                <label for="form-select">Select Form</label>
                 <div class="form-group personalInformation">
                   <%= simple_form_for :form, url: '' do |f| %>
-                    <%= f.input :form_type, collection: Form::FORM_TYPES.map{|k,v| [k,v]},
+                    <%= f.input :form_type, collection: Form::FORM_TYPES.map{|k,v| [k,v[0], data: {cost: v[1]},id: k]},
                                 input_html: {class: 'form-control',id: 'form-select'},label: false,include_blank: false %>
                   <% end %>
                 </div>
@@ -42,7 +37,7 @@
               <div class="col-lg-3 ">
                 <label for="numberOfForm">No of Form</label>
                 <div class="form-group personalInformation">
-                  <input class="form-control" value="1" type="number" id="numberOfForm" min="0">
+                  <input class="form-control" value="1" type="number" id="numberOfForm" min="1">
                 </div>
               </div>
 
@@ -54,8 +49,20 @@
                 </div>
               </div>
             </div>
+
+
             <div class="alert alert-danger" id="errorMessage">
-              <strong>Error! </strong>Select any form or take at list one form.
+              <strong>Error! </strong>Select at least one form.
+            </div>
+            <div class="bg-info info">
+              <div class="info-icon">
+                <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
+              </div>
+              <div class="info-desc">
+                The Basic tax return form contains two T4 form and
+                one T4A, T4A(OAS), T4A(P), T4E, T5, T5007, and two
+                Medical expense forms.
+              </div>
             </div>
           </div>
           <div class="col-lg-4">
