@@ -18,7 +18,7 @@
               
                   <div class="client_information">
                     <div class="col-md-6 col-xs-12">
-                      <%= f.input :first_name, as: :string, placeholder: 'First Name', label: false %>
+                      <%= f.input :first_name, as: :string, placeholder: 'First Name', label: false, required: true %>
                     </div>
                     <div class="col-md-6 col-xs-12">
                       <%= f.input :last_name, as: :string, placeholder: 'Last Name', label: false %>
@@ -46,13 +46,15 @@
                         <%= f.input :status_before_date, collection: OnlineEstimate::STATUSES, as: :select, required: false %>
                       </div>
                     </div>
-                    <div class="col-md-12 col-xs-12"  >
-                        <%= f.input :gender, collection: OnlineEstimate::GENDER,as: :select %>
-                    </div>              
+                    <div class="row">
+                      <div class="col-xs-12 col-md-4 col-md-offset-4"  >
+                          <%= f.input :gender, collection: OnlineEstimate::GENDER,as: :select %>
+                      </div>  
+                    </div>            
                   </div>
-
-                  <p id="add_spouse_info" class="add_additional_info"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add information about your spouse</p>
-                  
+                  <div class="col-md-12 col-xs-12"  >
+                    <p id="add_spouse_info" class="add_additional_info"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add information about your spouse</p>
+                  </div>
                   <div class="spouse_information col-md-12  col-xs-12">
                     <div class="col-md-6 col-xs-12">
                       <%= f.input :spouse_name, as: :string, placeholder: 'Spouse or common law name', label: false %>
@@ -84,24 +86,108 @@
                       <%= f.input :rent_paid, as: :float, placeholder: 'Rent paid during year (12 months)', label: false %>
                     </div>
                   </div>
-          
-                  <p id="add_child_info" class="add_additional_info"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add information about your child</p>
-                  <div class="children_information col-md-12  col-xs-12">
-                    <div class="col-md-6 col-xs-12">
-                      <%= f.input :child_name, as: :string, placeholder: 'First Name', label: false %>
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                      <%= f.input :child_last_name, as: :string, placeholder: 'Last Name', label: false %>
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                      <%= f.input :child_date_of_birth, as: :date, placeholder: 'Date of Birth', label: false %>
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                      <%= f.input :child_social_insurance, as: :integer, required: false, placeholder: 'Social Insurance Number (should you have it)', label: false %>
-                    </div>
+                  <div class="col-md-12 col-xs-12"  >
+                    <p id="add_child_info" class="add_additional_info"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add information about your child</p>
                   </div>
-                <input type="button" name="next" class="next action-button" value="Next" />
 
+                  
+                  <div class="children_information col-md-12  col-xs-12">
+                    
+
+                    <h4 style='text-align: left;'>Child 1:</h4>
+                      
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_one_name, as: :string, placeholder: 'First Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_one_last_name, as: :string, placeholder: 'Last Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_one_date_of_birth, as: :date, placeholder: 'Date of Birth', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_one_social_insurance, as: :integer, required: false, placeholder: 'Social Insurance Number (should you have it)', label: false %>
+                    </div>
+
+
+                    <h4 style='text-align: left;'>Child 2:</h4>
+
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_two_name, as: :string, placeholder: 'First Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_two_last_name, as: :string, placeholder: 'Last Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_two_date_of_birth, as: :date, placeholder: 'Date of Birth', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_two_social_insurance, as: :integer, required: false, placeholder: 'Social Insurance Number (should you have it)', label: false %>
+                    </div>
+
+                    <h4 style='text-align: left;'>Child 3:</h4>
+
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_three_name, as: :string, placeholder: 'First Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_three_last_name, as: :string, placeholder: 'Last Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_three_date_of_birth, as: :date, placeholder: 'Date of Birth', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_three_social_insurance, as: :integer, required: false, placeholder: 'Social Insurance Number (should you have it)', label: false %>
+                    </div>
+
+                    <h4 style='text-align: left;'>Child 4:</h4>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_four_name, as: :string, placeholder: 'First Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_four_last_name, as: :string, placeholder: 'Last Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_four_date_of_birth, as: :date, placeholder: 'Date of Birth', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_four_social_insurance, as: :integer, required: false, placeholder: 'Social Insurance Number (should you have it)', label: false %>
+                    </div>
+                    
+                    <h4 style='text-align: left;'>Child 5:</h4>
+
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_five_name, as: :string, placeholder: 'First Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_five_last_name, as: :string, placeholder: 'Last Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_five_date_of_birth, as: :date, placeholder: 'Date of Birth', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_five_social_insurance, as: :integer, required: false, placeholder: 'Social Insurance Number (should you have it)', label: false %>
+                    </div>
+                    
+                    <h4 style='text-align: left;'>Child 6:</h4>
+
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_six_name, as: :string, placeholder: 'First Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_six_last_name, as: :string, placeholder: 'Last Name', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_six_date_of_birth, as: :date, placeholder: 'Date of Birth', label: false %>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <%= f.input :child_six_social_insurance, as: :integer, required: false, placeholder: 'Social Insurance Number (should you have it)', label: false %>
+                    </div>
+                    
+                  </div>
+
+                  <input type="button" name="next" class="next action-button  center-block" value="Next" />
+                
 
             </fieldset>
         <!-- </section> -->
@@ -163,7 +249,7 @@
                       <%= f.input :account, as: :string, placeholder: 'Account', label: false %>
                     </div>
                   </div>
-                <input type="button" name="next" class="next action-button" value="Next" />
+                <input type="button" name="next" class="next action-button  center-block" value="Next" />
               </fieldset>
             
         <!-- </section> -->
@@ -261,7 +347,7 @@
                     </div>
                   </div>
                 </div>
-                <input type="submit" name="submit" class="submit action-button" value="Submit" />
+                <input type="submit" name="submit" class="submit action-button center-block" value="Submit" />
 
               </fieldset>
             <!-- </div> -->
