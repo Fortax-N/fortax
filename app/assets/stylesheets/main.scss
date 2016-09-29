@@ -886,12 +886,12 @@ button.close {
 }
 
 
-/*#client_data{
+#client_data{
    
    width: 950px;
    margin: 0 auto;
    margin-top: 60px;
-}*/
+}
 
 .info {
   color: #48494A;
@@ -913,6 +913,14 @@ fieldset{
    display: block;
 }
 
+.spouse_information{
+   visibility: hidden;
+}
+
+.children_information{
+   visibility: hidden;
+}
+
 
 /*Added for multi-step forms*/
 
@@ -920,7 +928,7 @@ fieldset{
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 /*basic reset*/
-* {margin: 0; padding: 0;}
+*{margin: 0; padding: 0;}
 
 body {
    font-family: montserrat, arial, verdana;
@@ -962,6 +970,18 @@ body {
 #msform fieldset:not(:first-of-type) {
    display: none;
 }
+
+/*inputs*/
+/*#msform input, #msform textarea {
+   padding: 15px;
+   border: 1px solid #ccc;
+   border-radius: 3px;
+   margin-bottom: 10px;
+   width: 100%;
+   box-sizing: border-box;
+   font-family: montserrat;
+   color: #2C3E50;
+}*/
 
 /*buttons*/
 #msform .action-button {
