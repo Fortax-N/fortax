@@ -186,20 +186,12 @@ $(document).on("turbolinks:load", function(){
     }
   });
 
-
-
   $("#add_spouse_info").click(function(){
-    if ( $('.spouse_information').css('visibility') == 'hidden' )
-      $('.spouse_information').show(slow);
-    else
-      $('.spouse_information').hide(slow);
+    $('.spouse_information').toggle('fast');
   });
 
   $("#add_child_info").click(function(){
-    if ( $('.spouse_information').css('visibility') == 'hidden' )
-      $('.children_information').css('visibility','visible');
-    else
-      $('.children_information').css('visibility','hidden');
+    $('.children_information').toggle('fast');
   });
 
 
