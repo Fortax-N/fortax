@@ -25,17 +25,20 @@
 
   <body>
     <div id="page">
-      <div class="site-navbar navbar navbar-fixed-top" role="navigation">
+
+      <%= render 'layouts/nav' %>
+
+      <%= yield %>
+      <footer class="footer">
         <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="<%= root_path %>"><img src="images/logo102x52.png" alt="Logo"></a>
+        <div class="row">
+          <div class="col-md-12 col-">
+          Copyright &copy; 2016 FORTAX All Rights Reserved <br>
+          Created with <i style="color:red" class="fa fa-heart"></i> in Toronto.
+            
           </div>
         </div>
-      </div>
-      <%= yield %>
-      <footer>
-        Copyright &copy; 2016 FORTAX All Rights Reserved <br>
-        Created with <i style="color:red" class="fa fa-heart"></i> in Toronto.
+        </div>
       </footer>
     </div>
     <!-- Scroll to top -->

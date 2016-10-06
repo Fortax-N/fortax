@@ -1,5 +1,5 @@
 class NotifierMailer < ApplicationMailer
-  default from: 'notifications@fortax.com'
+  default from: 'info@Fortax.ca'
 
   def mail_to_user(form_params)
   	@user = form_params[:email]
