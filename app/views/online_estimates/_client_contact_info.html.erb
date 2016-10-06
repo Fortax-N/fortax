@@ -1,0 +1,76 @@
+<fieldset id="client_contact_information">
+  <h2 class="fs-title">Contact Information</h2>
+  <h3 class="fs-subtitle"></h3>
+
+    <div class="row">
+      <div class="col-md-4 col-xs-12">          
+        <input type="text" name="address_line_1" placeholder="Number and Street" class="form-control"/>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <input type="text" name="unit" placeholder="Unit" class="form-control"/>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <input type="text" name="city" placeholder="City" class="form-control"/>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <input type="text" name="province" placeholder="Province" class="form-control"/>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <input type="text" name="country" placeholder="Country" class="form-control"/>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <input type="text" name="postal_code" placeholder="Postal Code" class="form-control"/>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+        <div class="checkbox">    
+          <label><input type="checkbox" name="sign_document">You will have to sign a document and download it with your return. (Make sure you have access to a printer.)</label>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-3 col-xs-12">
+        <input type="text" name="phone_number" placeholder="Phone Number" class="form-control"/>
+      </div>
+      <div class="col-md-3 col-xs-12">
+        <input type="text" name="email" placeholder="Email" class="form-control"/>
+      </div>
+      <div class="col-md-3 col-xs-12">    
+        <div class="checkbox">         
+          <label><input type="checkbox" name="receive_notice_of_assesment"/>Would you like to receive your notice of assessment by email?</label>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-xs-12">   
+        <div class="checkbox">     
+          <label><input type="checkbox" name="register_for_direct_deposit" class="form-control">Are you registered for direct deposit?</label>    
+        </div>                             
+      </div>
+    </div>
+
+    <div id="options-for-bank-info" style="display: none;">
+      <p>If you are not and want to receive your government payment by direct deposit, please enter your bank information</p>
+      <div class="col-md-4 col-xs-12">
+        <input type="text" name="branch" placeholder="Branch" maxlength="5" class="form-control"/>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <input type="text" name="financial_institution" maxlength="3" placeholder="Financial Institution" class="form-control"/>     
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <input type="text" name="account" placeholder="Account" class="form-control"/>                           
+      </div>
+    </div>
+  <input type="button" name="next" class="next action-button  center-block" value="Next" />
+</fieldset>
