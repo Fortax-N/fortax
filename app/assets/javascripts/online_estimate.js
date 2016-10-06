@@ -238,7 +238,7 @@ $(document).on("turbolinks:load", function(){
     
   });
 
-  $(".previous").click(function(){
+  $(".prev").click(function(){
     if(animating) return false;
     animating = true;
     
