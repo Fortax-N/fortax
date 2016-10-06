@@ -273,20 +273,6 @@ $(document).on("turbolinks:load", function(){
     });
   });
 
-  $("form").on("submit", function(e){
-    e.preventDefault();
-    var form_data = JSON.parse('{"' + $('form').serialize().replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-    $.ajax({
-      url: '/online_estimates',
-      type: 'POST',
-      dataType: 'JSON',
-      data: { form_data },
-      success(data) {
-
-      }
-    });
-  })
-
 
 });
 

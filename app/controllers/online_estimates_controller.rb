@@ -5,10 +5,8 @@ class OnlineEstimatesController < ApplicationController
   end
 
   def create
-
-    binding.pry
-    send_mail_to_user(form_params)
-    send_mail_to_admin(form_params)
+    send_mail_to_user(params)
+    send_mail_to_admin(params)
 
     flash[:success] = "Thank you! We have received your application and will reach out to you shortly."
     redirect_to root_path
@@ -26,51 +24,6 @@ class OnlineEstimatesController < ApplicationController
   end
 
   def form_params
-    params.require(:form_data)
-
-    # .permit(
-    # :first_name,
-    # :last_name,
-    # :social_insurance,
-    # :date_of_birth,
-    # :date_of_birth,
-    # :date_of_birth,
-    # :status,
-    # :change_in_status_during_year,
-    # :date_of_change_of_status,
-    # :date_of_change_of_status,
-    # :date_of_change_of_status,
-    # :status_before_date,
-    # :gender,
-    # :address_line_1,
-    # :unit,
-    # :city,
-    # :province,
-    # :country,
-    # :postal_code,
-    # :sign_document,
-    # :phone_number,
-    # :email,
-    # :receive_notice_of_assessment_by_email,
-    # :register_for_direct_deposit,
-    # :branch,
-    # :financial_institution,
-    # :account,
-    # :spouse_name,
-    # :spouse_last_name,
-    # :spouse_date_of_birth,
-    # :spouse_social_insurance,
-    # :spouse_phone_number,
-    # :spouse_email,
-    # :residence,
-    # :property_tax_paid,
-    # :rent_paid,
-    # :child_name,
-    # :child_last_name,
-    # :child_date_of_birth,
-    # :child_date_of_birth,
-    # :child_date_of_birth,
-    # :child_social_insurance
-    # )
+    params.require(:form_data)   
   end
 end
