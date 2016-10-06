@@ -23,6 +23,7 @@ var initializeOnlineEstimate = function(){
       if(form.dropDownValue() !== " " && form.numOfForms() !== 0)
       {
         onlineEstimate.appendToTable();
+        onlineEstimate.addFormInput();
         onlineEstimate.toggleHelperText();
         onlineEstimate.calculateCost();
         onlineEstimate.changeEstimate();
@@ -118,6 +119,12 @@ var initializeOnlineEstimate = function(){
       if (form.isStudentForm() === true) {
         form.hasSelectedStudentForm = true;
       }
+    },
+    addFormInput: function(){
+      $('<input />').attr('type', 'hidden')
+        .attr('name', 'form_quantity')
+        .attr('value', form.numOfForms() + " " + form.dropDownValue() + " forms")
+        .appendTo('form');
     }
   }
 
@@ -147,40 +154,30 @@ var initializeOnlineEstimate = function(){
 
 $(document).on("turbolinks:load", function(){
   initializeOnlineEstimate();
-  $('#infos_change_in_status_during_year_true').click(function(){
+  $('input[type=radio][name="change_in_status_during_year"]').on("change", function(){
     if($(this).val() === "true"){
       $('#options-for-change-in-status').show('slow');
-    }
-  });
-  
-  $('#infos_change_in_status_during_year_false').click(function(){
-    if($(this).val() === "false"){
+    } else {
       $('#options-for-change-in-status').hide('slow');
     }
   });
-
-  $('#infos_register_for_direct_deposit_true').click(function(){
+  $('input[type=radio][name="register_for_direct_deposit"]').on("change", function(){
      if($(this).val() === "true"){
       $('#options-for-bank-info').hide('slow');
     } 
   });
   
-  $('#infos_register_for_direct_deposit_false').click(function(){
-     if($(this).val() === "false"){
+  $('input[type=radio][name="register_for_direct_deposit"]').on("change", function(){
+    if($(this).val() === "false"){
       $('#options-for-bank-info').show('slow');
     } 
   });
 
-  $('#infos_residence_owner').click(function(){
+  $('input[type=radio][name="residence"]').on("change", function(){
      if($(this).val() === "Owner"){
       $('#property-tax').show('slow');
       $('#rent-paid').hide('fast');
-    }
-  });
-
-
-  $('#infos_residence_tenant').click(function(){
-     if($(this).val() === "Tenant"){
+    } else {
       $('#property-tax').hide('fast');
       $('#rent-paid').show('slow');
     }
@@ -205,8 +202,10 @@ $(document).on("turbolinks:load", function(){
     animating = true;
     
     current_fs = $(this).parent();
+    console.log(current_fs);
 
     next_fs = $(this).parent().next();
+    console.log(next_fs);
     
     //activate next step on progressbar using the index of next_fs
     $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
@@ -239,7 +238,7 @@ $(document).on("turbolinks:load", function(){
     
   });
 
-  $(".previous").click(function(){
+  $(".prev").click(function(){
     if(animating) return false;
     animating = true;
     
@@ -273,10 +272,6 @@ $(document).on("turbolinks:load", function(){
       easing: 'easeInOutBack'
     });
   });
-
-  $(".submit").click(function(){
-    return false;
-  })
 
 
 });

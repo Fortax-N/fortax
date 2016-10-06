@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   get '/online_estimates', to: 'online_estimates#index'
   get '/personal_information', to: 'personal_information#index'
-
+  post '/online_estimates', to: 'online_estimates#create'
   resources :companies
   match '/contact_forms',     to: 'contact_forms#new',             via: 'get'
   resources :contact_forms, only: [:new, :create]
