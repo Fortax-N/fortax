@@ -26,10 +26,14 @@
         <div class="col-lg-6">
           <label for="form-select">Select Form</label>
           <div class="form-group personalInformation">
-            <%= simple_form_for :form, url: '' do |f| %>
-              <%= f.input :form_type, collection: Form::FORM_TYPES.map{|k,v| [k,v[0], data: {cost: v[1]},id: k]},
-                          input_html: {class: 'form-control',id: 'form-select'},label: false,include_blank: false %>
-            <% end %>
+            <div class="form-group select required form_form_type">
+              <select class="form-control select required form-control" id="form-select" name="form[form_type]">
+                <option data-cost=" " id="Select Form" value=" ">Select Form</option>
+                <% Form.all.each do |form| %>                  
+                   <option data-cost="<%= form.price %>" id="<%= form.name %>" value="<%= form.name %>"><%= form.name %></option>
+                <% end %>
+              </select>
+            </div>
           </div>
         </div>
         <div class="col-lg-3 ">
@@ -52,16 +56,7 @@
       <div class="alert alert-danger" id="errorMessage">
         <strong>Error! </strong>Select at least one form.
       </div>
-      <div class="bg-info info">
-        <div class="info-icon">
-          <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
-        </div>
-        <div class="info-desc">
-          The Basic tax return form contains two T4 form and
-          one T4A, T4A(OAS), T4A(P), T4E, T5, T5007, and two
-          Medical expense forms.
-        </div>
-      </div>
+      
     </div>
     <div class="col-lg-4">
       <h2>Current outstanding bill</h2>
@@ -90,7 +85,7 @@
     </div>
   </div>
 
-  <input type="button" name="prev" class="prev action-button" value="Previous" />
-  <input type="submit" name="submit" class="submit action-button" value="Submit" />
+  <input type="button" name="next" class="next action-button  center-block" value="Next" /> 
+  
 
 </fieldset>

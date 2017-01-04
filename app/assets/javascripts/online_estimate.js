@@ -66,6 +66,50 @@ var initializeOnlineEstimate = function(){
       onlineEstimate.cost -= minusPrice;
       onlineEstimate.changeEstimate();
     },
+    increaseAmount: function(target){
+      var tr = $(target).closest('tr');
+
+      // increase number of forms
+      var number = tr.data('number') + 1;
+      tr.data('number', number);      
+      
+      var price = tr.data('price');
+      var numOfForms = tr.data('number');
+      var formName = tr.data('name');
+
+      // replace text
+      var td = tr.find("td")[1]
+      $(td).html(numOfForms);
+
+      // update form value
+      var input = $("#" + formName.replace(/ /g,"_"));
+      input.attr('value', numOfForms + " " + formName + " forms");
+
+      onlineEstimate.cost += tr.data('price');
+      onlineEstimate.changeEstimate();
+    },
+    decreaseAmount: function(target){
+      var tr = $(target).closest('tr');
+
+      // increase number of forms
+      var number = tr.data('number') - 1;
+      tr.data('number', number);      
+
+      var price = tr.data('price');
+      var numOfForms = tr.data('number');
+      var formName = tr.data('name');
+
+      // replace text
+      var td = tr.find("td")[1]
+      $(td).html(numOfForms);
+
+      // update form value
+      var input = $("#" + formName.replace(/ /g,"_"));
+      input.attr('value', numOfForms + " " + formName + " forms");
+
+      onlineEstimate.cost -= tr.data('price');
+      onlineEstimate.changeEstimate();
+    },
     reenableStudentForm: function(){
       form.enableButton();
       this.hasSelectedStudentForm = false;
@@ -87,13 +131,21 @@ var initializeOnlineEstimate = function(){
     },
     appendToTable: function() {
       $('#table-data').append(
-        '<tr data-price="' + form.price() * form.numOfForms() + '">' +
+        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() * form.numOfForms() + '" data-name="' + form.dropDownText() + '">' +
           '<td>'+ form.dropDownValue() + '</td>' +
           '<td>'+ form.numOfForms() + '</td>' +
           '<td>'+ '$' + form.price() + '</td>' +
-          '<td><button type="button" class="btn btn-primary btn-xs" id="delete">' +
-            '<i class="fa fa-trash-o" aria-hidden="true"></i>' +
-          '</button></td>' +
+          `<td class="col-xs-3">
+            <button type="button" class="btn btn-success btn-xs" id="add">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-danger btn-xs" id="minus">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-primary btn-xs" id="delete">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+           </td>` +
         '</tr>'
       );
     },
@@ -122,6 +174,8 @@ var initializeOnlineEstimate = function(){
     },
     addFormInput: function(){
       $('<input />').attr('type', 'hidden')
+        .attr('id',  form.dropDownValue().replace(/ /g,"_"))
+        .attr('data-number', form.numOfForms())
         .attr('name', 'form_quantity')
         .attr('value', form.numOfForms() + " " + form.dropDownValue() + " forms")
         .appendTo('form');
@@ -150,6 +204,15 @@ var initializeOnlineEstimate = function(){
   $(document).on('click','button#delete',function(){
     form.removeForm(this);
   });
+
+  $(document).on('click','button#add',function(){
+    form.increaseAmount(this);
+  });
+
+  $(document).on('click','button#minus',function(){
+    form.decreaseAmount(this);
+  });
+
 }
 
 $(document).on("turbolinks:load", function(){
@@ -183,12 +246,26 @@ $(document).on("turbolinks:load", function(){
     }
   });
 
-  $("#add_spouse_info").click(function(){
-    $('.spouse_information').toggle('fast');
+  $('input[type=radio][name="spouse-residence"]').on("change", function(){
+     if($(this).val() === "Owner"){
+      $('#spouse-property-tax').show('slow');
+      $('#spouse-rent-paid').hide('fast');
+    } else {
+      $('#spouse-property-tax').hide('fast');
+      $('#spouse-rent-paid').show('slow');
+    }
   });
+
+  // $("#add_spouse_info").click(function(){
+  //   $('.spouse_information').toggle('fast');
+  // });
 
   $("#add_child_info").click(function(){
     $('.children_information').toggle('fast');
+  });
+
+  $("#spouse_add_child_info").click(function(){
+    $('.spouse_children_information').toggle('fast');
   });
 
 

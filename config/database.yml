@@ -89,5 +89,4 @@ production:
 test:
   adapter: postgresql
   database: fortax_test
-  username: travis
   encoding: utf8

@@ -1,18 +1,28 @@
 <main class="site-main" id="main">
   <section id="dataClient">
-  <form id="msform" action="/online_estimates" method="POST">
+    <form id="msform" action="/online_estimates" method="POST" novalidate>
 
-    <ul id="progressbar">
-      <li class="active">Personal Information</li>
-      <li>Contact Information</li>
-      <li>Forms</li>
-    </ul>
-   
-    <%= render 'client_data' %>
+      <ul id="progressbar">
+        <li class="active">Forms</li>
+        <li>Personal Information</li>
+        <li>Contact Information</li>
+        <li>Spouse Information</li>
+        <li>Extra Information</li>
+        
+      </ul>
+
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
      
-    <%= render 'client_contact_info' %>
-    
-    <%= render 'online_estimate' %>            
+      <%= render 'online_estimate' %>   
+
+      <%= render 'client_data' %>
+       
+      <%= render 'client_contact_info' %>
+
+      <%= render 'spouse_info' %> 
+      
+      <%= render 'extra_info' %>      
+      
 
     </form>
   </section>
