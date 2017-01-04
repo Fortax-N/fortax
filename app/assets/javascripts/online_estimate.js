@@ -56,6 +56,7 @@ var initializeOnlineEstimate = function(){
     },
     removeForm: function(target){
       var minusPrice = $(target).closest('tr').data('price');
+      var numOfForms = $(target).closest('tr').data('number');
 
       $(target).closest('tr').remove();
 
@@ -63,7 +64,7 @@ var initializeOnlineEstimate = function(){
         form.reenableStudentForm();
       }
 
-      onlineEstimate.cost -= minusPrice;
+      onlineEstimate.cost -= minusPrice * numOfForms;
       onlineEstimate.changeEstimate();
     },
     increaseAmount: function(target){
