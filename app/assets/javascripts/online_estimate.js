@@ -21,14 +21,20 @@ var initializeOnlineEstimate = function(){
     },
     addToForm: function(){
       if(form.dropDownValue() !== " " && form.numOfForms() !== 0)
-      {
-        onlineEstimate.appendToTable();
-        onlineEstimate.addFormInput();
-        onlineEstimate.toggleHelperText();
-        onlineEstimate.calculateCost();
-        onlineEstimate.changeEstimate();
-        onlineEstimate.changeStatus();
-        form.disableButton();
+      { 
+        let tr = $('tr[data-name="' + form.dropDownValue() + '"]');
+
+        if (tr.length) {
+          form.increaseAmount(tr);
+        } else {
+          onlineEstimate.appendToTable();
+          onlineEstimate.addFormInput();
+          onlineEstimate.toggleHelperText();
+          onlineEstimate.calculateCost();
+          onlineEstimate.changeEstimate();
+          onlineEstimate.changeStatus();
+          form.disableButton();
+        }        
       } else {
         onlineEstimate.displayError();
       }
@@ -94,22 +100,31 @@ var initializeOnlineEstimate = function(){
 
       // increase number of forms
       var number = tr.data('number') - 1;
-      tr.data('number', number);      
 
-      var price = tr.data('price');
-      var numOfForms = tr.data('number');
-      var formName = tr.data('name');
+      if (number == 0) {
+        this.removeForm(target);
 
-      // replace text
-      var td = tr.find("td")[1]
-      $(td).html(numOfForms);
+        var input = $("#" + tr.data('name').replace(/ /g,"_"));
+        input.remove();
+      } else {
+        tr.data('number', number);      
 
-      // update form value
-      var input = $("#" + formName.replace(/ /g,"_"));
-      input.attr('value', numOfForms + " " + formName + " forms");
+        var price = tr.data('price');
+        var numOfForms = tr.data('number');
+        var formName = tr.data('name');
 
-      onlineEstimate.cost -= tr.data('price');
-      onlineEstimate.changeEstimate();
+        // replace text
+        var td = tr.find("td")[1]
+        $(td).html(numOfForms);
+
+        // update form value
+        var input = $("#" + formName.replace(/ /g,"_"));
+        input.attr('value', numOfForms + " " + formName + " forms");
+
+        onlineEstimate.cost -= tr.data('price');
+        onlineEstimate.changeEstimate();
+      }
+      
     },
     reenableStudentForm: function(){
       form.enableButton();
@@ -216,7 +231,7 @@ var initializeOnlineEstimate = function(){
 
 }
 
-$(document).on("turbolinks:load", function(){
+$(document).on("ready", function(){
   initializeOnlineEstimate();
   $('input[type=radio][name="change_in_status_during_year"]').on("change", function(){
     if($(this).val() === "true"){

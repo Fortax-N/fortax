@@ -30,7 +30,7 @@
               <select class="form-control select required form-control" id="form-select" name="form[form_type]">
                 <option data-cost=" " id="Select Form" value=" ">Select Form</option>
                 <% Form.all.each do |form| %>                  
-                   <option data-cost="<%= form.price %>" id="<%= form.name %>" value="<%= form.name %>"><%= form.name %></option>
+                   <option data-cost="<%= form.price %>" value="<%= form.name %>"><%= form.name %></option>
                 <% end %>
               </select>
             </div>
