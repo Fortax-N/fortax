@@ -11,6 +11,8 @@ class NotifierMailer < ApplicationMailer
     @user = form_params[:email]
 
     attachments['request.pdf'] = pdf
+    attachments[form_params["t_1013"]] = form_params["t_1013"]
+    attachments[form_params["t_183"]] = form_params["t_183"]
   	mail(to:'admin@fortax.com', from: @user, subject: 'New Form Submission')
   end
 end

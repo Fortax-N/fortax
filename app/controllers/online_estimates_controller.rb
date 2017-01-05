@@ -6,7 +6,7 @@ class OnlineEstimatesController < ApplicationController
 
   def create
     pdf = generate_pdf(params)
-
+    
     send_mail_to_user(form_params: params)
     send_mail_to_admin(form_params: params, pdf: pdf)
 
