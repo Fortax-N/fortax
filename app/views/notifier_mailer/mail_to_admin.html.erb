@@ -1,5 +1,6 @@
 <h3>Info Of Client</h3>
 <% @form_params.each do |key,value| %>
+    <% next if value.class == ActionDispatch::Http::UploadedFile %>
     <table>
       <tr>
         <td><strong><%= key.humanize.titleize %>:</strong></td>

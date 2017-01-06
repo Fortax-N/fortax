@@ -1,0 +1,40 @@
+Eliminate Shipments Link on Sidebar
+
+# Create Dropdown:
+Products
+- Create new Product
+- View Available Products
+
+# Shipments
+- Create New Shipment
+- Past Shipments
+
+# Post a Job
+- Post a new job
+- View past jobs (job postings should be anonymous)
+
+# Revise: Create a New Job
+- Create new shipments
+- Redirect to create new jobs
+
+# Payments:
+- Business side is completely free
+- FF/Broker has to pay per bid
+- Business side
+  - "Choose Bid"
+  - FF/Broker "Accepts bid"
+  - Make payment
+  - Pay 15% of bid amount
+  - Finish Job
+  - Business is notified
+  - Make payment before ability to view payment
+  - Notify broken that full payment has been received by TWB, that it has been added to his tally on his profile
+  - All the payment goes to Hyfer-Tech
+  - Payment to broken will be done manually
+- Create way to cancel job
+  - Once they accept the job, they should be charged a fee if they cancel
+
+# Download/Upload Files for jobs
+- Broker should be able to upload documents for jobs
+- Limit file size to 1GB
+

@@ -1,2 +1,6 @@
 gmail_username: 'takehiro@gmail.com'
 gmail_password: 'tak22thegoat'
+
+AWS_ACCESS_KEY: AKIAIM3IHA324TVKYADQ
+AWS_SECRET_KEY: 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
+AWS_BUCKET: fortax
