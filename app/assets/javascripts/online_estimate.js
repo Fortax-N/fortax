@@ -19,6 +19,20 @@ var initializeOnlineEstimate = function(){
     price: function(){
       return $('#form-select option:selected').data('cost');
     },
+    addSpouse: function(){
+      var checkbox = $("#add_forms_for_spouse");
+
+      checkbox.change(function(event) {
+          var checkbox = event.target;
+          if (checkbox.checked) {
+            onlineEstimate.spouseMultiplier = 2;
+            onlineEstimate.changeEstimate();
+          } else {
+            onlineEstimate.spouseMultiplier = 1;
+            onlineEstimate.changeEstimate();
+          }
+      });
+    },    
     addToForm: function(){
       if(form.dropDownValue() !== " " && form.numOfForms() !== 0)
       { 
@@ -136,6 +150,9 @@ var initializeOnlineEstimate = function(){
     cost: 0,
     eFileFee: 2.99,
     totalCost: 0,
+    totalFamilyCost: 0,
+    hst: 1.13,
+    spouseMultiplier: 1,
     toggleHelperText: function(){
       var tableLength = $('#table-data tr').length;
       if (tableLength === 0) {
@@ -169,10 +186,15 @@ var initializeOnlineEstimate = function(){
       $('#errorMessage').css('display','none');
       $('#costDisplay').text( this.cost );
       this.totalCost = Math.round(this.calculateTotalCost()) / 100;
+      this.totalFamilyCost = Math.round(this.calculateFamilyTotalCost()) / 100;
       $('#totalCost').text( this.totalCost );
+      $('#totalFamilyCost').text( this.totalFamilyCost );
     },
     calculateTotalCost: function(){
-      return (this.cost + this.eFileFee) * 100;
+      return (this.cost + this.eFileFee) * 100 * this.hst;
+    },
+    calculateFamilyTotalCost: function(){
+      return (this.cost + this.eFileFee) * 100 * this.hst * this.spouseMultiplier;
     },
     calculateCost: function() {
       this.cost += (form.numOfForms() * form.price());
@@ -199,6 +221,7 @@ var initializeOnlineEstimate = function(){
   }
 
   onlineEstimate.toggleHelperText();
+  form.addSpouse();
 
   $('#form-select').on('change',function(){
     onlineEstimate.resetNumOfForms();
