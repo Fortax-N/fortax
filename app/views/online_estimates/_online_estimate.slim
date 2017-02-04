@@ -14,6 +14,18 @@ fieldset id="dataClient_forms"
               th Form Number
               th Cost(Per each)
               th
+          tr data-name=("Basic tax return") data-number="1" data-price="49" 
+            td Basic tax return
+            td 1
+            td $49
+            td.col-xs-3
+              button#add.btn.btn-success.btn-xs type="button" 
+                i.fa.fa-plus aria-hidden="true" 
+              button#minus.btn.btn-danger.btn-xs type="button" 
+                i.fa.fa-minus aria-hidden="true" 
+              button#delete.btn.btn-primary.btn-xs type="button" 
+                i.fa.fa-trash-o aria-hidden="true" 
+ 
           tbody#table-data
       span style="font-size:20px;font-weight:bold;"  Add Form:
       .row
@@ -41,27 +53,27 @@ fieldset id="dataClient_forms"
         .col-xs-12 style=("text-align: left") 
           label for="disability" 
             input name="disability" type="checkbox" value="true"
-            | Disability
+            |  Disability
           br
           label for="first_time_home_buyer" 
             input name="first_time_home_buyer" type="checkbox" value="true"
-            | First Time Home Buyer
+            |  First Time Home Buyer
           br
           label for="moving_expense" 
             input name="moving_expense" type="checkbox" value="true"
-            | Moving Expense (must be atleast 40km from old residence)
+            |  Moving Expense (must be atleast 40km from old residence)
           br
           label for="sole_proprietorship" 
             input name="sole_proprietorship" onchange="triggerConfirm(this)" type="checkbox" value="true"
-            | Sole Proprietorship
+            |  Sole Proprietorship
           br/
           label for="rental_properties" 
             input name="rental_properties" onchange="triggerConfirm(this)" type="checkbox" value="true"
-            | Rental Properties
+            |  Rental Properties
           br/
           label for="add_forms_for_spouse" 
-            input#add_forms_for_spouse name="add_forms_for_spouse" type="checkbox" value="true" >
-            | Add Spouse
+            input#add_forms_for_spouse name="add_forms_for_spouse" type="checkbox" value="true"
+            |  Add Spouse
           br/
     .col-lg-4
       h2 Estimate
@@ -73,7 +85,7 @@ fieldset id="dataClient_forms"
           p eFile Fee
           p HST (13%)
         .col-md-4.bill-cost-col style="align:left;" 
-          p#costDisplay 0
+          p#costDisplay 49
           p 2.99
       .row.total-row
         .col-md-8 style="text-transform:uppercase;" 

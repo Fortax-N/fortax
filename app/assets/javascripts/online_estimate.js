@@ -32,11 +32,11 @@ var initializeOnlineEstimate = function(){
             onlineEstimate.changeEstimate();
           }
       });
-    },    
+    },   
     addToForm: function(){
       if(form.dropDownValue() !== " " && form.numOfForms() !== 0)
       { 
-        let tr = $('tr[data-name="' + form.dropDownValue() + '"]');
+        var tr = $('tr[data-name="' + form.dropDownValue() + '"]');
 
         if (tr.length) {
           form.increaseAmount(tr);
@@ -147,7 +147,7 @@ var initializeOnlineEstimate = function(){
   }
 
   onlineEstimate = {
-    cost: 0,
+    cost: 49,
     eFileFee: 2.99,
     totalCost: 0,
     totalFamilyCost: 0,

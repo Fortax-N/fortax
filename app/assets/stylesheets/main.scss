@@ -1007,7 +1007,7 @@ body {
 /*buttons*/
 #msform .action-button {
    width: 100px;
-   background: #27AE60;
+   background: #1b93c7;
    font-weight: bold;
    color: white;
    border: 0 none;
@@ -1051,6 +1051,7 @@ body {
    float: left;
    position: relative;
    flex: 1;
+   text-align: center;
 }
 #progressbar li:before {
    content: counter(step);
@@ -1082,6 +1083,6 @@ body {
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before,  #progressbar li.active:after{
-   background: #27AE60;
+   background: #1b93c7;
    color: white;
 }
