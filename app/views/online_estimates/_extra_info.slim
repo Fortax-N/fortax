@@ -12,7 +12,8 @@ fieldset#extra_info
           label.radio-inline
             input name="residence" type="radio" value="Owner"
             | Owner
-          br/
+          br
+          br
           #property-tax style=("display: none;") 
             input.form-control name="property_tax_paid" placeholder=("Property Tax Paid") type="text" /
           #rent-paid style=("display: none;") 
@@ -67,28 +68,42 @@ fieldset#extra_info
           input.form-control name="arts_and_sports_for_child_amount" placeholder=("Arts and Sports for Child Amount") type="text" /
 
   .row
-    .col-xs-12
-      .add_child_info.add_additional_info.btn.btn-success Add information about your child
-    
-  .row
-    table.table.table-responsive.children_information
-      tr
+    table.table.table-responsive#js-children_information      
+      tr data-child-id="1"
         th.col-xs-4 First Name (Child 1)
         td.col-xs-8
           input.form-control name="child_1_first_name" placeholder=("First Name") type="text" /
-      tr
+      tr data-child-id="1"
         th.col-xs-4 Last Name (Child 1)
         td.col-xs-8
           input.form-control name="child_1_last_name" placeholder=("Last Name") type="text" /
-      tr
-        th.col-xs-4 Date of birth.col-xs-4 (Child 1)
+      tr data-child-id="1"
+        th.col-xs-4 Date of birth (Child 1)
         td.col-xs-8
           input.form-control name="child_1_date_of_birth.col-xs-4" placeholder=("Date of Birth") type="date" /
-      tr
+      tr data-child-id="1"
         th.col-xs-4 Social Insurance (Child 1)
         td.col-xs-8
           input.form-control name="child_1_social_insurance" placeholder=("Social Insurance Number") type="text" /
-
+      tr data-child-id="2"
+        th.col-xs-4 First Name (Child 2)
+        td.col-xs-8
+          input.form-control name="child_2_first_name" placeholder=("First Name") type="text" /
+      tr data-child-id="2"
+        th.col-xs-4 Last Name (Child 2)
+        td.col-xs-8
+          input.form-control name="child_2_last_name" placeholder=("Last Name") type="text" /
+      tr data-child-id="2"
+        th.col-xs-4 Date of birth (Child 2)
+        td.col-xs-8
+          input.form-control name="child_2_date_of_birth.col-xs-4" placeholder=("Date of Birth") type="date" /
+      tr data-child-id="2"
+        th.col-xs-4 Social Insurance (Child 2)
+        td.col-xs-8
+          input.form-control name="child_2_social_insurance" placeholder=("Social Insurance Number") type="text" /
+    button#js-add-child-trigger.action-button type="button"
+      | Add Child
+    
   .row
     table.table.table-responsive
       tr
@@ -164,27 +179,41 @@ fieldset#extra_info
             input.form-control name="spouse_arts_and_sports_for_child_amount" placeholder=("Arts and Sports for Child Amount") type="text" /
 
   .row
-    .col-xs-12
-      .spouse_add_child_info.spouse_add_additional_info.btn.btn-success Add information about your child
-
-  .row
-    table.table.table-responsive.spouse_children_information
-      tr
+    table.table.table-responsive#js-spouse-children_information      
+      tr data-spouse-child-id="1"
         th.col-xs-4 First Name (Child 1)
-        td
+        td.col-xs-8
           input.form-control name="spouse_child_1_first_name" placeholder=("First Name") type="text" /
-      tr
+      tr data-spouse-child-id="1"
         th.col-xs-4 Last Name (Child 1)
         td.col-xs-8
           input.form-control name="spouse_child_1_last_name" placeholder=("Last Name") type="text" /
-      tr
-        th.col-xs-4 Date of birth.col-xs-4 (Child 1)
+      tr data-spouse-child-id="1"
+        th.col-xs-4 Date of birth (Child 1)
         td.col-xs-8
           input.form-control name="spouse_child_1_date_of_birth.col-xs-4" placeholder=("Date of Birth") type="date" /
-      tr
+      tr data-spouse-child-id="1"
         th.col-xs-4 Social Insurance (Child 1)
         td.col-xs-8
           input.form-control name="spouse_child_1_social_insurance" placeholder=("Social Insurance Number") type="text" /
+      tr data-spouse-child-id="2"
+        th.col-xs-4 First Name (Child 2)
+        td.col-xs-8
+          input.form-control name="spouse_child_2_first_name" placeholder=("First Name") type="text" /
+      tr data-spouse-child-id="2"
+        th.col-xs-4 Last Name (Child 2)
+        td.col-xs-8
+          input.form-control name="spouse_child_2_last_name" placeholder=("Last Name") type="text" /
+      tr data-spouse-child-id="2"
+        th.col-xs-4 Date of birth (Child 2)
+        td.col-xs-8
+          input.form-control name="spouse_child_2_date_of_birth.col-xs-4" placeholder=("Date of Birth") type="date" /
+      tr data-spouse-child-id="2"
+        th.col-xs-4 Social Insurance (Child 2)
+        td.col-xs-8
+          input.form-control name="spouse_child_2_social_insurance" placeholder=("Social Insurance Number") type="text" /
+    button#js-add-spouse-child-trigger.action-button type="button"
+      | Add Child 
 
   .row
     table.table.table-responsive

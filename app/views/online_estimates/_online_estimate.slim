@@ -36,7 +36,7 @@ fieldset id="dataClient_forms"
               select#form-select.form-control.select.required.form-control name="form[form_type]" 
                 option data-cost=(" ") id=("Select Form") value=(" ")  Select Form
                 - Form.all.each do |form|
-                  option data-cost="#{form.price}" value="#{form.name}" 
+                  option data-cost="#{form.price}" value="#{form.name}" data-included="#{form.included_forms}"
                     = form.name
         .col-lg-3
           label for="numberOfForm"  No of Form
@@ -85,18 +85,18 @@ fieldset id="dataClient_forms"
           p eFile Fee
           p HST (13%)
         .col-md-4.bill-cost-col style="align:left;" 
-          p#costDisplay 49
-          p 2.99
+          p#costDisplay = Form.basic_tax_return_price
+          p 3.99
       .row.total-row
         .col-md-8 style="text-transform:uppercase;" 
           p Total:
         .col-md-4
-          span#totalCost 3.38
+          span#totalCost = ((Form.basic_tax_return_price + 3.99) * 1.13).round(2)
       .row.total-row
         .col-md-8 style="text-transform:uppercase;" 
           p Total Family:
         .col-md-4
-          span#totalFamilyCost 3.38
+          span#totalFamilyCost = ((Form.basic_tax_return_price + 3.99) * 1.13).round(2)
       .row.total-row
         .col-md-12
           p

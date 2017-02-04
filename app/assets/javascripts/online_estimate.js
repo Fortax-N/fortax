@@ -1,3 +1,9 @@
+var app = {
+  numOfChildren: 2,
+  numOfSpouseChildren: 2
+}
+
+
 var initializeOnlineEstimate = function(){
   var onlineEstimate;
   var form;
@@ -18,6 +24,9 @@ var initializeOnlineEstimate = function(){
     },
     price: function(){
       return $('#form-select option:selected').data('cost');
+    },
+    includedForms: function(){
+      return $('#form-select option:selected').data('included');
     },
     addSpouse: function(){
       var checkbox = $("#add_forms_for_spouse");
@@ -77,6 +86,7 @@ var initializeOnlineEstimate = function(){
     removeForm: function(target){
       var minusPrice = $(target).closest('tr').data('price');
       var numOfForms = $(target).closest('tr').data('number');
+      var includedForms = $(target).closest('tr').data('included');
 
       $(target).closest('tr').remove();
 
@@ -84,8 +94,10 @@ var initializeOnlineEstimate = function(){
         form.reenableStudentForm();
       }
 
-      onlineEstimate.cost -= minusPrice * numOfForms;
-      onlineEstimate.changeEstimate();
+      if (includedForms < numOfForms) {
+        onlineEstimate.cost -= minusPrice * numOfForms;
+        onlineEstimate.changeEstimate();  
+      }
     },
     increaseAmount: function(target){
       var tr = $(target).closest('tr');
@@ -97,6 +109,7 @@ var initializeOnlineEstimate = function(){
       var price = tr.data('price');
       var numOfForms = tr.data('number');
       var formName = tr.data('name');
+      var includedForms = tr.data('included');
 
       // replace text
       var td = tr.find("td")[1]
@@ -106,8 +119,11 @@ var initializeOnlineEstimate = function(){
       var input = $("#" + formName.replace(/ /g,"_"));
       input.attr('value', numOfForms + " " + formName + " forms");
 
-      onlineEstimate.cost += tr.data('price');
-      onlineEstimate.changeEstimate();
+      // if number of forms exceed number of included forms
+      if (numOfForms > includedForms) {
+        onlineEstimate.cost += tr.data('price');
+        onlineEstimate.changeEstimate();
+      }
     },
     decreaseAmount: function(target){
       var tr = $(target).closest('tr');
@@ -126,6 +142,7 @@ var initializeOnlineEstimate = function(){
         var price = tr.data('price');
         var numOfForms = tr.data('number');
         var formName = tr.data('name');
+        var includedForms = tr.data('included');
 
         // replace text
         var td = tr.find("td")[1]
@@ -135,8 +152,10 @@ var initializeOnlineEstimate = function(){
         var input = $("#" + formName.replace(/ /g,"_"));
         input.attr('value', numOfForms + " " + formName + " forms");
 
+        console.log(numOfForms);
+        console.log(includedForms);        
         onlineEstimate.cost -= tr.data('price');
-        onlineEstimate.changeEstimate();
+        onlineEstimate.changeEstimate(); 
       }
       
     },
@@ -148,9 +167,9 @@ var initializeOnlineEstimate = function(){
 
   onlineEstimate = {
     cost: 49,
-    eFileFee: 2.99,
-    totalCost: 0,
-    totalFamilyCost: 0,
+    eFileFee: 3.99,
+    totalCost: this.cost + this.eFileFee,
+    totalFamilyCost: (this.cost + this.eFileFee) * this.spouseMultiplier,
     hst: 1.13,
     spouseMultiplier: 1,
     toggleHelperText: function(){
@@ -164,7 +183,7 @@ var initializeOnlineEstimate = function(){
     },
     appendToTable: function() {
       $('#table-data').append(
-        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() * form.numOfForms() + '" data-name="' + form.dropDownText() + '">' +
+        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() * form.numOfForms() + '" data-name="' + form.dropDownText() + '" data-included="' + form.includedForms() + '">' +
           '<td>'+ form.dropDownValue() + '</td>' +
           '<td>'+ form.numOfForms() + '</td>' +
           '<td>'+ '$' + form.price() + '</td>' +
@@ -197,7 +216,9 @@ var initializeOnlineEstimate = function(){
       return (this.cost + this.eFileFee) * 100 * this.hst * this.spouseMultiplier;
     },
     calculateCost: function() {
-      this.cost += (form.numOfForms() * form.price());
+      if (form.includedForms() < form.numOfForms()) {
+        this.cost += (form.numOfForms() * form.price());  
+      }
     },
     displayError: function(){
       $('#errorMessage').css('display','block');
@@ -295,16 +316,129 @@ $(document).on("ready", function(){
     }
   });
 
-  // $("#add_spouse_info").click(function(){
-  //   $('.spouse_information').toggle('fast');
-  // });
+  function addChildren(){
+    app.numOfChildren += 1;
+    var numOfChildren = app.numOfChildren;
+    var html = `
+    <tr data-child-id="${numOfChildren}">
+      <th class="col-xs-4">First Name (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <input class="form-control" name="child_${numOfChildren}_first_name" placeholder="First Name" type="text">
+      </td>
+    </tr>
+    <tr data-child-id="${numOfChildren}">
+      <th class="col-xs-4">Last Name (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <input class="form-control" name="child_${numOfChildren}_last_name" placeholder="Last Name" type="text">
+      </td>
+    </tr>
+    <tr data-child-id="${numOfChildren}">
+      <th class="col-xs-4">Date of birth (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <input class="form-control" name="child_${numOfChildren}_date_of_birth.col-xs-4" placeholder="Date of Birth" type="date">
+      </td>
+    </tr>
+    <tr data-child-id="${numOfChildren}">
+      <th class="col-xs-4">Social Insurance (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <input class="form-control" name="child_${numOfChildren}_social_insurance" placeholder="Social Insurance Number" type="text">
+      </td>
+    </tr>
+    <tr data-child-id="${numOfChildren}">
+      <th class="col-xs-4"></th>
+      <td class="col-xs-8">
+        <button type="button" class="js-remove-child-trigger action-button" data-child-id="${numOfChildren}">
+          Remove Child
+        </button>
+      </td>
+    </tr>
+    `
 
-  $("#add_child_info").click(function(){
-    $('.children_information').toggle('fast');
+    $("#js-children_information").append(html);        
+  }
+
+  function removeChild(e){
+    var childId = $(e.target).data("child-id");
+
+    $("tr[data-child-id='" + childId + "']").remove();
+    app.numOfChildren -= 1;
+  }
+
+  $("#js-add-child-trigger").click(function(){
+    addChildren();    
+
+    $(".js-remove-child-trigger").unbind();
+    $(".js-remove-child-trigger").click(function(e){
+      removeChild(e);
+    });
+
   });
 
-  $("#spouse_add_child_info").click(function(){
-    $('.spouse_children_information').toggle('fast');
+  $(".js-remove-child-trigger").click(function(e){
+    removeChild(e);
+  });
+
+  
+  function addSpouseChildren(){
+    app.numOfSpouseChildren += 1;
+    var numOfChildren = app.numOfSpouseChildren;
+    var html = `
+    <tr data-spouse-child-id="${numOfChildren}">
+      <th class="col-xs-4">First Name (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <input class="form-control" name="spouse_child_${numOfChildren}_first_name" placeholder="First Name" type="text">
+      </td>
+    </tr>
+    <tr data-spouse-child-id="${numOfChildren}">
+      <th class="col-xs-4">Last Name (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <input class="form-control" name="spouse_child_${numOfChildren}_last_name" placeholder="Last Name" type="text">
+      </td>
+    </tr>
+    <tr data-spouse-child-id="${numOfChildren}">
+      <th class="col-xs-4">Date of birth (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <input class="form-control" name="spouse_child_${numOfChildren}_date_of_birth.col-xs-4" placeholder="Date of Birth" type="date">
+      </td>
+    </tr>
+    <tr data-spouse-child-id="${numOfChildren}">
+      <th class="col-xs-4">Social Insurance (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <input class="form-control" name="spouse_child_${numOfChildren}_social_insurance" placeholder="Social Insurance Number" type="text">
+      </td>
+    </tr>
+    <tr data-spouse-child-id="${numOfChildren}">
+      <th class="col-xs-4"></th>
+      <td class="col-xs-8">
+        <button type="button" class="js-remove-spouse-child-trigger action-button" data-spouse-child-id="${numOfChildren}">
+          Remove Child
+        </button>
+      </td>
+    </tr>
+    `
+
+    $("#js-spouse-children_information").append(html);        
+  }
+
+  function removeSpouseChild(e){
+    var childId = $(e.target).data("spouse-child-id");
+
+    $("tr[data-spouse-child-id='" + childId + "']").remove();
+    app.numOfSpouseChildren -= 1;
+  }
+
+  $("#js-add-spouse-child-trigger").click(function(){
+    addSpouseChildren();    
+
+    $(".js-remove-spouse-child-trigger").unbind();
+    $(".js-remove-spouse-child-trigger").click(function(e){
+      removeSpouseChild(e);
+    });
+
+  });
+
+  $(".js-remove-spouse-child-trigger").click(function(e){
+    removeSpouseChild(e);
   });
 
 
@@ -318,14 +452,17 @@ $(document).on("ready", function(){
     animating = true;
     
     current_fs = $(this).parent();
-    console.log(current_fs);
 
     next_fs = $(this).parent().next();
-    console.log(next_fs);
     
     //activate next step on progressbar using the index of next_fs
     $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-    
+
+    // if spouse is not included
+    if ($("fieldset").index(next_fs) == 3 && !$("#add_forms_for_spouse").checked) {
+      next_fs = $(this).parent().next().next();
+      $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+    }
      
     //hide the current fieldset with style
     current_fs.animate({opacity: 0}, {
@@ -363,6 +500,11 @@ $(document).on("ready", function(){
     
     //de-activate current step on progressbar
     $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+    if ($("fieldset").index(previous_fs) == 3 && !$("#add_forms_for_spouse").checked) {
+      previous_fs = $(this).parent().prev().prev();
+      $("#progressbar li").eq($("fieldset").index(previous_fs)).addClass("active");
+    }
     
     //show the previous fieldset
     previous_fs.show(); 

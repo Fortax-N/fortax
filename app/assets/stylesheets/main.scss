@@ -22,11 +22,11 @@ th, td {
    tbody
       tr
          th {
-            border-top: none;
+            border-top: none !important;
          }
 
          td {
-            border-top: none;
+            border-top: none !important;
          }
 }
 /* Navbar */
@@ -1006,7 +1006,7 @@ body {
 
 /*buttons*/
 #msform .action-button {
-   width: 100px;
+   min-width: 100px;
    background: #1b93c7;
    font-weight: bold;
    color: white;
