@@ -1,0 +1,50 @@
+fieldset#client_contact_information
+  h2.fs-title Contact Information
+
+  table
+    tr
+      th Number and Street
+      td
+        input.form-control name="address_line_1" placeholder=("Number and Street") type="text" /
+    tr
+      th Unit
+      td
+        input.form-control name="unit" placeholder="Unit" type="text" /
+    tr
+      th City
+      td
+        input.form-control name="city" placeholder="City" type="text" /
+    tr
+      th Province
+      td
+        input.form-control name="province" placeholder="Province" type="text" /
+    tr
+      th Country
+      td
+        input.form-control name="country" placeholder="Country" type="text" /
+    tr
+      th Postal Code
+      td
+        input.form-control name="postal_code" placeholder=("Postal Code") type="text" /
+    tr
+      th You will have to sign a document and download it with your return. (Make sure you have access to a printer.)
+      td
+        input name="sign_document" type="checkbox" 
+    tr
+      th Branch
+      td
+        p
+          | If you are not and want to receive your government payment by direct deposit, please enter your bank information
+        input.form-control maxlength="5" name="branch" placeholder="Branch" type="text" /
+    tr
+      th Financial Institution
+      td
+        input.form-control maxlength="3" name="financial_institution" placeholder=("Financial Institution") type="text"
+    tr
+      th Account
+      td
+        input.form-control name="account" placeholder="Account" type="text" /
+
+  input.prev.action-button name="prev" type="button" value="Previous" /
+  input.next.action-button name="next" type="button" value="Next" /
+ 

@@ -1,0 +1,93 @@
+fieldset id="dataClient_forms"
+  .row
+    .col-lg-3
+      h1 Get your estimate online here.
+    .col-lg-5
+      h2 Find your cost for tax filing.
+      p Put in the number of forms you have to get an estimate.
+      hr/
+      #addedData.table-responsive
+        table.table
+          thead
+            tr
+              th Form Type
+              th Form Number
+              th Cost(Per each)
+              th
+          tbody#table-data
+      span style="font-size:20px;font-weight:bold;"  Add Form:
+      .row
+        .col-lg-6
+          label for="form-select"  Select Form
+          .form-group.personalInformation
+            .form-group.select.required.form_form_type
+              select#form-select.form-control.select.required.form-control name="form[form_type]" 
+                option data-cost=(" ") id=("Select Form") value=(" ")  Select Form
+                - Form.all.each do |form|
+                  option data-cost="#{form.price}" value="#{form.name}" 
+                    = form.name
+        .col-lg-3
+          label for="numberOfForm"  No of Form
+          .form-group.personalInformation
+            input#numberOfForm.form-control min="1" type="number" value="1" /
+        .col-lg-3.text-center
+          .form-group
+            button#form-add.addFormButton type="button" 
+              i.fa.fa-plus aria-hidden="true" 
+      #errorMessage.alert.alert-danger
+        strong Error!
+        | Select at least one form.
+      .row
+        .col-xs-12 style=("text-align: left") 
+          label for="disability" 
+            input name="disability" type="checkbox" value="true"
+            | Disability
+          br
+          label for="first_time_home_buyer" 
+            input name="first_time_home_buyer" type="checkbox" value="true"
+            | First Time Home Buyer
+          br
+          label for="moving_expense" 
+            input name="moving_expense" type="checkbox" value="true"
+            | Moving Expense (must be atleast 40km from old residence)
+          br
+          label for="sole_proprietorship" 
+            input name="sole_proprietorship" onchange="triggerConfirm(this)" type="checkbox" value="true"
+            | Sole Proprietorship
+          br/
+          label for="rental_properties" 
+            input name="rental_properties" onchange="triggerConfirm(this)" type="checkbox" value="true"
+            | Rental Properties
+          br/
+          label for="add_forms_for_spouse" 
+            input#add_forms_for_spouse name="add_forms_for_spouse" type="checkbox" value="true" >
+            | Add Spouse
+          br/
+    .col-lg-4
+      h2 Estimate
+      p  
+      hr/
+      .row
+        .col-md-8.bill-title-col
+          p Total
+          p eFile Fee
+          p HST (13%)
+        .col-md-4.bill-cost-col style="align:left;" 
+          p#costDisplay 0
+          p 2.99
+      .row.total-row
+        .col-md-8 style="text-transform:uppercase;" 
+          p Total:
+        .col-md-4
+          span#totalCost 3.38
+      .row.total-row
+        .col-md-8 style="text-transform:uppercase;" 
+          p Total Family:
+        .col-md-4
+          span#totalFamilyCost 3.38
+      .row.total-row
+        .col-md-12
+          p
+            small The price may change if you forget to include information.
+
+  input.next.action-button.center-block name="next" type="button" value="Next" /

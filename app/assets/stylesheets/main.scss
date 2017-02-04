@@ -13,6 +13,22 @@ html {
 body {
    font-family: 'Open Sans', sans-serif;
 }
+
+th, td {
+   padding: 10px;
+}
+
+.table {
+   tbody
+      tr
+         th {
+            border-top: none;
+         }
+
+         td {
+            border-top: none;
+         }
+}
 /* Navbar */
 
 .site-navbar {
@@ -941,7 +957,7 @@ body {
 
 /*form styles*/
 #msform {
-   text-align: center;
+   // text-align: center;
    position: relative;
 }
 

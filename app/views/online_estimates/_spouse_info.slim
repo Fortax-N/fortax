@@ -1,0 +1,67 @@
+fieldset#spouse_info
+  h2.fs-title Spouse Information
+  
+  table
+    tr 
+      th.col-xs-4 First Name
+      td.col-xs-8
+        input.form-control name="spouse_first_name" placeholder=("Spouse First Name") type="text"
+    tr
+      th.col-xs-4 Last Name
+      td.col-xs-8
+        input.form-control name="spouse_last_name" placeholder=("Last Name") type="text" /
+    tr
+      th.col-xs-4 Date Of Birthday
+      td.col-xs-8
+        input.form-control name="spouse_date_of_birth.col-xs-4" placeholder=("Date of Birth.col-xs-4") type="text" /
+    tr
+      th.col-xs-4 Social Insurance
+      td.col-xs-8
+        input.form-control name="spouse_social_insurance" placeholder=("Social Insurance Number") type="text" /
+    tr
+      th.col-xs-4 Phone Number
+      td.col-xs-8
+        input.form-control name="spouse_phone_number" placeholder=("Phone Number") type="text" 
+    tr
+      th.col-xs-4 Email
+      td.col-xs-8
+        input.form-control name="spouse_email" placeholder=("Email Address") type="text" /
+    tr
+      th.col-xs-4 Would you like to receive your notice of assessment by email?
+      td.col-xs-8
+        label.radio-inline
+          input name="spouse_receive_notice_of_assesment_by_email" type="radio" value="true"
+          | Yes
+        label.radio-inline
+          input name="spouse_receive_notice_of_assesment_by_email" type="radio" value="false"
+          | No
+    tr
+      th.col-xs-4 Canadian Citizen
+      td.col-xs-8
+        label.radio-inline
+          input name="spouse_canadian_citizen" type="radio" value="true"
+          | Yes
+        label.radio-inline
+          input name="spouse_canadian_citizen" type="radio" value="false"
+          | No
+    tr
+      th.col-xs-4 Disability for Tax Purposes
+      td.col-xs-8
+        label.radio-inline
+          input name="spouse_disability_for_tax_purposes" type="radio" value="true"
+          | Yes
+        label.radio-inline
+          input name="spouse_disability_for_tax_purposes" type="radio" value="false"
+          | No
+    tr
+      th.col-xs-4 Interest on Student Loans
+      td.col-xs-8
+        label.radio-inline
+          input name="spouse_interest_on_student_loans" type="radio" value="true"
+          | Yes
+        label.radio-inline
+          input name="spouse_interest_on_student_loans" type="radio" value="false"
+          | No
+  input.prev.action-button name="prev" type="button" value="Previous" /
+  input.next.action-button name="next" type="button" value="Next" /
+ 

@@ -1,0 +1,103 @@
+fieldset id="client_data" 
+  h2 Personal Information
+
+  table
+    tr
+      th.col-xs-4
+        | Your Email
+      td.col-xs-8
+        input type="text" name="email" placeholder="Your Email" class="form-control" required="true" /
+    tr
+      th.col-xs-4
+        | Your Phone Number
+      td.col-xs-8
+        input type="text" name="phone_number" placeholder="Your Phone Number" class="form-control"/
+    tr
+      th.col-xs-4
+        | Receive Notice of Assesment by Email
+      td.col-xs-8
+        label.radio-inline
+          input#change-in-status name="receive_notice_of_assesment_by_email" type="radio" value="true"
+          | Yes
+        label.radio-inline
+          input#change-in-status name="receive_notice_of_assesment_by_email" type="radio" value="false"
+          | No
+    tr
+      th.col-xs-4 
+        | Are you registered for direct deposit?
+      td.col-xs-8
+        label.radio-inline
+          input#change-in-status name="register_for_direct_deposit" type="radio" value="true"
+          | Yes
+        label.radio-inline
+          input#change-in-status name="register_for_direct_deposit" type="radio" value="false"
+          | No
+    tr
+      th.col-xs-4
+        | First Name
+      td.col-xs-8
+        input type="text" name="first_name" placeholder="First Name" class="form-control"
+    tr
+      th.col-xs-4
+        | Last Name
+      td.col-xs-8
+        input type="text" name="last_name" placeholder="Last Name" class="form-control"
+    tr
+      th.col-xs-4
+        | Birthday
+      td.col-xs-8
+        input type="date" name="date_of_birth.col-xs-4" class="form-control"
+    tr
+      th.col-xs-4
+        | Social Insurance Number
+      td.col-xs-8
+        input type="text" name="social_insurance" placeholder="Social Insurance Number" class="form-control"
+    tr
+      th.col-xs-4
+        | Marital Status
+      td.col-xs-8
+        select.form-control name="status" 
+          - OnlineEstimate::STATUSES.each do |status|
+            option value=status = status
+    tr
+      th.col-xs-4
+        | Have you had a change in status during the year?
+      td.col-xs-8
+        label.radio-inline
+          input#change-in-status name="change_in_status_during_year" type="radio" value="true"
+          | Yes
+        label.radio-inline
+          input#change-in-status name="change_in_status_during_year" type="radio" value="false"
+          | No
+        #options-for-change-in-status style=("display: none;") 
+          .row
+            .col-md-6.col-xs-12
+              label for="date_of_name_of_status"  Date of Status Change
+              input.form-control name="date_of_name_of_status" type="date" /
+            .col-md-6.col-xs-12
+              label for="status_before_date"  Marital Status
+              select.form-control name="status_before_date" 
+                - OnlineEstimate::STATUSES.each do |status|
+                  option value=status = status
+    tr
+      th.col-xs-4
+        | Gender
+      td.col-xs-8
+        label for="gender"  Gender
+        select.form-control name="gender" 
+          - OnlineEstimate::GENDER.each do |gender|
+            option value=gender = gender
+
+  input.prev.action-button name="prev" type="button" value="Previous" /
+  input.next.action-button name="next" type="button" value="Next" /
+
+
+
+
+
+
+
+
+
+
+
