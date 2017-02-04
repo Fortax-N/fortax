@@ -1,8 +1,8 @@
 $(document).ready(function(){
   // One page navigation
-  $('.nav').singlePageNav({
-    offset: $('.navbar').outerHeight()
-  });
+  // $('.nav').singlePageNav({
+  //   offset: $('.navbar').outerHeight()
+  // });
 
   // Scroll to top
   $('.smooth-scroll').click(function() {
