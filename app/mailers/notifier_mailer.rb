@@ -1,8 +1,10 @@
 class NotifierMailer < ApplicationMailer
   default from: 'info@Fortax.ca'
 
-  def mail_to_user(form_params:)
+  def mail_to_user(form_params:, pdf:)
   	@user = form_params[:email]
+
+    attachments['request.pdf'] = pdf    
   	mail(to: @user, subject: 'Welcome to Fortax')
   end
 
