@@ -435,27 +435,69 @@ $(document).on("ready", function(){
     var numOfChildren = app.numOfChildren;
     var html = `
     <tr data-child-id="${numOfChildren}">
-      <th class="col-xs-4">First Name (Child ${numOfChildren})</th>
+      <th class="col-xs-4">Name (Child ${numOfChildren})</th>
       <td class="col-xs-8">
-        <input class="form-control" name="child_${numOfChildren}_first_name" placeholder="First Name" type="text">
+        <div class="row">
+          <div class="col-xs-6">
+            <input class="form-control" name="child_${numOfChildren}_first_name" placeholder="First Name" type="text">
+          </div>
+          <div class="col-xs-6">
+            <input class="form-control" name="child_${numOfChildren}_last_name" placeholder="Last Name" type="text">
+          </div>
       </td>
-    </tr>
+    </tr>    
     <tr data-child-id="${numOfChildren}">
-      <th class="col-xs-4">Last Name (Child ${numOfChildren})</th>
+      <th class="col-xs-4">Date of birth/Gender (Child ${numOfChildren})</th>
       <td class="col-xs-8">
-        <input class="form-control" name="child_${numOfChildren}_last_name" placeholder="Last Name" type="text">
-      </td>
-    </tr>
-    <tr data-child-id="${numOfChildren}">
-      <th class="col-xs-4">Date of birth (Child ${numOfChildren})</th>
-      <td class="col-xs-8">
-        <input class="form-control" name="child_${numOfChildren}_date_of_birth.col-xs-4" placeholder="Date of Birth" type="date">
+        <div class="row">
+          <div class="col-xs-6">
+            <input class="form-control" name="child_${numOfChildren}_date_of_birth" placeholder="Date of Birth" type="date">
+          </div>
+          <div class="col-xs-6">
+            <select class="form-control" name="child_${numOfChildren}_gender">
+              <option value="male">
+                Male
+              </option>
+              <option value="female">
+                Female
+              </option>
+              <option value="other">
+                Other
+              </option>
+            </select>
+          </div>
       </td>
     </tr>
     <tr data-child-id="${numOfChildren}">
       <th class="col-xs-4">Social Insurance (Child ${numOfChildren})</th>
       <td class="col-xs-8">
         <input class="form-control" name="child_${numOfChildren}_social_insurance" placeholder="Social Insurance Number" type="text">
+      </td>
+    </tr>
+    <tr data-child-id="${numOfChildren}">
+      <th class="col-xs-4">Day Care Expenses (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <div class="row">
+          <div class="col-xs-7">
+            <input class="form-control" name="child_${numOfChildren}_day_care_expenses_provider" placeholder="Day Care Expenses Provider" type="text">
+          </div>
+          <div class="col-xs-5">
+            <input class="form-control" name="child_${numOfChildren}_day_care_expenses_amount" placeholder="Day Care Expenses Amount" type="text">
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr data-child-id="${numOfChildren}">
+      <th class="col-xs-4">Arts and Sports (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <div class="row">
+          <div class="col-xs-7">
+            <input class="form-control" name="child_${numOfChildren}_arts_and_sports_for_child_provider" placeholder="Arts and Sports for Child Provider" type="text">
+          </div>
+          <div class="col-xs-5">
+            <input class="form-control" name="child_${numOfChildren}_arts_and_sports_for_child_amount" placeholder="Arts and Sports for Child Amount" type="text">
+          </div>
+        </div>
       </td>
     </tr>
     <tr data-child-id="${numOfChildren}">

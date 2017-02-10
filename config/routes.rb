@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #route for homepage
   root 'static_pages#index'
   get '/online_estimates', to: 'online_estimates#index'
+  get '/confirmation', to: 'online_estimates#confirmation', as: :confirmation
   get '/personal_information', to: 'personal_information#index'
   post '/online_estimates', to: 'online_estimates#create'
   resources :companies

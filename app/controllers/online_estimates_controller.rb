@@ -17,7 +17,7 @@ class OnlineEstimatesController < ApplicationController
     send_mail_to_admin(form_params: params, pdf: pdf, files: files)
 
     flash[:success] = "Thank you! We have received your application and will reach out to you shortly."
-    redirect_to root_path
+    redirect_to confirmation_path
   end
 
 

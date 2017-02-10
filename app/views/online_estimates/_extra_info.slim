@@ -19,88 +19,118 @@ fieldset#extra_info
           #rent-paid style=("display: none;") 
             input.form-control name="rent_paid" placeholder=("Rent paid during year (12 months)") type="number" /
       tr
-        th.col-xs-4 Medical Expenses Provider
+        th.col-xs-4 Medical Expenses
         td.col-xs-8
-          input.form-control name="medical_expenses_provider" placeholder=("Medical Expenses Provider") type="text" /
+          .row
+            .col-xs-7
+              input.form-control name="medical_expenses_provider" placeholder=("Medical Expenses Provider") type="text" /
+            .col-xs-5
+              input.form-control name="medical_expenses_amount" placeholder=("Medical Expenses Amount") type="text" /
       tr
-        th.col-xs-4 Medical Expenses Amount
+        th.col-xs-4 Donation
         td.col-xs-8
-          input.form-control name="medical_expenses_amount" placeholder=("Medical Expenses Amount") type="text" /
+          .row
+            .col-xs-7
+              input.form-control name="donation_provider" placeholder=("Donation Provider") type="text"
+            .col-xs-5
+              input.form-control name="donation_amount" placeholder=("Donation Amount") type="text" /
       tr
-        th.col-xs-4 Donation Provider
+        th.col-xs-4 Interest on Student Loan
         td.col-xs-8
-          input.form-control name="donation_provider" placeholder=("Donation Provider") type="text" 
+          .row
+            .col-xs-7
+              input.form-control name="interest_on_student_load_provider" placeholder=("Interest on Student Load Provider") type="text" /
+            .col-xs-5
+              input.form-control name="interest_on_student_load_amount" placeholder=("Interest on Student Load Amount") type="text" /     
       tr
-        th.col-xs-4 Donation Amount
+        th.col-xs-4 Public Transit
         td.col-xs-8
-          input.form-control name="donation_amount" placeholder=("Donation Amount") type="text" /
-      tr
-        th.col-xs-4 Interest on Student Loan Provider
-        td.col-xs-8
-          input.form-control name="interest_on_student_load_provider" placeholder=("Interest on Student Load Provider") type="text" /
-      tr
-        th.col-xs-4 Interest on Student Load Amount
-        td.col-xs-8
-          input.form-control name="interest_on_student_load_amount" placeholder=("Interest on Student Load Amount") type="text" /
-      tr
-        th.col-xs-4 Public Transit Provider
-        td.col-xs-8
-          input.form-control name="public_transit_provider" placeholder=("Public Transit Provider") type="text" /
-      tr
-        th.col-xs-4 Public Transit Amount
-        td.col-xs-8
-          input.form-control name="public_transit_amount" placeholder=("Public Transit Amount") type="text" /
-      tr
-        th.col-xs-4 Dog Care Expenses Provider
-        td.col-xs-8
-          input.form-control name="dog_care_expenses_provider" placeholder=("Dog Care Expenses Provider") type="text" /
-      tr
-        th.col-xs-4 Dog Care Expenses Amount
-        td.col-xs-8
-          input.form-control name="dog_care_expenses_amount" placeholder=("Dog Care Expenses Amount") type="text" /
-      tr
-        th.col-xs-4 Arts and Sports for Child Provider
-        td.col-xs-8
-          input.form-control name="arts_and_sports_for_child_provider" placeholder=("Arts and Sports for Child Provider") type="text" /
-      tr
-        th.col-xs-4 Arts and Sports for Child Amount
-        td.col-xs-8
-          input.form-control name="arts_and_sports_for_child_amount" placeholder=("Arts and Sports for Child Amount") type="text" /
+          .row
+            .col-xs-7
+              input.form-control name="public_transit_provider" placeholder=("Public Transit Provider") type="text" /
+            .col-xs-5
+              input.form-control name="public_transit_amount" placeholder=("Public Transit Amount") type="text" /      
 
   .row
     table.table.table-responsive#js-children_information      
       tr data-child-id="1"
-        th.col-xs-4 First Name (Child 1)
+        th.col-xs-4 Name (Child 1)
         td.col-xs-8
-          input.form-control name="child_1_first_name" placeholder=("First Name") type="text" /
+          .row
+            .col-xs-6
+              input.form-control name="child_1_first_name" placeholder=("First Name") type="text" /
+            .col-xs-6
+              input.form-control name="child_1_last_name" placeholder=("Last Name") type="text" /
       tr data-child-id="1"
-        th.col-xs-4 Last Name (Child 1)
+        th.col-xs-4 Date of birth/Gender (Child 1)
         td.col-xs-8
-          input.form-control name="child_1_last_name" placeholder=("Last Name") type="text" /
-      tr data-child-id="1"
-        th.col-xs-4 Date of birth (Child 1)
-        td.col-xs-8
-          input.form-control name="child_1_date_of_birth.col-xs-4" placeholder=("Date of Birth") type="date" /
+          .row
+            .col-xs-6
+              input.form-control name="child_1_date_of_birth" placeholder=("Date of Birth") type="date" /
+            .col-xs-6
+              select.form-control name="child_1_gender"
+                option value="male" Male
+                option value="female" Female
+                option value="other" Other
       tr data-child-id="1"
         th.col-xs-4 Social Insurance (Child 1)
         td.col-xs-8
           input.form-control name="child_1_social_insurance" placeholder=("Social Insurance Number") type="text" /
-      tr data-child-id="2"
-        th.col-xs-4 First Name (Child 2)
+      tr data-child-id="1"
+        th.col-xs-4 Day Care Expenses (Child 1)
         td.col-xs-8
-          input.form-control name="child_2_first_name" placeholder=("First Name") type="text" /
-      tr data-child-id="2"
-        th.col-xs-4 Last Name (Child 2)
+          .row
+            .col-xs-7
+              input.form-control name="child_1_day_care_expenses_provider" placeholder=("Day Care Expenses Provider") type="text" /
+            .col-xs-5
+              input.form-control name="child_1_day_care_expenses_amount" placeholder=("Day Care Expenses Amount") type="text" /
+      tr data-child-id="1"
+        th.col-xs-4 Arts and Sports (Child 1)
         td.col-xs-8
-          input.form-control name="child_2_last_name" placeholder=("Last Name") type="text" /
+          .row
+            .col-xs-7
+              input.form-control name="child_1_arts_and_sports_for_child_provider" placeholder=("Arts and Sports for Child Provider") type="text" /
+            .col-xs-5
+              input.form-control name="child_1_arts_and_sports_for_child_amount" placeholder=("Arts and Sports for Child Amount") type="text" /
       tr data-child-id="2"
-        th.col-xs-4 Date of birth (Child 2)
+        th.col-xs-4 Name (Child 2)
         td.col-xs-8
-          input.form-control name="child_2_date_of_birth.col-xs-4" placeholder=("Date of Birth") type="date" /
+          .row
+            .col-xs-6
+              input.form-control name="child_1_first_name" placeholder=("First Name") type="text" /
+            .col-xs-6
+              input.form-control name="child_1_last_name" placeholder=("Last Name") type="text" /
+      tr data-child-id="2"
+        th.col-xs-4 Date of birth/Gender (Child 2)
+        td.col-xs-8
+          .row
+            .col-xs-6
+              input.form-control name="child_2_date_of_birth" placeholder=("Date of Birth") type="date" /
+            .col-xs-6
+              select.form-control name="child_2_gender"
+                option value="male" Male
+                option value="female" Female
+                option value="other" Other
       tr data-child-id="2"
         th.col-xs-4 Social Insurance (Child 2)
         td.col-xs-8
           input.form-control name="child_2_social_insurance" placeholder=("Social Insurance Number") type="text" /
+      tr data-child-id="2"
+        th.col-xs-4 Day Care Expenses (Child 2)
+        td.col-xs-8
+          .row
+            .col-xs-7
+              input.form-control name="child_2_day_care_expenses_provider" placeholder=("Day Care Expenses Provider") type="text" /
+            .col-xs-5
+              input.form-control name="child_2_day_care_expenses_amount" placeholder=("Day Care Expenses Amount") type="text" /
+      tr data-child-id="2"
+        th.col-xs-4 Arts and Sports (Child 2)
+        td.col-xs-8
+          .row
+            .col-xs-7
+              input.form-control name="child_2_arts_and_sports_for_child_provider" placeholder=("Arts and Sports for Child Provider") type="text" /
+            .col-xs-5
+              input.form-control name="child_2_arts_and_sports_for_child_amount" placeholder=("Arts and Sports for Child Amount") type="text" /
     button#js-add-child-trigger.action-button type="button"
       | Add Child
     
@@ -112,108 +142,62 @@ fieldset#extra_info
           p Upload T2202A from the educational institution, or any receipt if the institution does not provide a T2202A. Any other document you may want to upload.
           input name="t220a_document" type="file" /
 
+  hr 
+
   h2.fs-title Spouse
 
   .row
     table.table.table-responsive
       tr
-        th.col-xs-4 Residence
+        th.col-xs-4 Medical Expenses
         td.col-xs-8
-          label.radio-inline
-            input name="spouse_residence" type="radio" value="Tenant"
-            | Tenant
-          label.radio-inline
-            input name="spouse_residence" type="radio" value="Owner"
-            | Owner
-          #spouse-property-tax.col-md-4.col-md-offset-4.col-xs-12 style=("display: none;") 
-            input.form-control name="spouse_property_tax_paid" placeholder=("Property Tax Paid") type="text" /
-          #spouse-rent-paid.col-md-4.col-md-offset-4.col-xs-12 style=("display: none;") 
-            input.form-control name="spouse_rent_paid" placeholder=("Rent paid during year (12 month.col-xs-4s)") type="number" /
-        tr
-          th.col-xs-4 Medical Expenses Provider
-          td.col-xs-8
-            input.form-control name="spouse_medical_expenses_provider" placeholder=("Medical Expenses Provider") type="text" /
-        tr
-          th.col-xs-4 Medical Expenses Amount
-          td.col-xs-8
-            input.form-control name="spouse_medical_expenses_amount" placeholder=("Medical Expenses Amount") type="text" /
-        tr
-          th.col-xs-4 Donation Provider
-          td.col-xs-8
-            input.form-control name="spouse_donation_provider" placeholder=("Donation Provider") type="text" 
-        tr
-          th.col-xs-4 Donation Amount
-          td.col-xs-8
-            input.form-control name="spouse_donation_amount" placeholder=("Donation Amount") type="text" /
-        tr
-          th.col-xs-4 Interest on Student Loan Provider
-          td.col-xs-8
-            input.form-control name="spouse_interest_on_student_load_provider" placeholder=("Interest on Student Load Provider") type="text" /
-        tr
-          th.col-xs-4 Interest on Student Load Amount
-          td.col-xs-8
-            input.form-control name="spouse_interest_on_student_load_amount" placeholder=("Interest on Student Load Amount") type="text" /
-        tr
-          th.col-xs-4 Public Transit Provider
-          td.col-xs-8
-            input.form-control name="spouse_public_transit_provider" placeholder=("Public Transit Provider") type="text" /
-        tr
-          th.col-xs-4 Public Transit Amount
-          td.col-xs-8
-            input.form-control name="spouse_public_transit_amount" placeholder=("Public Transit Amount") type="text" /
-        tr
-          th.col-xs-4 Dog Care Expenses Provider
-          td.col-xs-8
-            input.form-control name="spouse_dog_care_expenses_provider" placeholder=("Dog Care Expenses Provider") type="text" /
-        tr
-          th.col-xs-4 Dog Care Expenses Amount
-          td.col-xs-8
-            input.form-control name="spouse_dog_care_expenses_amount" placeholder=("Dog Care Expenses Amount") type="text" /
-        tr
-          th.col-xs-4 Arts and Sports for Child Provider
-          td.col-xs-8
-            input.form-control name="spouse_arts_and_sports_for_child_provider" placeholder=("Arts and Sports for Child Provider") type="text" /
-        tr
-          th.col-xs-4 Arts and Sports for Child Amount
-          td.col-xs-8
-            input.form-control name="spouse_arts_and_sports_for_child_amount" placeholder=("Arts and Sports for Child Amount") type="text" /
+          .row
+            .col-xs-7
+              input.form-control name="spouse_medical_expenses_provider" placeholder=("Medical Expenses Provider") type="text" /
+            .col-xs-5
+              input.form-control name="spouse_medical_expenses_amount" placeholder=("Medical Expenses Amount") type="text" /
 
-  .row
-    table.table.table-responsive#js-spouse-children_information      
-      tr data-spouse-child-id="1"
-        th.col-xs-4 First Name (Child 1)
+      tr
+        th.col-xs-4 Donation
         td.col-xs-8
-          input.form-control name="spouse_child_1_first_name" placeholder=("First Name") type="text" /
-      tr data-spouse-child-id="1"
-        th.col-xs-4 Last Name (Child 1)
+          .row
+            .col-xs-7
+              input.form-control name="spouse_donation_provider" placeholder=("Donation Provider") type="text" 
+            .col-xs-5
+              input.form-control name="spouse_donation_amount" placeholder=("Donation Amount") type="text" /
+
+      tr
+        th.col-xs-4 Interest on Student Loan
         td.col-xs-8
-          input.form-control name="spouse_child_1_last_name" placeholder=("Last Name") type="text" /
-      tr data-spouse-child-id="1"
-        th.col-xs-4 Date of birth (Child 1)
+          .row
+            .col-xs-7
+              input.form-control name="spouse_interest_on_student_loan_provider" placeholder=("Interest on Student Loan Provider") type="text" /
+            .col-xs-5
+              input.form-control name="spouse_interest_on_student_loan_amount" placeholder=("Interest on Student Loan Amount") type="text" /
+      tr
+        th.col-xs-4 Public Transit
         td.col-xs-8
-          input.form-control name="spouse_child_1_date_of_birth.col-xs-4" placeholder=("Date of Birth") type="date" /
-      tr data-spouse-child-id="1"
-        th.col-xs-4 Social Insurance (Child 1)
-        td.col-xs-8
-          input.form-control name="spouse_child_1_social_insurance" placeholder=("Social Insurance Number") type="text" /
-      tr data-spouse-child-id="2"
-        th.col-xs-4 First Name (Child 2)
-        td.col-xs-8
-          input.form-control name="spouse_child_2_first_name" placeholder=("First Name") type="text" /
-      tr data-spouse-child-id="2"
-        th.col-xs-4 Last Name (Child 2)
-        td.col-xs-8
-          input.form-control name="spouse_child_2_last_name" placeholder=("Last Name") type="text" /
-      tr data-spouse-child-id="2"
-        th.col-xs-4 Date of birth (Child 2)
-        td.col-xs-8
-          input.form-control name="spouse_child_2_date_of_birth.col-xs-4" placeholder=("Date of Birth") type="date" /
-      tr data-spouse-child-id="2"
-        th.col-xs-4 Social Insurance (Child 2)
-        td.col-xs-8
-          input.form-control name="spouse_child_2_social_insurance" placeholder=("Social Insurance Number") type="text" /
-    button#js-add-spouse-child-trigger.action-button type="button"
-      | Add Child 
+          .row
+            .col-xs-7
+              input.form-control name="spouse_public_transit_provider" placeholder=("Public Transit Provider") type="text" /
+            .col-xs-5
+              input.form-control name="spouse_public_transit_amount" placeholder=("Public Transit Amount") type="text" /
+      / tr
+      /   th.col-xs-4 Day Care Expenses
+      /   td.col-xs-8
+      /     .row
+      /       .col-xs-7
+      /         input.form-control name="spouse_day_care_expenses_provider" placeholder=("Day Care Expenses Provider") type="text" /
+      /       .col-xs-5
+      /         input.form-control name="spouse_day_care_expenses_amount" placeholder=("Day Care Expenses Amount") type="text" /
+      / tr
+      /   th.col-xs-4 Arts and Sports for Child
+      /   td.col-xs-8
+      /     .row
+      /       .col-xs-7
+      /         input.form-control name="spouse_arts_and_sports_for_child_provider" placeholder=("Arts and Sports for Child Provider") type="text" /
+      /       .col-xs-5
+      /         input.form-control name="spouse_arts_and_sports_for_child_amount" placeholder=("Arts and Sports for Child Amount") type="text" /
 
   .row
     table.table.table-responsive
