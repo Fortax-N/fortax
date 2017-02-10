@@ -25,7 +25,7 @@ Form.create([
 	{name: "T5008", price: 8},
 	{name: "RC62", price: 5},
 	{name: "RC210", price: 5},
-	{name: "StudentT2202", price: 49.99*0.2},
+	{name: "StudentT2202", price: -(49.99*0.2), included_forms: 0},
 	{name: "Child care expenses", price: 10.00},
 	{name: "RRSP contribution", price: 4.00, included_forms: 2},
 	{name: "Medical expenses", price: 2.00, included_forms: 2},
