@@ -35,7 +35,8 @@ fieldset id="dataClient_forms"
             .form-group.select.required.form_form_type
               select#form-select.form-control.select.required.form-control name="form[form_type]" 
                 option data-cost=(" ") id=("Select Form") value=(" ")  Select Form
-                - Form.all.each do |form|
+                - Form.all.order(id: :asc).each do |form|
+                  - break if form.name == "Disability"
                   option data-cost="#{number_with_precision(form.price, precision: 2)}" value="#{form.name}" data-included="#{form.included_forms}"
                     = form.name
         .col-lg-3
@@ -52,15 +53,18 @@ fieldset id="dataClient_forms"
       .row
         .col-xs-12 style=("text-align: left") 
           label for="disability" 
-            input name="disability" type="checkbox" value="true"
+            - form = Form.find_by_name("Disability")
+            input.js-other-forms name="disability" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
             |  Disability
           br
           label for="first_time_home_buyer" 
-            input name="first_time_home_buyer" type="checkbox" value="true"
+            - form = Form.find_by_name("First time home buyer")
+            input.js-other-forms name="first_time_home_buyer" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
             |  First Time Home Buyer
           br
           label for="moving_expense" 
-            input name="moving_expense" type="checkbox" value="true"
+            - form = Form.find_by_name("Moving expenses")
+            input.js-other-forms name="moving_expense" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
             |  Moving Expense (must be atleast 40km from old residence)
           br
           label for="sole_proprietorship" 

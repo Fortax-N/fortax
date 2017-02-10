@@ -337,6 +337,42 @@ var initializeOnlineEstimate = function(){
     form.addToForm();
   });
 
+  $(document).on('change', '.js-other-forms', function(e){
+    // form.addToForm(); 
+    var that = $(e.target);
+    var numOfForms = 1;
+    var includedForms = that.data("included");
+    var formName = that.data("name");    
+    
+    var price;
+    if (numOfForms > includedForms) {
+      price = (numOfForms - includedForms) * that.data("price");
+    } else {
+      price = 0
+    }
+
+    if($(this).prop('checked') == true) {
+      $('#js-total-row').append(
+        '<tr data-number="' +  numOfForms + '" data-price="' + that.data("price") * numOfForms + '" data-name="' + formName + '" data-included="' + includedForms + '">' +
+          '<td>'+ formName + ' (<span class="js-total-num-of-forms">' + numOfForms + '</span>) ' + '</td>' +          
+          '<td class="js-total-price">'+ '$' + price + '</td>' +          
+        '</tr>'
+      );
+
+      if (includedForms < numOfForms) {
+        onlineEstimate.cost += (numOfForms * that.data("price"));  
+      }
+    } else {
+      $('#js-total-row').find('[data-name="' + formName + '"]').remove();
+
+      if (includedForms < numOfForms) {
+        onlineEstimate.cost -= (numOfForms * that.data("price"));  
+      }
+    } 
+
+    onlineEstimate.changeEstimate();
+  });
+
   $(document).on('click','button#delete',function(){
     form.removeForm(this);
   });
