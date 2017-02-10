@@ -28,6 +28,12 @@ var initializeOnlineEstimate = function(){
     includedForms: function(){
       return $('#form-select option:selected').data('included');
     },
+    addSpouseRow: function(){
+      $("#spouse-row").show();
+    },
+    removeSpouseRow: function(){
+      $("#spouse-row").hide();
+    },
     addSpouse: function(){
       var checkbox = $("#add_forms_for_spouse");
 
@@ -36,9 +42,11 @@ var initializeOnlineEstimate = function(){
           if (checkbox.checked) {
             onlineEstimate.spouseMultiplier = 2;
             onlineEstimate.changeEstimate();
+            form.addSpouseRow();
           } else {
             onlineEstimate.spouseMultiplier = 1;
             onlineEstimate.changeEstimate();
+            form.removeSpouseRow();
           }
       });
     },   
@@ -48,9 +56,11 @@ var initializeOnlineEstimate = function(){
         var tr = $('tr[data-name="' + form.dropDownValue() + '"]');
 
         if (tr.length) {
-          form.increaseAmount(tr);
+          form.increaseAmount();
+          form.increaseTotalAmount();
         } else {
           onlineEstimate.appendToTable();
+          onlineEstimate.appendToTotalTable();
           onlineEstimate.addFormInput();
           onlineEstimate.toggleHelperText();
           onlineEstimate.calculateCost();
@@ -99,8 +109,32 @@ var initializeOnlineEstimate = function(){
         onlineEstimate.changeEstimate();  
       }
     },
-    increaseAmount: function(target){
-      var tr = $(target).closest('tr');
+    increaseTotalAmount: function(){
+      var target = $('#js-total-row tr[data-name="' + form.dropDownValue() + '"]');
+      var tr = $(target)    
+      
+      var price = tr.data('price');
+      var numOfForms = tr.data('number');
+      var formName = tr.data('name');
+      var includedForms = tr.data('included');
+
+      // replace text
+      var totalFormsSpan = tr.find(".js-total-num-of-forms");
+      $(totalFormsSpan).html(numOfForms);
+
+      // if number of forms exceed number of included forms
+      var $priceRow = $(tr.find(".js-total-price"))
+
+      if (numOfForms > includedForms) {
+        var totalPrice = price * (numOfForms - includedForms);
+        $priceRow.html("$" + totalPrice);
+      } else {
+        $priceRow.html("$" + 0);
+      }
+    },
+    increaseAmount: function(){
+      var target = $('tr[data-name="' + form.dropDownValue() + '"]');
+      var tr = $(target);
 
       // increase number of forms
       var number = tr.data('number') + 1;
@@ -125,8 +159,35 @@ var initializeOnlineEstimate = function(){
         onlineEstimate.changeEstimate();
       }
     },
+    decreaseTotalAmount: function(){
+      var target = $('#js-total-row tr[data-name="' + form.dropDownValue() + '"]');
+      var tr = $(target);
+      var numOfForms = tr.data('number');
+
+      if (numOfForms == 0) {
+        target.remove();
+      } else {
+        var price = tr.data('price');
+        var formName = tr.data('name');
+        var includedForms = tr.data('included');
+
+        // replace text
+        var totalFormsSpan = tr.find(".js-total-num-of-forms");
+        $(totalFormsSpan).html(numOfForms);
+        // if number of forms exceed number of included forms
+        var $priceRow = $(tr.find(".js-total-price"))
+
+        if (numOfForms > includedForms) {
+          var totalPrice = price * (numOfForms - includedForms);
+          $priceRow.html("$" + totalPrice);
+        } else {
+          $priceRow.html("$" + 0);
+        }
+      }
+    },
     decreaseAmount: function(target){
-      var tr = $(target).closest('tr');
+      var target = $('tr[data-name="' + form.dropDownValue() + '"]');
+      var tr = $(target);
 
       // increase number of forms
       var number = tr.data('number') - 1;
@@ -166,7 +227,7 @@ var initializeOnlineEstimate = function(){
   }
 
   onlineEstimate = {
-    cost: 49,
+    cost: 49.99,
     eFileFee: 3.99,
     totalCost: this.cost + this.eFileFee,
     totalFamilyCost: (this.cost + this.eFileFee) * this.spouseMultiplier,
@@ -201,19 +262,34 @@ var initializeOnlineEstimate = function(){
         '</tr>'
       );
     },
+    appendToTotalTable: function(){
+      var price;
+      if (form.numOfForms() > form.includedForms()) {
+        price = (form.numOfForms() - form.includedForms()) * form.price();
+      } else {
+        price = 0
+      }
+
+      $('#js-total-row').append(
+        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() * form.numOfForms() + '" data-name="' + form.dropDownText() + '" data-included="' + form.includedForms() + '">' +
+          '<td>'+ form.dropDownValue() + ' (<span class="js-total-num-of-forms">' + form.numOfForms() + '</span>) ' + '</td>' +          
+          '<td class="js-total-price">'+ '$' + price + '</td>' +          
+        '</tr>'
+      );
+    },
     changeEstimate: function(){
       $('#errorMessage').css('display','none');
-      $('#costDisplay').text( this.cost );
-      this.totalCost = Math.round(this.calculateTotalCost()) / 100;
-      this.totalFamilyCost = Math.round(this.calculateFamilyTotalCost()) / 100;
-      $('#totalCost').text( this.totalCost );
+      $('#costDisplay').text( (this.cost).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0] );
+      this.totalCost = (this.calculateTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+      this.totalFamilyCost = (this.calculateFamilyTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+      $('.totalCost').text( this.totalCost );
       $('#totalFamilyCost').text( this.totalFamilyCost );
     },
     calculateTotalCost: function(){
       return (this.cost + this.eFileFee) * 100 * this.hst;
     },
     calculateFamilyTotalCost: function(){
-      return (this.cost + this.eFileFee) * 100 * this.hst * this.spouseMultiplier;
+      return ((this.cost + this.eFileFee) * 100 * this.hst * this.spouseMultiplier).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
     },
     calculateCost: function() {
       if (form.includedForms() < form.numOfForms()) {
@@ -266,11 +342,13 @@ var initializeOnlineEstimate = function(){
   });
 
   $(document).on('click','button#add',function(){
-    form.increaseAmount(this);
+    form.increaseAmount();
+    form.increaseTotalAmount();
   });
 
   $(document).on('click','button#minus',function(){
-    form.decreaseAmount(this);
+    form.decreaseAmount();
+    form.decreaseTotalAmount();
   });
 
 }

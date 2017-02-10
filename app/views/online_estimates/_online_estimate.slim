@@ -14,17 +14,17 @@ fieldset id="dataClient_forms"
               th Form Number
               th Cost(Per each)
               th
-          tr data-name=("Basic tax return") data-number="1" data-price="49" 
+          tr data-name=("Basic tax return") data-number="1" data-price="49.99" 
             td Basic tax return
             td 1
-            td $49
+            td $49.99
             td.col-xs-3
-              button#add.btn.btn-success.btn-xs type="button" 
-                i.fa.fa-plus aria-hidden="true" 
-              button#minus.btn.btn-danger.btn-xs type="button" 
-                i.fa.fa-minus aria-hidden="true" 
-              button#delete.btn.btn-primary.btn-xs type="button" 
-                i.fa.fa-trash-o aria-hidden="true" 
+              / button#add.btn.btn-success.btn-xs type="button" 
+              /   i.fa.fa-plus aria-hidden="true" 
+              / button#minus.btn.btn-danger.btn-xs type="button" 
+              /   i.fa.fa-minus aria-hidden="true" 
+              / button#delete.btn.btn-primary.btn-xs type="button" 
+              /   i.fa.fa-trash-o aria-hidden="true" 
  
           tbody#table-data
       span style="font-size:20px;font-weight:bold;"  Add Form:
@@ -36,7 +36,7 @@ fieldset id="dataClient_forms"
               select#form-select.form-control.select.required.form-control name="form[form_type]" 
                 option data-cost=(" ") id=("Select Form") value=(" ")  Select Form
                 - Form.all.each do |form|
-                  option data-cost="#{form.price}" value="#{form.name}" data-included="#{form.included_forms}"
+                  option data-cost="#{number_with_precision(form.price, precision: 2)}" value="#{form.name}" data-included="#{form.included_forms}"
                     = form.name
         .col-lg-3
           label for="numberOfForm"  No of Form
@@ -79,27 +79,38 @@ fieldset id="dataClient_forms"
       h2 Estimate
       p  
       hr/
-      .row
-        .col-md-8.bill-title-col
-          p Total
-          p eFile Fee
-          p HST (13%)
-        .col-md-4.bill-cost-col style="align:left;" 
-          p#costDisplay = Form.basic_tax_return_price
-          p 3.99
-      .row.total-row
-        .col-md-8 style="text-transform:uppercase;" 
-          p Total:
-        .col-md-4
-          span#totalCost = ((Form.basic_tax_return_price + 3.99) * 1.13).round(2)
-      .row.total-row
-        .col-md-8 style="text-transform:uppercase;" 
-          p Total Family:
-        .col-md-4
-          span#totalFamilyCost = ((Form.basic_tax_return_price + 3.99) * 1.13).round(2)
-      .row.total-row
-        .col-md-12
-          p
-            small The price may change if you forget to include information.
+      table.table
+        tbody#js-total-row
+          tr
+            td.col-xs-6
+              | Total
+            td.col-xs-6
+              p#costDisplay = Form.basic_tax_return_price
+        tr
+          td.col-xs-6
+            | eFileFee
+          td.col-xs-6
+            | 3.99
+        tr
+          td.col-xs-6
+            | HST (13%)
+          td.col-xs-6
+        tr
+          td.col-xs-6
+            | Total:
+          td.col-xs-6
+            span.totalCost = ((Form.basic_tax_return_price + 3.99) * 1.13).round(2)
+        tr#spouse-row style="display: none"
+          td.col-xs-6
+            | Spouse Total:
+          td.col-xs-6
+            span.totalCost = ((Form.basic_tax_return_price + 3.99) * 1.13).round(2)
+        tr
+          td
+            | Total Family:
+          td
+            span#totalFamilyCost = ((Form.basic_tax_return_price + 3.99) * 1.13).round(2)
+      p
+        small The price may change if you forget to include information.
 
   input.next.action-button.center-block name="next" type="button" value="Next" /
