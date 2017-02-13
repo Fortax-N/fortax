@@ -1,0 +1,2 @@
+class LandingPageVariable < ApplicationRecord
+end

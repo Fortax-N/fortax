@@ -174,8 +174,8 @@
               </div>
               <div class="content">
                 <div class="price">
-                  <span class="amount">$49.99</span> <span class="period">per
-                  file</span>
+                  <% income_tax_return = LandingPageVariable.find_by_name("Income Tax Return") %>
+                  <span class="amount"><%= income_tax_return.amount %></span> <span class="period"><%= income_tax_return.unit %></span>
                 </div>
               </div>
             </div>
@@ -190,8 +190,8 @@
               </div>
               <div class="content">
                 <div class="price">
-                  <span class="amount">$29.99</span> <span class="period">per
-                  file</span>
+                  <% student_tax_return = LandingPageVariable.find_by_name("Student Tax Return") %>
+                  <span class="amount"><%= student_tax_return.amount %></span> <span class="period"><%= student_tax_return.unit %></span>
                 </div>
               </div>
             </div>

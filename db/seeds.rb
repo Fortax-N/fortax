@@ -34,3 +34,10 @@ Form.create([
 	{name: "First time home buyer", price: 20.00, included_forms: 0},
 	{name: "Moving expenses", price: 25.00, included_forms: 0},
 ]) if Form.count == 0
+
+LandingPageVariable.destroy_all
+
+LandingPageVariable.create([
+	{name: "Income Tax Return", amount: "$49.99", unit: "per file"},
+	{name: "Student Tax Return", amount: "$29.99", unit: "per file"},
+])
