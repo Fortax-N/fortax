@@ -56,8 +56,8 @@ var initializeOnlineEstimate = function(){
         var tr = $('tr[data-name="' + form.dropDownValue() + '"]');
 
         if (tr.length) {
-          form.increaseAmount();
-          form.increaseTotalAmount();
+          form.increaseAmount(form.numOfForms());
+          form.increaseTotalAmount(form.numOfForms());
         } else {
           onlineEstimate.appendToTable();
           onlineEstimate.appendToTotalTable();
@@ -94,18 +94,20 @@ var initializeOnlineEstimate = function(){
       }
     },
     removeForm: function(target){
+      var name = $(target).closest('tr').data('name');
       var minusPrice = $(target).closest('tr').data('price');
       var numOfForms = $(target).closest('tr').data('number');
       var includedForms = $(target).closest('tr').data('included');
 
-      $(target).closest('tr').remove();
+      $('tr[data-name="' + name + '"]').remove();
+      // $(target).closest('tr').remove();
 
       if(minusPrice === form.studentFormPrice()) {
         form.reenableStudentForm();
       }
 
       if (includedForms < numOfForms) {
-        onlineEstimate.cost -= minusPrice * numOfForms;
+        onlineEstimate.cost -= minusPrice * (numOfForms - includedForms);
         onlineEstimate.changeEstimate();  
       }
     },
@@ -126,18 +128,21 @@ var initializeOnlineEstimate = function(){
       var $priceRow = $(tr.find(".js-total-price"))
 
       if (numOfForms > includedForms) {
-        var totalPrice = price * (numOfForms - includedForms);
+        var totalPrice = parseFloat(price) * (numOfForms - includedForms); 
+        $priceRow.html("$" + totalPrice);
+      } else if (includedForms == 1) {
+        var totalPrice = parseFloat(price) * (numOfForms - includedForms);
         $priceRow.html("$" + totalPrice);
       } else {
         $priceRow.html("$" + 0);
       }
     },
-    increaseAmount: function(){
+    increaseAmount: function(num){
       var target = $('tr[data-name="' + form.dropDownValue() + '"]');
       var tr = $(target);
 
       // increase number of forms
-      var number = tr.data('number') + 1;
+      var number = tr.data('number') + parseFloat(num);
       tr.data('number', number);      
       
       var price = tr.data('price');
@@ -155,7 +160,7 @@ var initializeOnlineEstimate = function(){
 
       // if number of forms exceed number of included forms
       if (numOfForms > includedForms) {
-        onlineEstimate.cost += tr.data('price');
+        onlineEstimate.cost += parseFloat(price * num);
         onlineEstimate.changeEstimate();
       }
     },
@@ -166,7 +171,9 @@ var initializeOnlineEstimate = function(){
 
       if (numOfForms == 0) {
         target.remove();
-      } else {
+      } 
+      else 
+      {
         var price = tr.data('price');
         var formName = tr.data('name');
         var includedForms = tr.data('included');
@@ -211,12 +218,13 @@ var initializeOnlineEstimate = function(){
 
         // update form value
         var input = $("#" + formName.replace(/ /g,"_"));
-        input.attr('value', numOfForms + " " + formName + " forms");
+        input.attr('value', numOfForms + " " + formName + " forms");        
 
-        console.log(numOfForms);
-        console.log(includedForms);        
-        onlineEstimate.cost -= tr.data('price');
-        onlineEstimate.changeEstimate(); 
+        // we are adding 1 to numOfForms because we subtracted 1 from data-number above
+        if ((numOfForms + 1) > includedForms) {
+          onlineEstimate.cost -= tr.data('price');
+          onlineEstimate.changeEstimate(); 
+        }
       }
       
     },
@@ -244,7 +252,7 @@ var initializeOnlineEstimate = function(){
     },
     appendToTable: function() {
       $('#table-data').append(
-        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() * form.numOfForms() + '" data-name="' + form.dropDownText() + '" data-included="' + form.includedForms() + '">' +
+        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() + '" data-name="' + form.dropDownText() + '" data-included="' + form.includedForms() + '">' +
           '<td>'+ form.dropDownValue() + '</td>' +
           '<td>'+ form.numOfForms() + '</td>' +
           '<td>'+ '$' + form.price() + '</td>' +
@@ -266,12 +274,14 @@ var initializeOnlineEstimate = function(){
       var price;
       if (form.numOfForms() > form.includedForms()) {
         price = (form.numOfForms() - form.includedForms()) * form.price();
+      } else if (form.includedForms() == 1 || form.includedForms() == 0) {
+        price = form.price();
       } else {
         price = 0
       }
 
       $('#js-total-row').append(
-        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() * form.numOfForms() + '" data-name="' + form.dropDownText() + '" data-included="' + form.includedForms() + '">' +
+        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() + '" data-name="' + form.dropDownText() + '" data-included="' + form.includedForms() + '">' +
           '<td>'+ form.dropDownValue() + ' (<span class="js-total-num-of-forms">' + form.numOfForms() + '</span>) ' + '</td>' +          
           '<td class="js-total-price">'+ '$' + price + '</td>' +          
         '</tr>'
@@ -293,7 +303,9 @@ var initializeOnlineEstimate = function(){
     },
     calculateCost: function() {
       if (form.includedForms() < form.numOfForms()) {
-        this.cost += (form.numOfForms() * form.price());  
+        this.cost += ((form.numOfForms() - form.includedForms()) * form.price());  
+      } else if (form.includedForms() == 0 || form.includedForms() == 1) {
+        this.cost += parseFloat(form.price());
       }
     },
     displayError: function(){
@@ -378,8 +390,8 @@ var initializeOnlineEstimate = function(){
   });
 
   $(document).on('click','button#add',function(){
-    form.increaseAmount();
-    form.increaseTotalAmount();
+    form.increaseAmount(1);
+    form.increaseTotalAmount(1);
   });
 
   $(document).on('click','button#minus',function(){
