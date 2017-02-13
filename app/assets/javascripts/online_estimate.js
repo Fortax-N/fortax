@@ -109,6 +109,9 @@ var initializeOnlineEstimate = function(){
       if (includedForms < numOfForms) {
         onlineEstimate.cost -= minusPrice * (numOfForms - includedForms);
         onlineEstimate.changeEstimate();  
+      } else if (includedForms == 0) {
+        onlineEstimate.cost -= minusPrice;
+        onlineEstimate.changeEstimate();  
       }
     },
     increaseTotalAmount: function(){
@@ -130,7 +133,7 @@ var initializeOnlineEstimate = function(){
       if (numOfForms > includedForms) {
         var totalPrice = parseFloat(price) * (numOfForms - includedForms); 
         $priceRow.html("$" + totalPrice);
-      } else if (includedForms == 1) {
+      } else if (includedForms == 0) {
         var totalPrice = parseFloat(price) * (numOfForms - includedForms);
         $priceRow.html("$" + totalPrice);
       } else {
@@ -161,6 +164,9 @@ var initializeOnlineEstimate = function(){
       // if number of forms exceed number of included forms
       if (numOfForms > includedForms) {
         onlineEstimate.cost += parseFloat(price * num);
+        onlineEstimate.changeEstimate();
+      } else if (includedForms == 0) {
+        onlineEstimate.cost += parseFloat(price);
         onlineEstimate.changeEstimate();
       }
     },
@@ -274,7 +280,7 @@ var initializeOnlineEstimate = function(){
       var price;
       if (form.numOfForms() > form.includedForms()) {
         price = (form.numOfForms() - form.includedForms()) * form.price();
-      } else if (form.includedForms() == 1 || form.includedForms() == 0) {
+      } else if (form.includedForms() == 0) {
         price = form.price();
       } else {
         price = 0
@@ -304,7 +310,7 @@ var initializeOnlineEstimate = function(){
     calculateCost: function() {
       if (form.includedForms() < form.numOfForms()) {
         this.cost += ((form.numOfForms() - form.includedForms()) * form.price());  
-      } else if (form.includedForms() == 0 || form.includedForms() == 1) {
+      } else if (form.includedForms() == 0) {
         this.cost += parseFloat(form.price());
       }
     },
