@@ -423,7 +423,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h3>Contact US</h3>
+            <h3>Contact US</h3>            
           </div>
         </div>
       </div>
@@ -446,9 +446,15 @@
           off.</p>
         </div>
         <div class="col-md-3 col-sm-3 wow bounceInLeft">
-          <div><p class="mail"><i class="fa fa-clock-o"></i>
-          Office Hours:</p></div>
-          <div class="office_text"> <%= simple_format(@company.office_hours) %></div>
+          <div>
+            <p class="mail"><i class="fa fa-clock-o"></i>
+          Office Hours:</p>
+          </div>
+          <div class="office_text">
+            <%= simple_format(@company.office_hours) %>
+          </div>
+        </div>
+        <img alt="Quick book certified" class="img-responsive intro-img" src="images/col_new_clients.png">
       </div>
       <div class="row">
         <div class="col-md-12">

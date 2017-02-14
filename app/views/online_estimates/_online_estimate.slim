@@ -103,17 +103,17 @@ fieldset id="dataClient_forms"
           td.col-xs-6
             | Total:
           td.col-xs-6
-            span.totalCost = ((Form.basic_tax_return_price + 3.99) * 1.13).round(2)
+            span.totalCost = number_with_precision((Form.basic_tax_return_price + 3.99) * 1.13, precision: 2)
         tr#spouse-row style="display: none"
           td.col-xs-6
             | Spouse Total:
           td.col-xs-6
-            span.totalCost = ((Form.basic_tax_return_price + 3.99) * 1.13).round(2)
+            span.totalCost = number_with_precision((Form.basic_tax_return_price + 3.99) * 1.13, precision: 2)
         tr
           td
             | Total Family:
           td
-            span#totalFamilyCost = ((Form.basic_tax_return_price + 3.99) * 1.13).round(2)
+            span#totalFamilyCost = number_with_precision((Form.basic_tax_return_price + 3.99) * 1.13, precision: 2)
       p
         small The price may change if you forget to include information.
 
