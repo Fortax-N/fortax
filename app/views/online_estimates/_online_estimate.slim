@@ -12,20 +12,20 @@ fieldset id="dataClient_forms"
             tr
               th Form Type
               th Form Number
-              th Cost(Per each)
+              th Cost
               th
-          tr data-name=("Basic tax return") data-number="1" data-price="49.99" 
+          tr data-name=("Basic tax return") data-number="1" data-price="49.99"
             td Basic tax return
             td 1
             td $49.99
             td.col-xs-3
-              / button#add.btn.btn-success.btn-xs type="button" 
-              /   i.fa.fa-plus aria-hidden="true" 
-              / button#minus.btn.btn-danger.btn-xs type="button" 
-              /   i.fa.fa-minus aria-hidden="true" 
-              / button#delete.btn.btn-primary.btn-xs type="button" 
-              /   i.fa.fa-trash-o aria-hidden="true" 
- 
+              / button#add.btn.btn-success.btn-xs type="button"
+              /   i.fa.fa-plus aria-hidden="true"
+              / button#minus.btn.btn-danger.btn-xs type="button"
+              /   i.fa.fa-minus aria-hidden="true"
+              / button#delete.btn.btn-primary.btn-xs type="button"
+              /   i.fa.fa-trash-o aria-hidden="true"
+
           tbody#table-data
       span style="font-size:20px;font-weight:bold;"  Add Form:
       .row
@@ -33,49 +33,49 @@ fieldset id="dataClient_forms"
           label for="form-select"  Select Form
           .form-group.personalInformation
             .form-group.select.required.form_form_type
-              select#form-select.form-control.select.required.form-control name="form[form_type]" 
+              select#form-select.form-control.select.required.form-control name="form[form_type]"
                 option data-cost=(" ") id=("Select Form") value=(" ")  Select Form
                 - Form.all.order(id: :asc).each do |form|
                   - break if form.name == "Disability"
                   option data-cost="#{number_with_precision(form.price, precision: 2)}" value="#{form.name}" data-included="#{form.included_forms}"
                     = form.name
         .col-lg-3
-          label for="numberOfForm"  No of Form
+          label for="numberOfForm"  Quantity
           .form-group.personalInformation
             input#numberOfForm.form-control min="1" type="number" value="1" /
         .col-lg-3.text-center
           .form-group
-            button#form-add.addFormButton type="button" 
-              i.fa.fa-plus aria-hidden="true" 
+            button#form-add.addFormButton type="button"
+              i.fa.fa-plus aria-hidden="true"
       #errorMessage.alert.alert-danger
         strong Error!
         | Select at least one form.
       .row
-        .col-xs-12 style=("text-align: left") 
-          label for="disability" 
+        .col-xs-12 style=("text-align: left")
+          label for="disability"
             - form = Form.find_by_name("Disability")
             input.js-other-forms name="disability" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
             |  Disability
           br
-          label for="first_time_home_buyer" 
+          label for="first_time_home_buyer"
             - form = Form.find_by_name("First time home buyer")
             input.js-other-forms name="first_time_home_buyer" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
             |  First Time Home Buyer
           br
-          label for="moving_expense" 
+          label for="moving_expense"
             - form = Form.find_by_name("Moving expenses")
             input.js-other-forms name="moving_expense" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
             |  Moving Expense (must be atleast 40km from old residence)
           br
-          label for="sole_proprietorship" 
+          label for="sole_proprietorship"
             input name="sole_proprietorship" onchange="triggerConfirm(this)" type="checkbox" value="true"
             |  Sole Proprietorship
           br/
-          label for="rental_properties" 
+          label for="rental_properties"
             input name="rental_properties" onchange="triggerConfirm(this)" type="checkbox" value="true"
             |  Rental Properties
           br/
-          label for="add_forms_for_spouse" 
+          label for="add_forms_for_spouse"
             input#add_forms_for_spouse name="add_forms_for_spouse" type="checkbox" value="true"
             |  Add Spouse
           br/
@@ -87,12 +87,12 @@ fieldset id="dataClient_forms"
         tbody#js-total-row
           tr
             td.col-xs-6
-              | Total
+              | Basic Return
             td.col-xs-6
               p#costDisplay = Form.basic_tax_return_price
         tr
           td.col-xs-6
-            | eFileFee
+            | eFile Fee
           td.col-xs-6
             | 3.99
         tr

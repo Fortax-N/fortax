@@ -1,6 +1,6 @@
 fieldset#extra_info
   h2.fs-title Extra Information
-  
+
   .row
     table.table.table-responsive
       tr
@@ -14,9 +14,9 @@ fieldset#extra_info
             | Owner
           br
           br
-          #property-tax style=("display: none;") 
+          #property-tax style=("display: none;")
             input.form-control name="property_tax_paid" placeholder=("Property Tax Paid") type="text" /
-          #rent-paid style=("display: none;") 
+          #rent-paid style=("display: none;")
             input.form-control name="rent_paid" placeholder=("Rent paid during year (12 months)") type="number" /
       tr
         th.col-xs-4 Medical Expenses
@@ -41,7 +41,7 @@ fieldset#extra_info
             .col-xs-7
               input.form-control name="interest_on_student_load_provider" placeholder=("Interest on Student Load Provider") type="text" /
             .col-xs-5
-              input.form-control name="interest_on_student_load_amount" placeholder=("Interest on Student Load Amount") type="text" /     
+              input.form-control name="interest_on_student_load_amount" placeholder=("Interest on Student Load Amount") type="text" /
       tr
         th.col-xs-4 Public Transit
         td.col-xs-8
@@ -49,10 +49,10 @@ fieldset#extra_info
             .col-xs-7
               input.form-control name="public_transit_provider" placeholder=("Public Transit Provider") type="text" /
             .col-xs-5
-              input.form-control name="public_transit_amount" placeholder=("Public Transit Amount") type="text" /      
+              input.form-control name="public_transit_amount" placeholder=("Public Transit Amount") type="text" /
 
   .row
-    table.table.table-responsive#js-children_information      
+    table.table.table-responsive#js-children_information
       tr data-child-id="1"
         th.col-xs-4 Name (Child 1)
         td.col-xs-8
@@ -133,16 +133,16 @@ fieldset#extra_info
               input.form-control name="child_2_arts_and_sports_for_child_amount" placeholder=("Arts and Sports for Child Amount") type="text" /
     button#js-add-child-trigger.action-button type="button"
       | Add Child
-    
+
   .row
     table.table.table-responsive
       tr
         th.col-xs-4 T2202A
         td.col-xs-8
-          p Upload T2202A from the educational institution, or any receipt if the institution does not provide a T2202A. Any other document you may want to upload.
+          p Upload your T2202A from the educational institution, or any receipt if the institution does not provide a T2202A, or any other document you may want to upload.
           input name="t220a_document" type="file" /
 
-  hr 
+  hr
 
   h2.fs-title Spouse
 
@@ -162,7 +162,7 @@ fieldset#extra_info
         td.col-xs-8
           .row
             .col-xs-7
-              input.form-control name="spouse_donation_provider" placeholder=("Donation Provider") type="text" 
+              input.form-control name="spouse_donation_provider" placeholder=("Donation Provider") type="text"
             .col-xs-5
               input.form-control name="spouse_donation_amount" placeholder=("Donation Amount") type="text" /
 
@@ -206,7 +206,7 @@ fieldset#extra_info
         td.col-xs-8
           p Upload T2202A from the educational institution, or any receipt if the institution does not provide a T2202A. Any other document you may want to upload.
           input name="spouse_t220a_document" type="file" /
-  
+
 
   .row
     table.table.table-responsive
@@ -215,7 +215,6 @@ fieldset#extra_info
         td.col-xs-8
           .form-group
             textarea.form-control name="comment" placeholder=("Please enter any other information you would like us to know.") rows="5"
-        
+
   input.prev.action-button name="prev" type="button" value="Previous" /
   input.next.action-button name="next" type="button" value="Next" /
-   
