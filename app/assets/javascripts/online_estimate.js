@@ -35,21 +35,23 @@ var initializeOnlineEstimate = function(){
       $(".spouse-row").hide();
     },
     addSpouse: function(){
-      var checkbox = $("#add_forms_for_spouse");
+      var checkbox = $(".add_forms_for_spouse");
 
       checkbox.change(function(event) {
           var checkbox = event.target;
-          if (checkbox.checked) {
+          if ($(checkbox).val() === "true") {
             onlineEstimate.spouseMultiplier = 2;
             onlineEstimate.totalSpouseCost += 49.99;
             onlineEstimate.changeEstimate();
             form.addSpouseRow();
-            checkbox.disabled = true;
+            $(".add_forms_for_spouse").prop("disabled", true);
           } else {
+            $(".add_forms_for_spouse").prop("disabled", true);
             onlineEstimate.spouseMultiplier = 1;
             onlineEstimate.totalSpouseCost = 0;
             onlineEstimate.changeEstimate();
             form.removeSpouseRow();
+
           }
       });
     },   
