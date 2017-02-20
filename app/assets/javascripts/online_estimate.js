@@ -266,7 +266,7 @@ var initializeOnlineEstimate = function(){
     eFileFee: 3.99,
     totalCost: this.cost + this.eFileFee,
     totalSpouseCost: 0.00,
-    totalFamilyCost: this.cost + this.eFileFee + this.totalSpouseCost,
+    totalFamilyCost: this.cost + (this.eFileFee * this.spouseMultiplier) + this.totalSpouseCost,
     hst: 1.13,
     spouseMultiplier: 1,
     toggleHelperText: function(){
@@ -342,7 +342,7 @@ var initializeOnlineEstimate = function(){
       return (this.cost + this.eFileFee) * 100 * this.hst;
     },
     calculateFamilyTotalCost: function(){            
-      return (this.cost + this.eFileFee + this.totalSpouseCost) * 100 * this.hst;
+      return (this.cost + (this.eFileFee * this.spouseMultiplier) + this.totalSpouseCost) * 100 * this.hst;
     },
     calculateCost: function() {
       if (form.includedForms() < form.numOfForms()) {

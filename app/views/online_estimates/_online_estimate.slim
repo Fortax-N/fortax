@@ -127,6 +127,11 @@ fieldset id="dataClient_forms"
           td.col-xs-6
             | $
             span = @basic_tax_return_price
+        tr.spouse-row style="display: none;"
+          td.col-xs-6
+            | eFile Fee
+          td.col-xs-6
+            | $3.99 
 
         tr.spouse-row style="display: none;"
           td.col-xs-6
@@ -140,7 +145,7 @@ fieldset id="dataClient_forms"
             | Spouse Total:
           td.col-xs-6
             | $
-            span.spouseTotalCost = number_with_precision((@basic_tax_return_price) * 1.13, precision: 2)
+            span.spouseTotalCost = number_with_precision((@basic_tax_return_price + 3.99) * 1.13, precision: 2)
 
         tr
           td
