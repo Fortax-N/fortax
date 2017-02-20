@@ -3,7 +3,9 @@ fieldset id="dataClient_forms"
     .col-lg-3
       h1 Get your estimate online here.
     .col-lg-5
-      h2 Find your cost for tax filing.
+      h2 Find your tax filing cost for this tax year 
+      p 
+        | (Contact us for previous years)
       p Put in the number of forms you have to get an estimate.
       hr/
       #addedData.table-responsive
@@ -12,7 +14,7 @@ fieldset id="dataClient_forms"
             tr
               th Form Type
               th Form Number
-              th Cost(Per each)
+              th Cost <br>(per each)
               th
           tr data-name=("Basic tax return") data-number="1" data-price="49.99" 
             td Basic tax return
@@ -35,7 +37,7 @@ fieldset id="dataClient_forms"
             .form-group.select.required.form_form_type
               select#form-select.form-control.select.required.form-control name="form[form_type]" 
                 option data-cost=(" ") id=("Select Form") value=(" ")  Select Form
-                - Form.all.order(id: :asc).each do |form|
+                - Form.where.not(name: "Basic tax return").all.order(id: :asc).each do |form|
                   - break if form.name == "Disability"
                   option data-cost="#{number_with_precision(form.price, precision: 2)}" value="#{form.name}" data-included="#{form.included_forms}"
                     = form.name
@@ -87,14 +89,16 @@ fieldset id="dataClient_forms"
         tbody#js-total-row
           tr
             td.col-xs-6
-              | Total
+              |  Basic Tax Return
             td.col-xs-6
-              p#costDisplay = Form.basic_tax_return_price
+              p
+                | $
+                span#costDisplay = Form.basic_tax_return_price
         tr
           td.col-xs-6
             | eFileFee
           td.col-xs-6
-            | 3.99
+            | $3.99
         tr
           td.col-xs-6
             | HST (13%)
@@ -103,16 +107,19 @@ fieldset id="dataClient_forms"
           td.col-xs-6
             | Total:
           td.col-xs-6
+            | $
             span.totalCost = number_with_precision((Form.basic_tax_return_price + 3.99) * 1.13, precision: 2)
         tr#spouse-row style="display: none"
           td.col-xs-6
             | Spouse Total:
           td.col-xs-6
+            | $
             span.totalCost = number_with_precision((Form.basic_tax_return_price + 3.99) * 1.13, precision: 2)
         tr
           td
             | Total Family:
           td
+            | $
             span#totalFamilyCost = number_with_precision((Form.basic_tax_return_price + 3.99) * 1.13, precision: 2)
       p
         small The price may change if you forget to include information.

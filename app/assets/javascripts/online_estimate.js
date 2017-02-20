@@ -1,6 +1,6 @@
 var app = {
-  numOfChildren: 2,
-  numOfSpouseChildren: 2
+  numOfChildren: 1,
+  numOfSpouseChildren: 1
 }
 
 
@@ -102,7 +102,11 @@ var initializeOnlineEstimate = function(){
       $('tr[data-name="' + name + '"]').remove();
       // $(target).closest('tr').remove();
 
-      if(minusPrice === form.studentFormPrice()) {
+      // if(minusPrice === form.studentFormPrice()) {
+      //   form.reenableStudentForm();
+      // }
+
+      if(form.isStudentForm()) {
         form.reenableStudentForm();
       }
 
@@ -257,22 +261,35 @@ var initializeOnlineEstimate = function(){
       }
     },
     appendToTable: function() {
+      var actionButtons;
+      if (form.dropDownText() !== "StudentT2202") {
+        actionButtons = `<td class="col-xs-3">
+              <button type="button" class="btn btn-success btn-xs" id="add">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-danger btn-xs" id="minus">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-xs" id="delete">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+             </td>`
+      } else {
+        actionButtons = `<td class="col-xs-3">
+              <button type="button" class="btn btn-danger btn-xs" id="minus">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-xs" id="delete">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+             </td>`
+      }
       $('#table-data').append(
         '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() + '" data-name="' + form.dropDownText() + '" data-included="' + form.includedForms() + '">' +
           '<td>'+ form.dropDownValue() + '</td>' +
           '<td>'+ form.numOfForms() + '</td>' +
           '<td>'+ '$' + form.price() + '</td>' +
-          `<td class="col-xs-3">
-            <button type="button" class="btn btn-success btn-xs" id="add">
-              <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
-            <button type="button" class="btn btn-danger btn-xs" id="minus">
-              <i class="fa fa-minus" aria-hidden="true"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-xs" id="delete">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </button>
-           </td>` +
+          actionButtons +
         '</tr>'
       );
     },
@@ -417,9 +434,11 @@ $(document).on("ready", function(){
     }
   });
   $('input[type=radio][name="register_for_direct_deposit"]').on("change", function(){
-     if($(this).val() === "true"){
-      $('#options-for-bank-info').hide('slow');
-    } 
+    if($(this).val() === "true"){
+      $('.js-bank-info').show('slow');
+    } else {
+      $('.js-bank-info').hide('slow');
+    }
   });
   
   $('input[type=radio][name="register_for_direct_deposit"]').on("change", function(){

@@ -32,6 +32,21 @@ fieldset id="client_data"
         label.radio-inline
           input#change-in-status name="register_for_direct_deposit" type="radio" value="false"
           | No
+    tr.js-bank-info
+      th Branch
+      td
+        p
+          | If you are not and want to receive your government payment by direct deposit, please enter your banking information
+        input.form-control maxlength="5" name="branch" placeholder="Branch" type="text" /
+    tr.js-bank-info
+      th Financial Institution
+      td
+        input.form-control maxlength="3" name="financial_institution" placeholder=("Financial Institution") type="text"
+    tr.js-bank-info
+      th Account Number
+      td
+        input.form-control name="account_number" placeholder="Account Number" type="text" /
+
     tr
       th.col-xs-4
         | First Name
