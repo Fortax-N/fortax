@@ -342,7 +342,7 @@ var initializeOnlineEstimate = function(){
       return (this.cost + this.eFileFee) * 100 * this.hst;
     },
     calculateFamilyTotalCost: function(){            
-      return (this.cost + (this.eFileFee * this.spouseMultiplier) + this.totalSpouseCost) * 100 * this.hst;
+      return (this.cost + this.eFileFee + this.totalSpouseCost) * 100 * this.hst;
     },
     calculateCost: function() {
       if (form.includedForms() < form.numOfForms()) {
@@ -389,6 +389,7 @@ var initializeOnlineEstimate = function(){
   });
 
   $(document).on('click','button#form-add',function(){
+    $("#add_forms_for_spouse").prop("disabled", true);
     form.addToForm();
   });
 

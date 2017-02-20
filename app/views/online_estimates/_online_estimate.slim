@@ -8,6 +8,15 @@ fieldset id="dataClient_forms"
         | (Contact us for previous years)
       p Put in the number of forms you have to get an estimate.
       hr/
+      h4 style="text-align: left"
+        | Step 1 <small>Check to add spouse</small>
+      label for="add_forms_for_spouse"
+        input#add_forms_for_spouse name="add_forms_for_spouse" type="checkbox" value="true"
+        |  Add Spouse
+      hr/
+
+      h4 style="text-align: left"
+        | Step 2 <small>Add Forms</small>
       #addedData.table-responsive
         table.table
           thead
@@ -53,7 +62,7 @@ fieldset id="dataClient_forms"
         strong Error!
         | Select at least one form.
       .row
-        .col-xs-12 style=("text-align: left")
+        .col-xs-12 style=("text-align: left")          
           label for="disability"
             - form = Form.find_by_name("Disability")
             input.js-other-forms name="disability" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
@@ -76,11 +85,7 @@ fieldset id="dataClient_forms"
           label for="rental_properties"
             input name="rental_properties" onchange="triggerConfirm(this)" type="checkbox" value="true"
             |  Rental Properties
-          br/
-          label for="add_forms_for_spouse"
-            input#add_forms_for_spouse name="add_forms_for_spouse" type="checkbox" value="true"
-            |  Add Spouse
-          br/
+          br/          
     .col-lg-4
       h2 Estimate
       p  
@@ -125,13 +130,6 @@ fieldset id="dataClient_forms"
 
         tr.spouse-row style="display: none;"
           td.col-xs-6
-            | eFile Fee
-          td.col-xs-6
-            | $
-            span 3.99 
-
-        tr.spouse-row style="display: none;"
-          td.col-xs-6
             | HST (13%)
           td.col-xs-6
             p
@@ -142,7 +140,7 @@ fieldset id="dataClient_forms"
             | Spouse Total:
           td.col-xs-6
             | $
-            span.spouseTotalCost = number_with_precision((@basic_tax_return_price + 3.99) * 1.13, precision: 2)
+            span.spouseTotalCost = number_with_precision((@basic_tax_return_price) * 1.13, precision: 2)
 
         tr
           td
