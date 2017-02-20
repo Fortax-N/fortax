@@ -8,13 +8,14 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
 
-  ActionMailer::Base.smtp_settings = {
-    :address => 'smtp.sendgrid.net',
-    :port => '587',
-    :authentication => :plain,
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
-    :domain  => 'www.fortax.ca',
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch("SPARKPOST_SMTP_HOST"),
+    authentication: :plain,
+    #domain: ENV.fetch("SMTP_DOMAIN"),
+    enable_starttls_auto: true,
+    password: ENV.fetch("SPARKPOST_SMTP_PASSWORD"),
+    port: ENV.fetch("SPARKPOST_SMTP_PORT"),
+    user_name: ENV.fetch("SPARKPOST_SMTP_USERNAME")
   }
 
   ActionMailer::Base.delivery_method = :smtp
