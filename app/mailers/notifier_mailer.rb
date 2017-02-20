@@ -1,5 +1,5 @@
 class NotifierMailer < ApplicationMailer
-  default from: Setting.first.email
+  default from: Setting.first.try(:email) || "info@fortax.ca"
 
   def mail_to_user(form_params:, pdf:)
   	@user = form_params[:email]
