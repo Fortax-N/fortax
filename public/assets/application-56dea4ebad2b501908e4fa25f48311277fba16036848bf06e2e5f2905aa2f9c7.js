@@ -15013,8 +15013,8 @@ $(document).ready(function(){
   });
 });
 var app = {
-  numOfChildren: 2,
-  numOfSpouseChildren: 2
+  numOfChildren: 1,
+  numOfSpouseChildren: 1
 }
 
 
@@ -15042,6 +15042,12 @@ var initializeOnlineEstimate = function(){
     includedForms: function(){
       return $('#form-select option:selected').data('included');
     },
+    addSpouseRow: function(){
+      $("#spouse-row").show();
+    },
+    removeSpouseRow: function(){
+      $("#spouse-row").hide();
+    },
     addSpouse: function(){
       var checkbox = $("#add_forms_for_spouse");
 
@@ -15050,9 +15056,11 @@ var initializeOnlineEstimate = function(){
           if (checkbox.checked) {
             onlineEstimate.spouseMultiplier = 2;
             onlineEstimate.changeEstimate();
+            form.addSpouseRow();
           } else {
             onlineEstimate.spouseMultiplier = 1;
             onlineEstimate.changeEstimate();
+            form.removeSpouseRow();
           }
       });
     },   
@@ -15062,9 +15070,11 @@ var initializeOnlineEstimate = function(){
         var tr = $('tr[data-name="' + form.dropDownValue() + '"]');
 
         if (tr.length) {
-          form.increaseAmount(tr);
+          form.increaseAmount(form.numOfForms());
+          form.increaseTotalAmount(form.numOfForms());
         } else {
           onlineEstimate.appendToTable();
+          onlineEstimate.appendToTotalTable();
           onlineEstimate.addFormInput();
           onlineEstimate.toggleHelperText();
           onlineEstimate.calculateCost();
@@ -15098,26 +15108,62 @@ var initializeOnlineEstimate = function(){
       }
     },
     removeForm: function(target){
+      var name = $(target).closest('tr').data('name');
       var minusPrice = $(target).closest('tr').data('price');
       var numOfForms = $(target).closest('tr').data('number');
       var includedForms = $(target).closest('tr').data('included');
 
-      $(target).closest('tr').remove();
+      $('tr[data-name="' + name + '"]').remove();
+      // $(target).closest('tr').remove();
 
-      if(minusPrice === form.studentFormPrice()) {
+      // if(minusPrice === form.studentFormPrice()) {
+      //   form.reenableStudentForm();
+      // }
+
+      if(form.isStudentForm()) {
         form.reenableStudentForm();
       }
 
       if (includedForms < numOfForms) {
-        onlineEstimate.cost -= minusPrice * numOfForms;
+        onlineEstimate.cost -= minusPrice * (numOfForms - includedForms);
+        onlineEstimate.changeEstimate();  
+      } else if (includedForms == 0) {
+        onlineEstimate.cost -= minusPrice;
         onlineEstimate.changeEstimate();  
       }
     },
-    increaseAmount: function(target){
-      var tr = $(target).closest('tr');
+    increaseTotalAmount: function(){
+      var target = $('#js-total-row tr[data-name="' + form.dropDownValue() + '"]');
+      var tr = $(target)    
+      
+      var price = tr.data('price');
+      var numOfForms = tr.data('number');
+      var formName = tr.data('name');
+      var includedForms = tr.data('included');
+
+      // replace text
+      var totalFormsSpan = tr.find(".js-total-num-of-forms");
+      $(totalFormsSpan).html(numOfForms);
+
+      // if number of forms exceed number of included forms
+      var $priceRow = $(tr.find(".js-total-price"))
+
+      if (numOfForms > includedForms) {
+        var totalPrice = parseFloat(price) * (numOfForms - includedForms); 
+        $priceRow.html("$" + totalPrice);
+      } else if (includedForms == 0) {
+        var totalPrice = parseFloat(price) * (numOfForms - includedForms);
+        $priceRow.html("$" + totalPrice);
+      } else {
+        $priceRow.html("$" + 0);
+      }
+    },
+    increaseAmount: function(num){
+      var target = $('tr[data-name="' + form.dropDownValue() + '"]');
+      var tr = $(target);
 
       // increase number of forms
-      var number = tr.data('number') + 1;
+      var number = tr.data('number') + parseFloat(num);
       tr.data('number', number);      
       
       var price = tr.data('price');
@@ -15135,12 +15181,44 @@ var initializeOnlineEstimate = function(){
 
       // if number of forms exceed number of included forms
       if (numOfForms > includedForms) {
-        onlineEstimate.cost += tr.data('price');
+        onlineEstimate.cost += parseFloat(price * num);
+        onlineEstimate.changeEstimate();
+      } else if (includedForms == 0) {
+        onlineEstimate.cost += parseFloat(price);
         onlineEstimate.changeEstimate();
       }
     },
+    decreaseTotalAmount: function(){
+      var target = $('#js-total-row tr[data-name="' + form.dropDownValue() + '"]');
+      var tr = $(target);
+      var numOfForms = tr.data('number');
+
+      if (numOfForms == 0) {
+        target.remove();
+      } 
+      else 
+      {
+        var price = tr.data('price');
+        var formName = tr.data('name');
+        var includedForms = tr.data('included');
+
+        // replace text
+        var totalFormsSpan = tr.find(".js-total-num-of-forms");
+        $(totalFormsSpan).html(numOfForms);
+        // if number of forms exceed number of included forms
+        var $priceRow = $(tr.find(".js-total-price"))
+
+        if (numOfForms > includedForms) {
+          var totalPrice = price * (numOfForms - includedForms);
+          $priceRow.html("$" + totalPrice);
+        } else {
+          $priceRow.html("$" + 0);
+        }
+      }
+    },
     decreaseAmount: function(target){
-      var tr = $(target).closest('tr');
+      var target = $('tr[data-name="' + form.dropDownValue() + '"]');
+      var tr = $(target);
 
       // increase number of forms
       var number = tr.data('number') - 1;
@@ -15164,12 +15242,13 @@ var initializeOnlineEstimate = function(){
 
         // update form value
         var input = $("#" + formName.replace(/ /g,"_"));
-        input.attr('value', numOfForms + " " + formName + " forms");
+        input.attr('value', numOfForms + " " + formName + " forms");        
 
-        console.log(numOfForms);
-        console.log(includedForms);        
-        onlineEstimate.cost -= tr.data('price');
-        onlineEstimate.changeEstimate(); 
+        // we are adding 1 to numOfForms because we subtracted 1 from data-number above
+        if ((numOfForms + 1) > includedForms) {
+          onlineEstimate.cost -= tr.data('price');
+          onlineEstimate.changeEstimate(); 
+        }
       }
       
     },
@@ -15180,7 +15259,7 @@ var initializeOnlineEstimate = function(){
   }
 
   onlineEstimate = {
-    cost: 49,
+    cost: 49.99,
     eFileFee: 3.99,
     totalCost: this.cost + this.eFileFee,
     totalFamilyCost: (this.cost + this.eFileFee) * this.spouseMultiplier,
@@ -15196,42 +15275,76 @@ var initializeOnlineEstimate = function(){
       }
     },
     appendToTable: function() {
+      var actionButtons;
+      if (form.dropDownText() !== "StudentT2202") {
+        actionButtons = `<td class="col-xs-3">
+              <button type="button" class="btn btn-success btn-xs" id="add">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-danger btn-xs" id="minus">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-xs" id="delete">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+             </td>`
+      } else {
+        actionButtons = `<td class="col-xs-3">
+              <button type="button" class="btn btn-danger btn-xs" id="minus">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-xs" id="delete">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+             </td>`
+      }
       $('#table-data').append(
-        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() * form.numOfForms() + '" data-name="' + form.dropDownText() + '" data-included="' + form.includedForms() + '">' +
+        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() + '" data-name="' + form.dropDownText() + '" data-included="' + form.includedForms() + '">' +
           '<td>'+ form.dropDownValue() + '</td>' +
           '<td>'+ form.numOfForms() + '</td>' +
           '<td>'+ '$' + form.price() + '</td>' +
-          `<td class="col-xs-3">
-            <button type="button" class="btn btn-success btn-xs" id="add">
-              <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
-            <button type="button" class="btn btn-danger btn-xs" id="minus">
-              <i class="fa fa-minus" aria-hidden="true"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-xs" id="delete">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </button>
-           </td>` +
+          actionButtons +
+        '</tr>'
+      );
+    },
+    appendToTotalTable: function(){
+      var price;
+      if (form.numOfForms() > form.includedForms()) {
+        price = (form.numOfForms() - form.includedForms()) * form.price();
+      } else if (form.includedForms() == 0) {
+        price = form.price();
+      } else {
+        price = 0
+      }
+
+      $('#js-total-row').append(
+        '<tr data-number="' +  form.numOfForms() + '" data-price="' + form.price() + '" data-name="' + form.dropDownText() + '" data-included="' + form.includedForms() + '">' +
+          '<td>'+ form.dropDownValue() + ' (<span class="js-total-num-of-forms">' + form.numOfForms() + '</span>) ' + '</td>' +          
+          '<td class="js-total-price">'+ '$' + price + '</td>' +          
         '</tr>'
       );
     },
     changeEstimate: function(){
+      var hst = ((this.cost + this.eFileFee) * 0.13).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
       $('#errorMessage').css('display','none');
-      $('#costDisplay').text( this.cost );
-      this.totalCost = Math.round(this.calculateTotalCost()) / 100;
-      this.totalFamilyCost = Math.round(this.calculateFamilyTotalCost()) / 100;
-      $('#totalCost').text( this.totalCost );
+      $('#costDisplay').text( (this.cost).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0] );
+      this.totalCost = (this.calculateTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+      this.totalFamilyCost = (this.calculateFamilyTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+      $('#hst').text(hst);
+      $('.totalCost').text( this.totalCost );
       $('#totalFamilyCost').text( this.totalFamilyCost );
     },
     calculateTotalCost: function(){
       return (this.cost + this.eFileFee) * 100 * this.hst;
     },
     calculateFamilyTotalCost: function(){
-      return (this.cost + this.eFileFee) * 100 * this.hst * this.spouseMultiplier;
+      return ((this.cost + this.eFileFee) * 100 * this.hst * this.spouseMultiplier).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
     },
     calculateCost: function() {
       if (form.includedForms() < form.numOfForms()) {
-        this.cost += (form.numOfForms() * form.price());  
+        this.cost += ((form.numOfForms() - form.includedForms()) * form.price());  
+      } else if (form.includedForms() == 0) {
+        this.cost += parseFloat(form.price());
       }
     },
     displayError: function(){
@@ -15275,16 +15388,54 @@ var initializeOnlineEstimate = function(){
     form.addToForm();
   });
 
+  $(document).on('change', '.js-other-forms', function(e){
+    // form.addToForm(); 
+    var that = $(e.target);
+    var numOfForms = 1;
+    var includedForms = that.data("included");
+    var formName = that.data("name");    
+    
+    var price;
+    if (numOfForms > includedForms) {
+      price = (numOfForms - includedForms) * that.data("price");
+    } else {
+      price = 0
+    }
+
+    if($(this).prop('checked') == true) {
+      $('#js-total-row').append(
+        '<tr data-number="' +  numOfForms + '" data-price="' + that.data("price") * numOfForms + '" data-name="' + formName + '" data-included="' + includedForms + '">' +
+          '<td>'+ formName + ' (<span class="js-total-num-of-forms">' + numOfForms + '</span>) ' + '</td>' +          
+          '<td class="js-total-price">'+ '$' + price + '</td>' +          
+        '</tr>'
+      );
+
+      if (includedForms < numOfForms) {
+        onlineEstimate.cost += (numOfForms * that.data("price"));  
+      }
+    } else {
+      $('#js-total-row').find('[data-name="' + formName + '"]').remove();
+
+      if (includedForms < numOfForms) {
+        onlineEstimate.cost -= (numOfForms * that.data("price"));  
+      }
+    } 
+
+    onlineEstimate.changeEstimate();
+  });
+
   $(document).on('click','button#delete',function(){
     form.removeForm(this);
   });
 
   $(document).on('click','button#add',function(){
-    form.increaseAmount(this);
+    form.increaseAmount(1);
+    form.increaseTotalAmount(1);
   });
 
   $(document).on('click','button#minus',function(){
-    form.decreaseAmount(this);
+    form.decreaseAmount();
+    form.decreaseTotalAmount();
   });
 
 }
@@ -15299,9 +15450,11 @@ $(document).on("ready", function(){
     }
   });
   $('input[type=radio][name="register_for_direct_deposit"]').on("change", function(){
-     if($(this).val() === "true"){
-      $('#options-for-bank-info').hide('slow');
-    } 
+    if($(this).val() === "true"){
+      $('.js-bank-info').show('slow');
+    } else {
+      $('.js-bank-info').hide('slow');
+    }
   });
   
   $('input[type=radio][name="register_for_direct_deposit"]').on("change", function(){
@@ -15335,27 +15488,69 @@ $(document).on("ready", function(){
     var numOfChildren = app.numOfChildren;
     var html = `
     <tr data-child-id="${numOfChildren}">
-      <th class="col-xs-4">First Name (Child ${numOfChildren})</th>
+      <th class="col-xs-4">Name (Child ${numOfChildren})</th>
       <td class="col-xs-8">
-        <input class="form-control" name="child_${numOfChildren}_first_name" placeholder="First Name" type="text">
+        <div class="row">
+          <div class="col-xs-6">
+            <input class="form-control" name="child_${numOfChildren}_first_name" placeholder="First Name" type="text">
+          </div>
+          <div class="col-xs-6">
+            <input class="form-control" name="child_${numOfChildren}_last_name" placeholder="Last Name" type="text">
+          </div>
       </td>
-    </tr>
+    </tr>    
     <tr data-child-id="${numOfChildren}">
-      <th class="col-xs-4">Last Name (Child ${numOfChildren})</th>
+      <th class="col-xs-4">Date of birth/Gender (Child ${numOfChildren})</th>
       <td class="col-xs-8">
-        <input class="form-control" name="child_${numOfChildren}_last_name" placeholder="Last Name" type="text">
-      </td>
-    </tr>
-    <tr data-child-id="${numOfChildren}">
-      <th class="col-xs-4">Date of birth (Child ${numOfChildren})</th>
-      <td class="col-xs-8">
-        <input class="form-control" name="child_${numOfChildren}_date_of_birth.col-xs-4" placeholder="Date of Birth" type="date">
+        <div class="row">
+          <div class="col-xs-6">
+            <input class="form-control" name="child_${numOfChildren}_date_of_birth" placeholder="Date of Birth" type="date">
+          </div>
+          <div class="col-xs-6">
+            <select class="form-control" name="child_${numOfChildren}_gender">
+              <option value="male">
+                Male
+              </option>
+              <option value="female">
+                Female
+              </option>
+              <option value="other">
+                Other
+              </option>
+            </select>
+          </div>
       </td>
     </tr>
     <tr data-child-id="${numOfChildren}">
       <th class="col-xs-4">Social Insurance (Child ${numOfChildren})</th>
       <td class="col-xs-8">
         <input class="form-control" name="child_${numOfChildren}_social_insurance" placeholder="Social Insurance Number" type="text">
+      </td>
+    </tr>
+    <tr data-child-id="${numOfChildren}">
+      <th class="col-xs-4">Day Care Expenses (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <div class="row">
+          <div class="col-xs-7">
+            <input class="form-control" name="child_${numOfChildren}_day_care_expenses_provider" placeholder="Day Care Expenses Provider" type="text">
+          </div>
+          <div class="col-xs-5">
+            <input class="form-control" name="child_${numOfChildren}_day_care_expenses_amount" placeholder="Day Care Expenses Amount" type="text">
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr data-child-id="${numOfChildren}">
+      <th class="col-xs-4">Arts and Sports (Child ${numOfChildren})</th>
+      <td class="col-xs-8">
+        <div class="row">
+          <div class="col-xs-7">
+            <input class="form-control" name="child_${numOfChildren}_arts_and_sports_for_child_provider" placeholder="Arts and Sports for Child Provider" type="text">
+          </div>
+          <div class="col-xs-5">
+            <input class="form-control" name="child_${numOfChildren}_arts_and_sports_for_child_amount" placeholder="Arts and Sports for Child Amount" type="text">
+          </div>
+        </div>
       </td>
     </tr>
     <tr data-child-id="${numOfChildren}">

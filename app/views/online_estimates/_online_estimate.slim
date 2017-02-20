@@ -93,16 +93,19 @@ fieldset id="dataClient_forms"
             td.col-xs-6
               p
                 | $
-                span#costDisplay = Form.basic_tax_return_price
-        tr
+                span = Form.basic_tax_return_price
+        tr style="border-bottom: 1px solid #ddd;"
           td.col-xs-6
             | eFileFee
           td.col-xs-6
-            | $3.99
+            | $3.99          
         tr
           td.col-xs-6
             | HST (13%)
           td.col-xs-6
+            p
+              | $
+              span#hst = number_with_precision((Form.basic_tax_return_price + 3.99) * 0.13, precision: 2)
         tr
           td.col-xs-6
             | Total:

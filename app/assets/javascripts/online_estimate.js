@@ -311,10 +311,12 @@ var initializeOnlineEstimate = function(){
       );
     },
     changeEstimate: function(){
+      var hst = ((this.cost + this.eFileFee) * 0.13).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
       $('#errorMessage').css('display','none');
       $('#costDisplay').text( (this.cost).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0] );
       this.totalCost = (this.calculateTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
       this.totalFamilyCost = (this.calculateFamilyTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+      $('#hst').text(hst);
       $('.totalCost').text( this.totalCost );
       $('#totalFamilyCost').text( this.totalFamilyCost );
     },
@@ -434,7 +436,7 @@ $(document).on("ready", function(){
     }
   });
   $('input[type=radio][name="register_for_direct_deposit"]').on("change", function(){
-    if($(this).val() === "true"){
+    if($(this).val() === "false"){
       $('.js-bank-info').show('slow');
     } else {
       $('.js-bank-info').hide('slow');

@@ -1090,3 +1090,7 @@ body {
 .js-bank-info {
    display: none;
 }
+
+.table > tbody + tbody {
+  border-top: none !important;
+}
