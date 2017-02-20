@@ -1,7 +1,7 @@
 class OnlineEstimatesController < ApplicationController
   layout "form_pages"
   def index
-
+    @basic_tax_return_price = Form.basic_tax_return_price
   end
 
   def create
@@ -30,8 +30,9 @@ class OnlineEstimatesController < ApplicationController
     
     params.each do |key, value|      
       next if value.class == ActionDispatch::Http::UploadedFile
+      next if ["Form", "Authenticity Token", "Action", "Submit", "Controller"].include?(key.humanize.titleize)
       string += "<tr>"
-      string += "<td><strong>#{key.humanize.titleize}:</strong></td>"
+      string += "<td style='width: 30%'><strong>#{key.humanize.titleize}:</strong></td>"
       string += "<td>#{value.empty? ? 'Empty' : value}</td>"
       string += "</tr>"
     end

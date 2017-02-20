@@ -10,5 +10,11 @@ ActiveAdmin.register LandingPageVariable do
     column :unit
     actions
   end
+
+  form do |f|
+    inputs :amount
+    inputs :unit
+    actions
+  end
 end
 

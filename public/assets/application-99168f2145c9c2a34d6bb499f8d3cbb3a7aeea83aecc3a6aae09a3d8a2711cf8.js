@@ -14802,189 +14802,189 @@ jQuery.extend( jQuery.easing,
 		return jQuery.easing.easeInOutBack(x, t, b, c, d);
 	}
 });
-// /**
-//  * Single Page Nav Plugin
-//  * Copyright (c) 2013 Chris Wojcik <hello@chriswojcik.net>
-//  * Dual licensed under MIT and GPL.
-//  * @author Chris Wojcik
-//  * @version 1.1.0
-//  */
+/**
+ * Single Page Nav Plugin
+ * Copyright (c) 2013 Chris Wojcik <hello@chriswojcik.net>
+ * Dual licensed under MIT and GPL.
+ * @author Chris Wojcik
+ * @version 1.1.0
+ */
 
-// // Utility
-// if (typeof Object.create !== 'function') {
-//     Object.create = function(obj) {
-//         function F() {}
-//         F.prototype = obj;
-//         return new F();
-//     };
-// }
+// Utility
+if (typeof Object.create !== 'function') {
+    Object.create = function(obj) {
+        function F() {}
+        F.prototype = obj;
+        return new F();
+    };
+}
 
-// (function($, window, document, undefined) {
-//     "use strict";
+(function($, window, document, undefined) {
+    "use strict";
 
-//     var SinglePageNav = {
+    var SinglePageNav = {
 
-//         init: function(options, container) {
+        init: function(options, container) {
 
-//             this.options = $.extend({}, $.fn.singlePageNav.defaults, options);
+            this.options = $.extend({}, $.fn.singlePageNav.defaults, options);
 
-//             this.container = container;
-//             this.$container = $(container);
-//             this.$links = this.$container.find('a');
+            this.container = container;
+            this.$container = $(container);
+            this.$links = this.$container.find('a');
 
-//             if (this.options.filter !== '') {
-//                 this.$links = this.$links.filter(this.options.filter);
-//             }
+            if (this.options.filter !== '') {
+                this.$links = this.$links.filter(this.options.filter);
+            }
 
-//             this.$window = $(window);
-//             this.$htmlbody = $('html, body');
+            this.$window = $(window);
+            this.$htmlbody = $('html, body');
 
-//             this.$links.on('click.singlePageNav', $.proxy(this.handleClick, this));
+            this.$links.on('click.singlePageNav', $.proxy(this.handleClick, this));
 
-//             this.didScroll = false;
-//             this.checkPosition();
-//             this.setTimer();
-//         },
+            this.didScroll = false;
+            this.checkPosition();
+            this.setTimer();
+        },
 
-//         handleClick: function(e) {
-//             var self  = this,
-//                 link  = e.currentTarget,
-//                 $elem = $(link.hash);
+        handleClick: function(e) {
+            var self  = this,
+                link  = e.currentTarget,
+                $elem = $(link.hash);
 
-//             e.preventDefault();
+            e.preventDefault();
 
-//             if ($elem.length) { // Make sure the target elem exists
+            if ($elem.length) { // Make sure the target elem exists
 
 
-//                 // Prevent active link from cycling during the scroll
-//                 self.clearTimer();
+                // Prevent active link from cycling during the scroll
+                self.clearTimer();
 
-//                 // Before scrolling starts
-//                 if (typeof self.options.beforeStart === 'function') {
-//                     self.options.beforeStart();
-//                 }
+                // Before scrolling starts
+                if (typeof self.options.beforeStart === 'function') {
+                    self.options.beforeStart();
+                }
 
-//                 self.setActiveLink(link.hash);
+                self.setActiveLink(link.hash);
 
-//                 self.scrollTo($elem, function() {
+                self.scrollTo($elem, function() {
 
-//                     if (self.options.updateHash) {
-//                         document.location.hash = link.hash;
-//                     }
+                    if (self.options.updateHash) {
+                        document.location.hash = link.hash;
+                    }
 
-//                     self.setTimer();
+                    self.setTimer();
 
-//                     // After scrolling ends
-//                     if (typeof self.options.onComplete === 'function') {
-//                         self.options.onComplete();
-//                     }
-//                 });
-//             }
-//         },
+                    // After scrolling ends
+                    if (typeof self.options.onComplete === 'function') {
+                        self.options.onComplete();
+                    }
+                });
+            }
+        },
 
-//         scrollTo: function($elem, callback) {
-//             var self = this;
-//             var target = self.getCoords($elem).top;
-//             var called = false;
+        scrollTo: function($elem, callback) {
+            var self = this;
+            var target = self.getCoords($elem).top;
+            var called = false;
 
-//             self.$htmlbody.stop().animate(
-//                 {scrollTop: target},
-//                 {
-//                     duration: self.options.speed,
-//                     easing: self.options.easing,
-//                     complete: function() {
-//                         if (typeof callback === 'function' && !called) {
-//                             callback();
-//                         }
-//                         called = true;
-//                     }
-//                 }
-//             );
-//         },
+            self.$htmlbody.stop().animate(
+                {scrollTop: target},
+                {
+                    duration: self.options.speed,
+                    easing: self.options.easing,
+                    complete: function() {
+                        if (typeof callback === 'function' && !called) {
+                            callback();
+                        }
+                        called = true;
+                    }
+                }
+            );
+        },
 
-//         setTimer: function() {
-//             var self = this;
+        setTimer: function() {
+            var self = this;
 
-//             self.$window.on('scroll.singlePageNav', function() {
-//                 self.didScroll = true;
-//             });
+            self.$window.on('scroll.singlePageNav', function() {
+                self.didScroll = true;
+            });
 
-//             self.timer = setInterval(function() {
-//                 if (self.didScroll) {
-//                     self.didScroll = false;
-//                     self.checkPosition();
-//                 }
-//             }, 250);
-//         },
+            self.timer = setInterval(function() {
+                if (self.didScroll) {
+                    self.didScroll = false;
+                    self.checkPosition();
+                }
+            }, 250);
+        },
 
-//         clearTimer: function() {
-//             clearInterval(this.timer);
-//             this.$window.off('scroll.singlePageNav');
-//             this.didScroll = false;
-//         },
+        clearTimer: function() {
+            clearInterval(this.timer);
+            this.$window.off('scroll.singlePageNav');
+            this.didScroll = false;
+        },
 
-//         // Check the scroll position and set the active section
-//         checkPosition: function() {
-//             var scrollPos = this.$window.scrollTop();
-//             var currentSection = this.getCurrentSection(scrollPos);
-//             this.setActiveLink(currentSection);
-//         },
+        // Check the scroll position and set the active section
+        checkPosition: function() {
+            var scrollPos = this.$window.scrollTop();
+            var currentSection = this.getCurrentSection(scrollPos);
+            this.setActiveLink(currentSection);
+        },
 
-//         getCoords: function($elem) {
-//             return {
-//                 top: Math.round($elem.offset().top) - this.options.offset
-//             };
-//         },
+        getCoords: function($elem) {
+            return {
+                top: Math.round($elem.offset().top) - this.options.offset
+            };
+        },
 
-//         setActiveLink: function(href) {
-//             var $activeLink = this.$container.find("a[href='" + href + "']");
+        setActiveLink: function(href) {
+            var $activeLink = this.$container.find("a[href='" + href + "']");
 
-//             if (!$activeLink.hasClass(this.options.currentClass)) {
-//                 this.$links.removeClass(this.options.currentClass);
-//                 $activeLink.addClass(this.options.currentClass);
-//             }
-//         },
+            if (!$activeLink.hasClass(this.options.currentClass)) {
+                this.$links.removeClass(this.options.currentClass);
+                $activeLink.addClass(this.options.currentClass);
+            }
+        },
 
-//         getCurrentSection: function(scrollPos) {
-//             var i, hash, coords, section;
+        getCurrentSection: function(scrollPos) {
+            var i, hash, coords, section;
 
-//             for (i = 0; i < this.$links.length; i++) {
-//                 hash = this.$links[i].hash;
+            for (i = 0; i < this.$links.length; i++) {
+                hash = this.$links[i].hash;
 
-//                 if ($(hash).length) {
-//                     coords = this.getCoords($(hash));
+                if ($(hash).length) {
+                    coords = this.getCoords($(hash));
 
-//                     if (scrollPos >= coords.top - this.options.threshold) {
-//                         section = hash;
-//                     }
-//                 }
-//             }
+                    if (scrollPos >= coords.top - this.options.threshold) {
+                        section = hash;
+                    }
+                }
+            }
 
-//             // The current section or the first link
-//             return section || this.$links[0].hash;
-//         }
-//     };
+            // The current section or the first link
+            return section || this.$links[0].hash;
+        }
+    };
 
-//     $.fn.singlePageNav = function(options) {
-//         return this.each(function() {
-//             var singlePageNav = Object.create(SinglePageNav);
-//             singlePageNav.init(options, this);
-//         });
-//     };
+    $.fn.singlePageNav = function(options) {
+        return this.each(function() {
+            var singlePageNav = Object.create(SinglePageNav);
+            singlePageNav.init(options, this);
+        });
+    };
 
-//     $.fn.singlePageNav.defaults = {
-//         offset: 0,
-//         threshold: 120,
-//         speed: 400,
-//         currentClass: 'current',
-//         easing: 'swing',
-//         updateHash: false,
-//         filter: '',
-//         onComplete: false,
-//         beforeStart: false
-//     };
+    $.fn.singlePageNav.defaults = {
+        offset: 0,
+        threshold: 120,
+        speed: 400,
+        currentClass: 'current',
+        easing: 'swing',
+        updateHash: false,
+        filter: '',
+        onComplete: false,
+        beforeStart: false
+    };
 
-// })(jQuery, window, document);
+})(jQuery, window, document);
 $(document).ready(function(){
   // One page navigation
   // $('.nav').singlePageNav({
@@ -15039,14 +15039,14 @@ var initializeOnlineEstimate = function(){
     price: function(){
       return $('#form-select option:selected').data('cost');
     },
-    includedForms: function(){
-      return $('#form-select option:selected').data('included');
+    includedForms: function(){      
+      return parseFloat($('#form-select option:selected').data('included')) * onlineEstimate.spouseMultiplier;
     },
     addSpouseRow: function(){
-      $("#spouse-row").show();
+      $(".spouse-row").show();
     },
     removeSpouseRow: function(){
-      $("#spouse-row").hide();
+      $(".spouse-row").hide();
     },
     addSpouse: function(){
       var checkbox = $("#add_forms_for_spouse");
@@ -15055,10 +15055,13 @@ var initializeOnlineEstimate = function(){
           var checkbox = event.target;
           if (checkbox.checked) {
             onlineEstimate.spouseMultiplier = 2;
+            onlineEstimate.totalSpouseCost += 49.99;
             onlineEstimate.changeEstimate();
             form.addSpouseRow();
+            checkbox.disabled = true;
           } else {
             onlineEstimate.spouseMultiplier = 1;
+            onlineEstimate.totalSpouseCost = 0;
             onlineEstimate.changeEstimate();
             form.removeSpouseRow();
           }
@@ -15132,8 +15135,12 @@ var initializeOnlineEstimate = function(){
         onlineEstimate.changeEstimate();  
       }
     },
-    increaseTotalAmount: function(){
-      var target = $('#js-total-row tr[data-name="' + form.dropDownValue() + '"]');
+    increaseTotalAmount: function(num, name=null){
+      if (name === null) {
+        name = form.dropDownValue()
+      }
+
+      var target = $('#js-total-row tr[data-name="' + name + '"]');
       var tr = $(target)    
       
       var price = tr.data('price');
@@ -15158,8 +15165,11 @@ var initializeOnlineEstimate = function(){
         $priceRow.html("$" + 0);
       }
     },
-    increaseAmount: function(num){
-      var target = $('tr[data-name="' + form.dropDownValue() + '"]');
+    increaseAmount: function(num, name=null){
+      if (name === null) {
+        name = form.dropDownValue()
+      }
+      var target = $('tr[data-name="' + name + '"]');
       var tr = $(target);
 
       // increase number of forms
@@ -15188,8 +15198,12 @@ var initializeOnlineEstimate = function(){
         onlineEstimate.changeEstimate();
       }
     },
-    decreaseTotalAmount: function(){
-      var target = $('#js-total-row tr[data-name="' + form.dropDownValue() + '"]');
+    decreaseTotalAmount: function(name=null){
+      if (name == null) {
+        name = form.dropDownValue()
+      }
+
+      var target = $('#js-total-row tr[data-name="' + name + '"]');
       var tr = $(target);
       var numOfForms = tr.data('number');
 
@@ -15216,8 +15230,11 @@ var initializeOnlineEstimate = function(){
         }
       }
     },
-    decreaseAmount: function(target){
-      var target = $('tr[data-name="' + form.dropDownValue() + '"]');
+    decreaseAmount: function(name=null){
+      if (name == null) {
+        name = form.dropDownValue()
+      }
+      var target = $('tr[data-name="' + name + '"]');
       var tr = $(target);
 
       // increase number of forms
@@ -15262,7 +15279,8 @@ var initializeOnlineEstimate = function(){
     cost: 49.99,
     eFileFee: 3.99,
     totalCost: this.cost + this.eFileFee,
-    totalFamilyCost: (this.cost + this.eFileFee) * this.spouseMultiplier,
+    totalSpouseCost: 0.00,
+    totalFamilyCost: this.cost + this.eFileFee + this.totalSpouseCost,
     hst: 1.13,
     spouseMultiplier: 1,
     toggleHelperText: function(){
@@ -15325,18 +15343,20 @@ var initializeOnlineEstimate = function(){
       );
     },
     changeEstimate: function(){
+      var hst = ((this.cost + this.eFileFee) * 0.13).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
       $('#errorMessage').css('display','none');
       $('#costDisplay').text( (this.cost).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0] );
       this.totalCost = (this.calculateTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
       this.totalFamilyCost = (this.calculateFamilyTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+      $('#hst').text(hst);
       $('.totalCost').text( this.totalCost );
       $('#totalFamilyCost').text( this.totalFamilyCost );
     },
     calculateTotalCost: function(){
       return (this.cost + this.eFileFee) * 100 * this.hst;
     },
-    calculateFamilyTotalCost: function(){
-      return ((this.cost + this.eFileFee) * 100 * this.hst * this.spouseMultiplier).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+    calculateFamilyTotalCost: function(){            
+      return (this.cost + (this.eFileFee * this.spouseMultiplier) + this.totalSpouseCost) * 100 * this.hst;
     },
     calculateCost: function() {
       if (form.includedForms() < form.numOfForms()) {
@@ -15422,18 +15442,22 @@ var initializeOnlineEstimate = function(){
     onlineEstimate.changeEstimate();
   });
 
-  $(document).on('click','button#delete',function(){
+  $(document).on('click','button#delete',function(){    
     form.removeForm(this);
   });
 
-  $(document).on('click','button#add',function(){
-    form.increaseAmount(1);
-    form.increaseTotalAmount(1);
+  $(document).on('click','button#add',function(e){
+    var name = $(e.target).closest('tr').data('name');
+
+    form.increaseAmount(1, name);
+    form.increaseTotalAmount(1, name);
   });
 
-  $(document).on('click','button#minus',function(){
-    form.decreaseAmount();
-    form.decreaseTotalAmount();
+  $(document).on('click','button#minus',function(e){
+    var name = $(e.target).closest('tr').data('name');
+
+    form.decreaseAmount(name);
+    form.decreaseTotalAmount(name);
   });
 
 }
@@ -15448,7 +15472,7 @@ $(document).on("ready", function(){
     }
   });
   $('input[type=radio][name="register_for_direct_deposit"]').on("change", function(){
-    if($(this).val() === "true"){
+    if($(this).val() === "false"){
       $('.js-bank-info').show('slow');
     } else {
       $('.js-bank-info').hide('slow');

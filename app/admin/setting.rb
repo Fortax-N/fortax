@@ -7,6 +7,6 @@ ActiveAdmin.register Setting do
     id_column
     column :email
     actions
-  end
+  end  
 end
 

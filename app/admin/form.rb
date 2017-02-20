@@ -9,6 +9,6 @@ ActiveAdmin.register Form, as: "Form Fields" do
     column :price
     column :included_forms
     actions
-  end
+  end  
 end
 

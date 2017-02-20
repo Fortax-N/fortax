@@ -12340,8 +12340,24 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+/* line 17, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+th, td {
+  padding: 10px;
+}
+
+/* line 22, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+.table tbody
+tr
+th {
+  border-top: none !important;
+}
+/* line 28, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+.table td {
+  border-top: none !important;
+}
+
 /* Navbar */
-/* line 18, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 34, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .site-navbar {
   background: #fff;
   min-height: 50px;
@@ -12349,7 +12365,7 @@ body {
   border: 0;
 }
 
-/* line 24, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 40, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .site-navbar a {
   color: #1b93c7;
   text-transform: uppercase;
@@ -12357,57 +12373,57 @@ body {
   font-weight: bold;
 }
 
-/* line 30, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 46, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .site-navbar .current {
   background: #1b93c7;
   color: #fff;
 }
 
-/* line 34, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 50, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .site-navbar li a.current:hover {
   background: #1b93c7;
 }
 
-/* line 37, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 53, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .site-navbar li a:hover {
   background: #1b93c7;
   color: #fff;
 }
 
-/* line 41, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 57, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .site-navbar li a:focus {
   background: #1b93c7;
 }
 
-/* line 44, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 60, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .navbar-brand {
   padding-top: 0;
 }
 
-/* line 47, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 63, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .navbar-toggle .icon-bar {
   background: #000;
 }
 
-/* line 50, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 66, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .navbar-toggle {
   border: 1px solid #fff;
   border-radius: 0;
 }
 
 /* Main */
-/* line 56, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 72, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .site-main {
   margin-top: 90px;
 }
 
 /* carousel */
-/* line 64, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 80, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .carousel-caption {
   bottom: 100px;
 }
 
-/* line 67, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 83, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .carousel-caption h3 {
   font-size: 4.5em;
   text-transform: uppercase;
@@ -12416,7 +12432,7 @@ body {
   background: rgba(46, 55, 60, 0.8);
 }
 
-/* line 74, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 90, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .carousel-caption span {
   display: inline-block;
   padding: 5px 10px;
@@ -12426,7 +12442,7 @@ body {
   background: rgba(27, 147, 199, 0.8);
 }
 
-/* line 83, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 99, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .carousel-control span {
   top: 50%;
   margin-top: -10px;
@@ -12434,20 +12450,20 @@ body {
   position: absolute;
 }
 
-/* line 89, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 105, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .carousel-control.left span {
   right: auto;
   left: 30px;
 }
 
 /* about */
-/* line 95, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 111, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #home, #about, #services, #ourPriceTax, #team, #blog, #contact, #dataClient, #ourPriceBook, #ourPriceOther {
   padding-top: 60px;
   padding-bottom: 80px;
 }
 
-/* line 100, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 116, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #fortax h3, #home h3, #about h3, #services h3, #ourPriceTax h3, #team h3, #blog h3, #contact h3, #dataClient h3, #ourPriceBook h3, #ourPriceOther h3 {
   font-size: 4em;
   font-family: 'Montserrat', sans-serif;
@@ -12456,7 +12472,7 @@ body {
   margin-bottom: 35px;
 }
 
-/* line 107, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 123, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #home p {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.3em;
@@ -12464,17 +12480,17 @@ body {
   color: #444;
 }
 
-/* line 114, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 130, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #fortax {
   text-align: center;
 }
 
-/* line 117, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 133, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #fortax h3 {
   text-transform: capitalize;
 }
 
-/* line 120, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 136, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #fortax h4 {
   font-size: 1.3em;
   font-family: 'Montserrat', sans-serif;
@@ -12483,7 +12499,7 @@ body {
   margin-bottom: 35px;
 }
 
-/* line 128, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 144, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #about p {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.3em;
@@ -12491,7 +12507,7 @@ body {
   color: #444;
 }
 
-/* line 134, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 150, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #fortax p {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.3em;
@@ -12499,7 +12515,7 @@ body {
   color: #444;
 }
 
-/* line 140, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 156, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-about a i {
   font-size: 3em;
   margin-right: 10px;
@@ -12507,45 +12523,45 @@ body {
   color: #666;
 }
 
-/* line 147, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 163, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-about a i.fa-weibo:hover {
   color: #d52b2b;
 }
 
-/* line 151, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 167, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-about a i.fa-facebook-square:hover {
   color: #3c599f;
 }
 
-/* line 155, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 171, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-about a i.fa-twitter-square:hover {
   color: #5eaade;
 }
 
-/* line 159, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 175, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-about a i.fa-google-plus-square:hover {
   color: #da4735;
 }
 
-/* line 163, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 179, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-about a i.fa-pinterest-square:hover {
   color: #ca2128;
 }
 
-/* line 167, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 183, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-about a i.fa-linkedin:hover {
   color: #017eb4;
 }
 
 /* dataClient */
-/* line 174, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 190, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #dataClient {
   background: #273035;
   color: #fff;
   min-height: 900px;
 }
 
-/* line 180, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 196, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #dataClient h4 {
   font-size: 1.6em;
   font-weight: 100;
@@ -12554,25 +12570,25 @@ body {
 }
 
 /* Services */
-/* line 189, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 205, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #services {
   background: #273035;
   color: #fff;
 }
 
-/* line 193, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 209, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #services h3 {
   margin-bottom: 40px;
 }
 
-/* line 196, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 212, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #services p {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.1em;
 }
 
-/* line 201, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 217, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #services span {
   width: 200px;
   height: 200px;
@@ -12582,24 +12598,24 @@ body {
   margin-bottom: 20px;
 }
 
-/* line 209, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 225, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #services span i {
   font-size: 5em;
   padding: 65px 50px;
 }
 
-/* line 213, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 229, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #services span i.fa-mobile {
   font-size: 7.5em;
   padding: 50px 50px;
 }
 
-/* line 217, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 233, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #services span i.fa-thumbs-up {
   padding: 60px 50px;
 }
 
-/* line 220, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 236, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #services h4 {
   font-size: 1.6em;
   font-weight: bold;
@@ -12609,20 +12625,20 @@ body {
 }
 
 /* price */
-/* line 229, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 245, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceTax {
   background: #273035;
   color: #fff;
 }
 
-/* line 233, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 249, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceTax img {
   width: 100%;
   margin-bottom: 20px;
   height: auto;
 }
 
-/* line 238, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 254, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceTax h4 {
   font-size: 1.6em;
   font-weight: bold;
@@ -12631,20 +12647,20 @@ body {
   margin-bottom: 0;
 }
 
-/* line 246, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 262, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceBook {
   background: #273035;
   color: #fff;
 }
 
-/* line 250, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 266, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceBook img {
   width: 100%;
   margin-bottom: 20px;
   height: auto;
 }
 
-/* line 255, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 271, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceBook h4 {
   font-size: 1.6em;
   font-weight: bold;
@@ -12653,20 +12669,20 @@ body {
   margin-bottom: 0;
 }
 
-/* line 265, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 281, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceOther {
   background: #273035;
   color: #fff;
 }
 
-/* line 269, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 285, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceOther img {
   width: 100%;
   margin-bottom: 20px;
   height: auto;
 }
 
-/* line 274, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 290, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceOther h4 {
   font-size: 1.6em;
   font-weight: bold;
@@ -12675,61 +12691,61 @@ body {
   margin-bottom: 0;
 }
 
-/* line 283, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 299, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceTax .imgport {
   position: relative;
 }
 
-/* line 286, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 302, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceTax .imgport:hover {
   cursor: pointer;
   opacity: 0.9;
 }
 
-/* line 290, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 306, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceTax .imgport:hover span {
   display: block;
 }
 
-/* line 294, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 310, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceBook .imgport {
   position: relative;
 }
 
-/* line 297, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 313, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceBook .imgport:hover {
   cursor: pointer;
   opacity: 0.9;
 }
 
-/* line 301, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 317, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceBook .imgport:hover span {
   display: block;
 }
 
-/* line 305, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 321, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceOther .imgport {
   position: relative;
 }
 
-/* line 308, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 324, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceOther .imgport:hover {
   cursor: pointer;
   opacity: 0.9;
 }
 
-/* line 312, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 328, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #ourPriceOther .imgport:hover span {
   display: block;
 }
 
-/* line 315, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 331, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-heading h2 {
   font-size: 2em;
 }
 
 /* Team */
-/* line 321, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 337, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #team h4 {
   font-size: 1.6em;
   font-weight: bold;
@@ -12739,18 +12755,18 @@ body {
   text-align: center;
 }
 
-/* line 329, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 345, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #team p {
   text-align: center;
 }
 
-/* line 332, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 348, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #team img {
   width: 100%;
   margin-bottom: 20px;
 }
 
-/* line 336, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 352, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #team ul {
   position: absolute;
   top: 60%;
@@ -12765,146 +12781,146 @@ body {
   margin: 0;
 }
 
-/* line 349, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 365, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #team ul li {
   display: inline-block;
   background: #1b93c7;
   padding: 0 10px;
 }
 
-/* line 354, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 370, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #team ul li a {
   color: #fff;
   font-size: 1.8em;
 }
 
-/* line 358, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 374, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #team ul li:hover {
   background: #273035;
 }
 
-/* line 361, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 377, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #team .imgteam {
   position: relative;
 }
 
-/* line 364, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 380, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #team .imgteam:hover {
   cursor: pointer;
   opacity: 0.9;
 }
 
-/* line 368, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 384, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #team .imgteam:hover ul {
   display: block;
 }
 
 /* Blog */
-/* line 373, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 389, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #blog {
   background: #1b2124;
   color: #fff;
 }
 
-/* line 377, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 393, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #blog a {
   color: #fff;
 }
 
-/* line 380, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 396, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #blog h4 {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5em;
   text-transform: uppercase;
 }
 
-/* line 385, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 401, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #blog ul {
   padding: 0;
 }
 
-/* line 388, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 404, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #blog li {
   list-style: none;
   margin-bottom: 30px;
   padding: 0;
 }
 
-/* line 393, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 409, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #blog h5 {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.4em;
   text-transform: uppercase;
 }
 
-/* line 398, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 414, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #blog p {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.1em;
 }
 
-/* line 402, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 418, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .singleblog {
   background: #273035 !important;
 }
 
 /* CONTACT */
-/* line 408, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 424, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #contact {
   color: inherit;
 }
 
-/* line 412, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 428, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #contact a {
   color: #fff;
 }
 
-/* line 416, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 432, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #contact h4 {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5em;
   text-transform: uppercase;
 }
 
-/* line 422, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 438, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #contact ul {
   padding: 0;
 }
 
-/* line 426, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 442, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #contact li {
   list-style: none;
   margin-bottom: 30px;
   padding: 0;
 }
 
-/* line 432, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 448, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #contact h5 {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.4em;
   text-transform: uppercase;
 }
 
-/* line 438, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 454, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #contact p {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.1em;
   color: #000;
 }
 
-/* line 444, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 460, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #contact .fa {
   font-size: 1.7em;
   color: #000;
 }
 
-/* line 449, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 465, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #contact .fa:hover {
   font-size: 1.7em;
   color: #d2d2d2;
 }
 
-/* line 454, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 470, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-contact a i {
   font-size: 3em;
   margin-right: 10px;
@@ -12912,44 +12928,44 @@ body {
   color: #666;
 }
 
-/* line 460, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 476, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-contact-us a i.fa-weibo:hover {
   color: #d52b2b;
 }
 
-/* line 463, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 479, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-contact-us a i.fa-facebook-square:hover {
   color: #3c599f;
 }
 
-/* line 466, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 482, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-contact-us a i.fa-twitter-square:hover {
   color: #5eaade;
 }
 
-/* line 469, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 485, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-contact-us a i.fa-google-plus-square:hover {
   color: #da4735;
 }
 
-/* line 472, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 488, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-contact-us a i.fa-pinterest-square:hover {
   color: #ca2128;
 }
 
-/* line 475, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 491, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .icon-contact-us a i.fa-linkedin:hover {
   color: #017eb4;
 }
 
-/* line 479, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 495, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .fluid-wrapper {
   position: relative;
   height: 350px;
   margin-bottom: 40px;
 }
 
-/* line 484, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 500, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .fluid-wrapper iframe {
   position: absolute;
   top: 0;
@@ -12959,7 +12975,7 @@ body {
   border: none;
 }
 
-/* line 493, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 509, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .mail {
   font-size: 1.6em;
   font-family: 'Open Sans', sans-serif;
@@ -12967,14 +12983,14 @@ body {
   color: #000;
 }
 
-/* line 500, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 516, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .frm input[type="text"], .frm input[type="email"] {
   background: #fcfcfc !important;
   border-radius: 0 !important;
   height: 50px;
 }
 
-/* line 505, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 521, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 textarea {
   background: #fcfcfc !important;
   border-radius: 0 !important;
@@ -12982,25 +12998,25 @@ textarea {
   font-size: 1.2em;
 }
 
-/* line 511, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 527, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .btn-biru {
   background: #1b93c7;
   border-radius: 0 !important;
   border: 0 !important;
 }
 
-/* line 516, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 532, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .btn-biru:hover {
   background: #01709f;
 }
 
-/* line 519, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 535, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #success p {
   padding: 15px;
 }
 
 /* footer */
-/* line 524, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 540, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 footer {
   background: #1b2124;
   padding-top: 30px;
@@ -13012,7 +13028,7 @@ footer {
   color: #fff;
 }
 
-/* line 534, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 550, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 footer a {
   font-weight: 400;
   color: #fff;
@@ -13020,13 +13036,13 @@ footer a {
   text-decoration: underline;
 }
 
-/* line 541, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 557, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .footer-social-network {
   padding-top: 10px;
   text-align: center;
 }
 
-/* line 545, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 561, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .scroll-to-top a {
   color: #fff;
   display: block;
@@ -13035,7 +13051,7 @@ footer a {
   height: 40px;
 }
 
-/* line 552, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 568, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .scroll-to-top {
   background: #333;
   position: fixed;
@@ -13050,35 +13066,35 @@ footer a {
   transition: opacity .5s;
 }
 
-/* line 565, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 581, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .scroll-to-top.affix {
   opacity: .5;
   filter: alpha(opacity=50);
 }
 
-/* line 569, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 585, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .affix {
   position: fixed;
 }
 
 /* MODAL */
-/* line 574, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 590, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .modal-body img {
   width: 100%;
   height: auto;
 }
 
-/* line 578, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 594, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .modal-body {
   padding: 3px;
 }
 
-/* line 581, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 597, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .modal-content {
   border-radius: 0;
 }
 
-/* line 584, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 600, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 button.close {
   background: #1b93c7 !important;
   padding: 10px !important;
@@ -13092,13 +13108,13 @@ button.close {
 }
 
 /* SINGLE BLOG */
-/* line 597, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 613, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #single {
   padding-top: 30px;
   margin-bottom: 40px;
 }
 
-/* line 601, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 617, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #single .titlesingle {
   font-weight: bold;
   text-transform: uppercase;
@@ -13110,12 +13126,12 @@ button.close {
   border-bottom: 1px dashed #dedede;
 }
 
-/* line 611, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 627, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #single .titlesingle h1 {
   font-size: 3em;
 }
 
-/* line 614, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 630, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #single p {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.3em;
@@ -13123,19 +13139,19 @@ button.close {
   color: #444;
 }
 
-/* line 620, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 636, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #single p.datesingle {
   text-align: center;
   font-size: 1.6em;
 }
 
-/* line 624, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 640, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .alignright {
   float: right;
   margin: 5px 0 20px 20px;
 }
 
-/* line 628, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 644, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .alignleft {
   float: left;
   margin: 5px 20px 20px 0;
@@ -13143,61 +13159,61 @@ button.close {
 
 /* CUSTOM RESPONSIVE */
 @media (max-width: 991px) {
-  /* line 635, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+  /* line 651, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
   .site-main {
     margin-top: 90px;
   }
 
-  /* line 638, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+  /* line 654, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
   .carousel-caption {
     top: 0;
     padding: 0;
   }
 
-  /* line 642, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+  /* line 658, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
   .carousel-caption h3 {
     font-size: 1em;
   }
 }
 @media (max-width: 767px) {
-  /* line 647, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+  /* line 663, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
   #about h3, #services h3, #ourPriceTax h3, #team h3, #blog h3, #contact h3, #ourPriceBook h3 {
     font-size: 3em;
   }
 
-  /* line 650, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+  /* line 666, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
   .frm .col-md-6, .frm .col-md-12 {
     padding: 0;
   }
 
-  /* line 653, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+  /* line 669, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
   .carousel-caption span {
     font-size: 0.7em;
   }
 
-  /* line 656, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+  /* line 672, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
   .alignright, .alignleft {
     width: 100%;
   }
 }
-/* line 661, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 677, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .col_img_fortax {
   text-align: left;
 }
 
-/* line 665, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 681, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .col-pargraph {
   text-align: justify;
 }
 
 /*Pricing*/
-/* line 672, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 688, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col {
   max-width: 400px;
   margin: 0 auto;
 }
 
-/* line 677, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 693, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table {
   border: 1px solid #d6dae2;
   margin: 15px 0;
@@ -13205,7 +13221,7 @@ button.close {
   color: #3e444d;
 }
 
-/* line 684, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 700, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .pricing-heading {
   background-position: center center;
   text-align: center;
@@ -13215,7 +13231,7 @@ button.close {
   -o-background-size: cover;
 }
 
-/* line 693, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 709, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .pricing-heading h2 {
   padding: 40px 0 55px;
   margin: 0;
@@ -13223,19 +13239,19 @@ button.close {
   text-transform: uppercase;
 }
 
-/* line 700, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 716, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .content {
   position: relative;
   margin: 0;
 }
 
-/* line 705, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 721, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .content .price {
   position: absolute;
   background: #f4f5f7;
   border-radius: 100%;
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
   text-align: center;
   top: -40px;
   left: 0;
@@ -13244,7 +13260,7 @@ button.close {
   box-shadow: 0 0 0 7px rgba(62, 68, 77, 0.2);
 }
 
-/* line 719, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 735, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .content .price .amount {
   margin-top: 18px;
   font-size: 24px;
@@ -13252,7 +13268,7 @@ button.close {
   line-height: 24px;
 }
 
-/* line 726, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 742, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .content .price .period {
   font-style: italic;
   color: rgba(27, 147, 199, 0.5);
@@ -13260,87 +13276,87 @@ button.close {
   display: block;
 }
 
-/* line 733, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 749, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .content ul.pricing-items {
   padding: 55px 0 0;
   margin: 0;
 }
 
-/* line 738, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 754, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .content ul.pricing-items li {
   padding: 15px;
   border-top: 1px solid rgba(27, 24, 25, 0.3);
 }
 
-/* line 743, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 759, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .content ul.pricing-items li.item {
   font-style: italic;
 }
 
-/* line 747, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 763, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .content ul.pricing-items li.pricing-button {
   text-align: center;
 }
 
-/* line 751, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 767, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table.featured {
   margin: 0;
 }
 
-/* line 755, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 771, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table.featured .pricing-heading {
   padding: 15px;
 }
 
-/* line 759, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 775, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table.featured .content .price {
   font-weight: bold;
 }
 
-/* line 763, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 779, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table.featured ul.pricing-items li.item {
   /*font-weight: bold;*/
 }
 
-/* line 767, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 783, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .bookkeeping-price-col .pricing-col {
   padding-left: 0;
   padding-right: 0;
 }
 
 @media (max-width: 991px) {
-  /* line 772, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+  /* line 788, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
   .pricing-col .pricing-table.featured {
     margin: 15px auto;
   }
 
-  /* line 776, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+  /* line 792, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
   .pricing-col .pricing-table.featured .pricing-heading {
     padding: 0;
   }
 }
-/* line 782, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 798, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .form-label {
   font-size: 1.3em;
   text-transform: uppercase;
 }
 
-/* line 787, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 803, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .scrollable-col {
   float: right;
 }
 
-/* line 791, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 807, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .fixed-col {
   position: fixed;
 }
 
-/* line 795, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 811, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .intro-img {
   margin: auto;
 }
 
-/* line 799, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 815, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .primary-hr {
   height: 4px;
   border-color: #1b2124;
@@ -13348,59 +13364,59 @@ button.close {
   margin: 20px auto 20px;
 }
 
-/* line 806, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 822, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .title-col {
   text-align: center;
 }
 
-/* line 810, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 826, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .title-col h2 {
   font-weight: bold;
 }
 
-/* line 814, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 830, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .text-primary {
   font-weight: bold;
   color: #1b2124;
 }
 
-/* line 819, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 835, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .checklist-col {
   background-color: #f4f5f7;
 }
 
-/* line 823, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 839, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .checklist {
   padding: 15px;
 }
 
-/* line 827, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 843, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .checklist .item {
   border: 1px solid black;
 }
 
-/* line 831, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 847, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .item .fa {
   padding-right: 5px;
 }
 
-/* line 835, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 851, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .item-dark {
   background-color: #bdc3c7;
 }
 
-/* line 839, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 855, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .item-dark .fa {
   padding-right: 5px;
 }
 
-/* line 843, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 859, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .no-padding-top {
   padding-top: 0;
 }
 
 /* online estimate style added by rabin */
-/* line 849, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 865, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .addFormButton {
   height: 33px;
   width: 33px;
@@ -13410,18 +13426,18 @@ button.close {
   margin-top: 25%;
 }
 
-/* line 858, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 874, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #errorMessage {
   display: none;
 }
 
 @media (max-width: 991px) {
-  /* line 863, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+  /* line 879, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
   .addFormButton {
     margin-top: 0;
   }
 }
-/* line 868, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 884, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #about_us_col {
   -moz-column-count: 2;
   -webkit-column-count: 2;
@@ -13429,7 +13445,7 @@ button.close {
   width: 100%;
 }
 
-/* line 875, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 891, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .about_us_text {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.3em;
@@ -13437,7 +13453,7 @@ button.close {
   color: #444;
 }
 
-/* line 882, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 898, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .office_text {
   font-size: 1.4em;
   font-family: 'Open Sans', sans-serif;
@@ -13445,26 +13461,26 @@ button.close {
   color: #000;
 }
 
-/* line 889, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 905, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #client_data {
   width: 950px;
   margin: 0 auto;
   margin-top: 60px;
 }
 
-/* line 896, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 912, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .hidden {
   display: none;
 }
 
-/* line 898, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 914, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .info {
   color: #48494A;
   border-radius: 5px;
   position: relative;
 }
 
-/* line 903, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 919, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .info-icon {
   position: absolute;
   top: 50%;
@@ -13472,23 +13488,23 @@ button.close {
   transform: translateY(-50%);
 }
 
-/* line 909, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 925, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .info-desc {
   padding: 2% 2% 2% 10%;
   text-align: justify;
 }
 
-/* line 914, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 930, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 fieldset {
   display: block;
 }
 
-/* line 918, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 934, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .children_information .spouse_children_information {
   display: none;
 }
 
-/* line 922, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 938, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .add_additional_info .spouse_add_additional_info {
   text-align: left;
   font-size: 16px;
@@ -13497,25 +13513,24 @@ fieldset {
 /*Added for multi-step forms*/
 /*custom font*/
 /*basic reset*/
-/* line 936, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 952, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 * {
   margin: 0;
   padding: 0;
 }
 
-/* line 938, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 954, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 body {
   font-family: montserrat, arial, verdana;
 }
 
 /*form styles*/
-/* line 943, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 959, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #msform {
-  text-align: center;
   position: relative;
 }
 
-/* line 948, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 964, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #msform fieldset {
   background: #273035;
   color: #fff;
@@ -13538,7 +13553,7 @@ body {
 }
 
 /*Hide all except first fieldset*/
-/* line 975, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 991, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #msform fieldset:not(:first-of-type) {
   display: none;
 }
@@ -13555,10 +13570,10 @@ body {
    color: #2C3E50;
 }*/
 /*buttons*/
-/* line 992, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 1008, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #msform .action-button {
-  width: 100px;
-  background: #27AE60;
+  min-width: 100px;
+  background: #1b93c7;
   font-weight: bold;
   color: white;
   border: 0 none;
@@ -13570,13 +13585,13 @@ body {
   margin-right: auto;
 }
 
-/* line 1005, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 1021, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #msform .action-button:hover, #msform .action-button:focus {
   box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
 
 /*headings*/
-/* line 1009, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 1025, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .fs-title {
   font-size: 15px;
   text-transform: uppercase;
@@ -13584,7 +13599,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* line 1015, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 1031, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .fs-subtitle {
   font-weight: normal;
   font-size: 13px;
@@ -13593,7 +13608,7 @@ body {
 }
 
 /*progressbar*/
-/* line 1022, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 1038, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #progressbar {
   margin-bottom: 30px;
   overflow: hidden;
@@ -13602,7 +13617,7 @@ body {
   display: flex;
 }
 
-/* line 1029, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 1045, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #progressbar li {
   list-style-type: none;
   color: white;
@@ -13611,9 +13626,10 @@ body {
   float: left;
   position: relative;
   flex: 1;
+  text-align: center;
 }
 
-/* line 1039, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 1056, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #progressbar li:before {
   content: counter(step);
   counter-increment: step;
@@ -13628,7 +13644,7 @@ body {
 }
 
 /*progressbar connectors*/
-/* line 1052, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 1069, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #progressbar li:after {
   content: '';
   width: 97%;
@@ -13641,7 +13657,7 @@ body {
   /*put it behind the numbers*/
 }
 
-/* line 1062, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 1079, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #progressbar li:first-child:after {
   /*connector not needed before the first step*/
   content: none;
@@ -13649,10 +13665,29 @@ body {
 
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
-/* line 1068, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+/* line 1085, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 #progressbar li.active:before, #progressbar li.active:after {
-  background: #27AE60;
+  background: #1b93c7;
   color: white;
+}
+
+/* line 1090, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+.js-bank-info {
+  display: none;
+}
+
+/* line 1094, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+.table > tbody + tbody {
+  border-top: none !important;
+}
+/* line 1, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/online_estimates.scss */
+.children_information {
+  display: none;
+}
+
+/* line 5, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/online_estimates.scss */
+.spouse_children_information {
+  display: none;
 }
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:100,400,300,600,700);
 /* line 3, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/pricing-tables.scss */
