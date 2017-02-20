@@ -1,8 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # Settings for mailer
-  Rails.application.routes.default_url_options[:host] = 'fortax.herokuapp.com'
-  config.action_mailer.default_url_options = { :host => 'fortax.herokuapp.com' }
+  Rails.application.routes.default_url_options[:host] = 'www.fortax.ca'
+  config.action_mailer.default_url_options = { :host => 'www.fortax.ca' }
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -14,7 +14,7 @@ Rails.application.configure do
     :authentication => :plain,
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD'],
-    :domain  => 'www.techrise.me',
+    :domain  => 'www.fortax.ca',
   }
 
   ActionMailer::Base.delivery_method = :smtp
