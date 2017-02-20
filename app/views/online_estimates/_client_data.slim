@@ -1,15 +1,15 @@
-fieldset id="client_data" 
+fieldset id="client_data"
   h2 Personal Information
 
   table
     tr
       th.col-xs-4
-        | Your Email
+        | Email
       td.col-xs-8
         input type="text" name="email" placeholder="Your Email" class="form-control" required="true" /
     tr
       th.col-xs-4
-        | Your Phone Number
+        | Phone Number
       td.col-xs-8
         input type="text" name="phone_number" placeholder="Your Phone Number" class="form-control"/
     tr
@@ -23,7 +23,7 @@ fieldset id="client_data"
           input#change-in-status name="receive_notice_of_assesment_by_email" type="radio" value="false"
           | No
     tr
-      th.col-xs-4 
+      th.col-xs-4
         | Are you registered for direct deposit?
       td.col-xs-8
         label.radio-inline
@@ -71,7 +71,7 @@ fieldset id="client_data"
       th.col-xs-4
         | Marital Status
       td.col-xs-8
-        select.form-control name="status" 
+        select.form-control name="status"
           - OnlineEstimate::STATUSES.each do |status|
             option value=status = status
     tr
@@ -84,14 +84,14 @@ fieldset id="client_data"
         label.radio-inline
           input#change-in-status name="change_in_status_during_year" type="radio" value="false"
           | No
-        #options-for-change-in-status style=("display: none;") 
+        #options-for-change-in-status style=("display: none;")
           .row
             .col-md-6.col-xs-12
               label for="date_of_name_of_status"  Date of Status Change
               input.form-control name="date_of_name_of_status" type="date" /
             .col-md-6.col-xs-12
               label for="status_before_date"  Marital Status
-              select.form-control name="status_before_date" 
+              select.form-control name="status_before_date"
                 - OnlineEstimate::STATUSES.each do |status|
                   option value=status = status
     tr
@@ -99,20 +99,9 @@ fieldset id="client_data"
         | Gender
       td.col-xs-8
         label for="gender"  Gender
-        select.form-control name="gender" 
+        select.form-control name="gender"
           - OnlineEstimate::GENDER.each do |gender|
             option value=gender = gender
-  
+
   input.prev.action-button name="prev" type="button" value="Previous" /
   input.next.action-button name="next" type="button" value="Next" /
-
-
-
-
-
-
-
-
-
-
-
