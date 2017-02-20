@@ -76,7 +76,7 @@ fieldset id="dataClient_forms"
           label for="moving_expense"
             - form = Form.find_by_name("Moving expenses")
             input.js-other-forms name="moving_expense" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
-            |  Moving Expense (must be atleast 40km from old residence)
+            |  Moving Expense (must be at least 40 km from old residence)
           br
           label for="sole_proprietorship"
             input name="sole_proprietorship" onchange="triggerConfirm(this)" type="checkbox" value="true"
