@@ -41,3 +41,5 @@ LandingPageVariable.create([
 	{name: "Income Tax Return", amount: "$49.99", unit: "per file"},
 	{name: "Student Tax Return", amount: "$29.99", unit: "per file"},
 ])
+
+Setting.create(email: "info@fortax.ca") if Setting.count == 0

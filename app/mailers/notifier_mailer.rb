@@ -1,5 +1,5 @@
 class NotifierMailer < ApplicationMailer
-  default from: 'info@Fortax.ca'
+  default from: Setting.first.email
 
   def mail_to_user(form_params:, pdf:)
   	@user = form_params[:email]
@@ -18,6 +18,6 @@ class NotifierMailer < ApplicationMailer
     attachments[files["t_1013"].filename] = open(files["t_1013"].url).read if files.key?("t_1013")
     attachments[files["t_183"].filename] = open(files["t_183"].url).read if files.key?("t_183")
     
-  	mail(to:'admin@fortax.com', from: @user, subject: 'New Form Submission')
+  	mail(to: Setting.first.email, from: @user, subject: 'New Form Submission')
   end
 end
