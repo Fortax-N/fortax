@@ -13250,8 +13250,8 @@ button.close {
   position: absolute;
   background: #f4f5f7;
   border-radius: 100%;
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
   text-align: center;
   top: -40px;
   left: 0;
@@ -13262,7 +13262,7 @@ button.close {
 
 /* line 735, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .pricing-col .pricing-table .content .price .amount {
-  margin-top: 18px;
+  margin-top: 34px;
   font-size: 24px;
   display: block;
   line-height: 24px;
@@ -13674,6 +13674,11 @@ body {
 /* line 1090, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
 .js-bank-info {
   display: none;
+}
+
+/* line 1094, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/main.scss */
+.table > tbody + tbody {
+  border-top: none !important;
 }
 /* line 1, /Users/takehiromouri/Documents/code/fortax/app/assets/stylesheets/online_estimates.scss */
 .children_information {
