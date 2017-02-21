@@ -18,6 +18,6 @@ class NotifierMailer < ApplicationMailer
     attachments[files["t_1013"].filename] = open(files["t_1013"].url).read if files.key?("t_1013")
     attachments[files["t_183"].filename] = open(files["t_183"].url).read if files.key?("t_183")
     
-  	mail(to: Setting.first.email, from: @user, subject: 'New Form Submission')
+  	mail(to: Setting.first.email, subject: 'New Form Submission')
   end
 end
