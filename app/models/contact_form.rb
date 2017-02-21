@@ -10,7 +10,7 @@ class ContactForm < MailForm::Base
     {
       :subject => "Contact form Received",
       :to => "info@Fortax.ca",
-      :from => %("#{name}" <#{email}>)
+      :from => %("#{name}" <info@Fortax.ca>)
     }
   end
 end
