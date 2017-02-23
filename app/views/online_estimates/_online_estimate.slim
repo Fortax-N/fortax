@@ -108,7 +108,7 @@ fieldset id="dataClient_forms"
                   option data-cost=(" ") id=("Select Form") value=(" ")  Select Form
                   - Form.where.not(name: "Basic tax return").all.order(id: :asc).each do |form|
                     - break if form.name == "Disability"
-                    option data-cost="#{number_with_precision(form.price, precision: 2)}" value="#{form.name}" data-included="#{form.included_forms}"
+                    option data-cost="#{number_with_precision(form.price, precision: 2)}" value="spouse_#{form.name}" data-included="#{form.included_forms}"
                       = form.name
           .col-lg-3
             label for="numberOfForm"  Quantity

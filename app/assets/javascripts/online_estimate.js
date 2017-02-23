@@ -17,13 +17,13 @@ var initializeOnlineEstimate = function(){
       return $('#form-select option:selected').text();
     },
     spouseDropDownText: function(){
-      return $('#spouse-form-select option:selected').text();
+      return $('#spouse-form-select option:selected').text().replace("spouse_", "");
     },
     dropDownValue: function() {
       return $('#form-select option:selected').val();
     },
     spouseDropDownValue: function() {
-      return $('#spouse-form-select option:selected').val();
+      return $('#spouse-form-select option:selected').val().replace("spouse_", "");
     },
     numOfForms: function(){
       return $('#numberOfForm').val();
@@ -150,7 +150,7 @@ var initializeOnlineEstimate = function(){
       var numOfForms = $(target).closest('tr').data('number');
       var includedForms = $(target).closest('tr').data('included');
 
-      $('tr[data-name="' + name + '"]').remove();    
+      $(target).closest('tr[data-name="' + name + '"]').remove();    
 
       if(form.isStudentForm()) {
         form.reenableStudentForm();
@@ -268,7 +268,7 @@ var initializeOnlineEstimate = function(){
         } else {
           onlineEstimate.cost += parseFloat(price * num);
         }
-        onlineEstimate.cost += parseFloat(price);
+        // onlineEstimate.cost += parseFloat(price);
         onlineEstimate.changeEstimate(spouse);
       }
     },
@@ -317,11 +317,21 @@ var initializeOnlineEstimate = function(){
       if (name == null) {
         name = form.dropDownValue()
       }
-      var target = $('tr[data-name="' + name + '"]');
+
+      var target;
+
+      if (spouse) {
+        target = $('#spouseAddedData tr[data-name="' + name + '"]');
+      } else {
+        target = $('#addedData tr[data-name="' + name + '"]');  
+      }
+
       var tr = $(target);
 
-      // increase number of forms
+      // decrease number of forms
       var number = tr.data('number') - 1;
+      tr.data('number', number);
+
 
       if (number == 0) {
         this.removeForm(target);
@@ -329,7 +339,7 @@ var initializeOnlineEstimate = function(){
         var input = $("#" + tr.data('name').replace(/ /g,"_"));
         input.remove();
       } else {
-        tr.attr('number', number);      
+        tr.data('number', number);      
 
         var price = tr.data('price');
         var numOfForms = tr.data('number');
@@ -346,8 +356,14 @@ var initializeOnlineEstimate = function(){
 
         // we are adding 1 to numOfForms because we subtracted 1 from data-number above
         if ((numOfForms + 1) > includedForms) {
-          onlineEstimate.cost -= tr.data('price');
-          onlineEstimate.changeEstimate(spouse); 
+          if (spouse) {
+            onlineEstimate.spouseCost -= tr.data('price');            
+          } else {
+            onlineEstimate.cost -= tr.data('price');            
+          }
+
+          onlineEstimate.changeEstimate(spouse);
+          
         }
       }
       
@@ -571,17 +587,17 @@ var initializeOnlineEstimate = function(){
       $('<input />').attr('type', 'hidden')
         .attr('id',  form.dropDownValue().replace(/ /g,"_"))
         .attr('data-number', form.numOfForms())
-        .attr('name', 'form_quantity')
-        .attr('value', form.numOfForms() + " " + form.dropDownValue() + " forms")
+        .attr('name', form.dropDownValue())
+        .attr('value', form.numOfForms())
         .appendTo('form');
     },
 
     addSpouseFormInput: function(){
       $('<input />').attr('type', 'hidden')
-        .attr('id',  form.spouseDropDownValue().replace(/ /g,"_"))
+        .attr('id',  $('#spouse-form-select option:selected').val().replace(/ /g,"_"))
         .attr('data-number', form.spouseNumOfForms())
-        .attr('name', 'form_quantity')
-        .attr('value', form.spouseNumOfForms() + " " + form.spouseDropDownValue() + " forms")
+        .attr('name', $('#spouse-form-select option:selected').val())
+        .attr('value', form.spouseNumOfForms())
         .appendTo('form');
     }
   }
