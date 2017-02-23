@@ -62,30 +62,24 @@
 
                </div>
                <div class="col-md-4 col-sm-4 wow bounceInUp">
-                  <div class="col-md-12 col_img_fortax"><img alt=
-                     "We speak your language" class="img-responsive intro-img" src=
-                     "images/col_multilingual_banner.png" style="height: 200px; margin-bottom: 10px;"></div>
-                     <h4>Multi-Language Services</h4>
+                  <div class="col-md-12 col_img_fortax">
+                     <img alt="We speak your language" class="img-responsive intro-img" src="images/col_multilingual_banner.png" style="height: 200px; margin-bottom: 10px;"></img>
+                     <h4 class="text-center">Multi-Language Services</h4>
                      <p class="col-pargraph">As a Multilingual Company, FORTAX is proud
                         to serve you in English, French and Spanish.</p>
-                     </div>
-                     <div class="col-md-2 col-sm-2">
+                  </div>
+               </div>
+               <div class="col-md-4 col-sm-4 wow bounceInDown">
+                  <div class="col-md-12 col_img_fortax">
+                     <%= image_tag 'receipt.png', class: 'img-responsive intro-img', style: 'height: 200px; margin-bottom: 10px;' %>
+                  </div>
+                  <h4>Free Online Estimate</h4>
 
-                     </div>
-                     <div class="col-md-4 col-sm-4 wow bounceInDown">
-                        <div class="col-md-12 col_img_fortax">
-                           <%= image_tag 'receipt.png', class: 'img-responsive intro-img', style: 'height: 200px; margin-bottom: 10px;' %>
-                        </div>
-                        <h4>Free Online Estimate</h4>
-                        <p class="col-pargraph">
-                           Get your free online estimate today.
-                        </p>
+                  <%= link_to 'Online Estimate', '', class: 'btn btn-primary btn-lg btn-block',  data: {toggle: "modal", target: "#myModal"} %>
+               </div>
+               <div class="col-md-2 col-sm-2">
 
-                        <%= link_to 'Online Estimate', online_estimates_path, class: 'btn btn-primary btn-block' %>
-                     </div>
-                     <div class="col-md-3 col-sm-3">
-
-                     </div>
+               </div>
                      <!-- <div class="col-md-3 col-sm-3 wow bounceInRight">
                      <div class="col-md-12 col_img_fortax"><img alt="tax is painful"
                      class="img-responsive intro-img" src=
@@ -511,3 +505,23 @@ data-scrollreveal="enter right over 1.5s" style=
                      style="height:100%;width:100%;border:0;"></iframe>
                   </div>
                </main>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Online Estimates Coming Soon</h4>
+      </div>
+      <div class="modal-body">
+         <p>
+            This feature will be available on March 1st.
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
