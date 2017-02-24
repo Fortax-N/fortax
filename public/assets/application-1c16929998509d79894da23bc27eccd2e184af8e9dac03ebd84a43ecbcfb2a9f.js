@@ -15030,17 +15030,32 @@ var initializeOnlineEstimate = function(){
     dropDownText: function(){
       return $('#form-select option:selected').text();
     },
+    spouseDropDownText: function(){
+      return $('#spouse-form-select option:selected').text().replace("spouse_", "");
+    },
     dropDownValue: function() {
       return $('#form-select option:selected').val();
+    },
+    spouseDropDownValue: function() {
+      return $('#spouse-form-select option:selected').val().replace("spouse_", "");
     },
     numOfForms: function(){
       return $('#numberOfForm').val();
     },
+    spouseNumOfForms: function(){
+      return $('#spouseNumberOfForm').val();
+    },
     price: function(){
       return $('#form-select option:selected').data('cost');
     },
+    spousePrice: function(){
+      return $('#spouse-form-select option:selected').data('cost');
+    },
     includedForms: function(){      
-      return parseFloat($('#form-select option:selected').data('included')) * onlineEstimate.spouseMultiplier;
+      return parseFloat($('#form-select option:selected').data('included'));
+    },
+    spouseIncludedForms: function(){      
+      return parseFloat($('#spouse-form-select option:selected').data('included'));
     },
     addSpouseRow: function(){
       $(".spouse-row").show();
@@ -15049,21 +15064,25 @@ var initializeOnlineEstimate = function(){
       $(".spouse-row").hide();
     },
     addSpouse: function(){
-      var checkbox = $("#add_forms_for_spouse");
+      var checkbox = $(".add_forms_for_spouse");
 
       checkbox.change(function(event) {
           var checkbox = event.target;
-          if (checkbox.checked) {
+          if ($(checkbox).val() === "true") {
             onlineEstimate.spouseMultiplier = 2;
-            onlineEstimate.totalSpouseCost += 49.99;
-            onlineEstimate.changeEstimate();
+            onlineEstimate.spouseCost = 49.99;
+            onlineEstimate.changeEstimate(true);
             form.addSpouseRow();
-            checkbox.disabled = true;
+            $("#js-spouse-table").show();
+            $(".add_forms_for_spouse").prop("disabled", true);
           } else {
+            $(".add_forms_for_spouse").prop("disabled", true);
             onlineEstimate.spouseMultiplier = 1;
+            onlineEstimate.spouseCost = 0;
             onlineEstimate.totalSpouseCost = 0;
             onlineEstimate.changeEstimate();
             form.removeSpouseRow();
+
           }
       });
     },   
@@ -15089,12 +15108,41 @@ var initializeOnlineEstimate = function(){
         onlineEstimate.displayError();
       }
     },
+
+    addToSpouseForm: function(){
+      if(form.spouseDropDownValue() !== " " && form.spouseNumOfForms() !== 0)
+      { 
+        var tr = $('#spouseAddedData tr[data-name="' + form.spouseDropDownValue() + '"]');
+
+        if (tr.length) {
+          form.increaseAmount(form.spouseNumOfForms(), null, true);
+          form.increaseTotalAmount(form.spouseNumOfForms(), null, true);
+        } else {
+          onlineEstimate.appendToSpouseTable();
+          onlineEstimate.appendToSpouseTotalTable();
+          onlineEstimate.addSpouseFormInput();
+          onlineEstimate.toggleSpouseHelperText();
+          onlineEstimate.calculateSpouseCost();
+          onlineEstimate.changeEstimate(true);
+          onlineEstimate.changeStatus();
+          form.spouseDisableButton();
+        }        
+      } else {
+        onlineEstimate.displayError();
+      }
+    },
+
     isStudentForm: function(){
       return (form.dropDownText() === "StudentT2202");
     },
     disableButton: function(){
       if (form.isStudentForm() === true) {
         $('#form-add').prop("disabled", true);
+      }
+    },
+    spouseDisableButton: function(){
+      if (form.isStudentForm() === true) {
+        $('#spouse-form-add').prop("disabled", true);
       }
     },
     enableButton: function(){
@@ -15110,46 +15158,66 @@ var initializeOnlineEstimate = function(){
         $('#numberOfForm').removeAttr("disabled");
       }
     },
-    removeForm: function(target){
+    removeForm: function(target, spouse=false){
       var name = $(target).closest('tr').data('name');
       var minusPrice = $(target).closest('tr').data('price');
       var numOfForms = $(target).closest('tr').data('number');
       var includedForms = $(target).closest('tr').data('included');
 
-      $('tr[data-name="' + name + '"]').remove();
-      // $(target).closest('tr').remove();
-
-      // if(minusPrice === form.studentFormPrice()) {
-      //   form.reenableStudentForm();
-      // }
+      $(target).closest('tr[data-name="' + name + '"]').remove();    
 
       if(form.isStudentForm()) {
         form.reenableStudentForm();
       }
 
       if (includedForms < numOfForms) {
-        onlineEstimate.cost -= minusPrice * (numOfForms - includedForms);
-        onlineEstimate.changeEstimate();  
+        if (spouse) {
+          onlineEstimate.spouseCost -= minusPrice * (numOfForms - includedForms);
+          onlineEstimate.changeEstimate(true);  
+        } else {
+          onlineEstimate.cost -= minusPrice * (numOfForms - includedForms);
+          onlineEstimate.changeEstimate();  
+        }  
+        
       } else if (includedForms == 0) {
-        onlineEstimate.cost -= minusPrice;
-        onlineEstimate.changeEstimate();  
+
+        if (spouse) {
+          onlineEstimate.spouseCost -= minusPrice;
+          onlineEstimate.changeEstimate(true);  
+        } else {
+          onlineEstimate.cost -= minusPrice;
+          onlineEstimate.changeEstimate();    
+        }
+        
       }
     },
-    increaseTotalAmount: function(num, name=null){
-      if (name === null) {
+    increaseTotalAmount: function(num, name=null, spouse=false){
+      if (name === null && spouse === false) {
         name = form.dropDownValue()
+      } else if (name === null && spouse === true) {
+        name = form.spouseDropDownValue();
       }
 
-      var target = $('#js-total-row tr[data-name="' + name + '"]');
-      var tr = $(target)    
-      
-      var price = tr.data('price');
-      var numOfForms = tr.data('number');
-      var formName = tr.data('name');
-      var includedForms = tr.data('included');
+      var target, dataSource;
 
+      if (spouse) {
+        target = $('#js-spouse-total-row tr[data-name="' + name + '"]');
+        dataSource = $('#spouse-table-data tr[data-name="' + name + '"]');
+      } else {
+        target = $('#js-total-row tr[data-name="' + name + '"]');
+        dataSource = $('#table-data tr[data-name="' + name + '"]');
+      }
+      
+      var tr = $(target);
+      
+      var price = $(dataSource).data('price');
+      var numOfForms = $(dataSource).data('number');
+      var formName = $(dataSource).data('name');
+      var includedForms = $(dataSource).data('included');
+      
       // replace text
       var totalFormsSpan = tr.find(".js-total-num-of-forms");
+      
       $(totalFormsSpan).html(numOfForms);
 
       // if number of forms exceed number of included forms
@@ -15165,17 +15233,28 @@ var initializeOnlineEstimate = function(){
         $priceRow.html("$" + 0);
       }
     },
-    increaseAmount: function(num, name=null){
-      if (name === null) {
+    increaseAmount: function(num, name=null, spouse=false){
+      if (name === null && spouse === false) {
         name = form.dropDownValue()
+      } else if (name === null && spouse === true) {
+        name = form.spouseDropDownValue();
       }
-      var target = $('tr[data-name="' + name + '"]');
+      var target;
+
+      if (spouse) {
+        target = $('#spouseAddedData tr[data-name="' + name + '"]');
+      } else {
+        target = $('#addedData tr[data-name="' + name + '"]');  
+      }
+      
       var tr = $(target);
 
       // increase number of forms
       var number = tr.data('number') + parseFloat(num);
-      tr.data('number', number);      
-      
+
+      // bug is here, the data attribute is not updating            
+      tr.data('number', number);            
+
       var price = tr.data('price');
       var numOfForms = tr.data('number');
       var formName = tr.data('name');
@@ -15191,19 +15270,37 @@ var initializeOnlineEstimate = function(){
 
       // if number of forms exceed number of included forms
       if (numOfForms > includedForms) {
-        onlineEstimate.cost += parseFloat(price * num);
-        onlineEstimate.changeEstimate();
+        if (spouse) {
+          onlineEstimate.spouseCost += parseFloat(price * num);
+        } else {
+          onlineEstimate.cost += parseFloat(price * num);
+        }
+        onlineEstimate.changeEstimate(spouse);
       } else if (includedForms == 0) {
-        onlineEstimate.cost += parseFloat(price);
-        onlineEstimate.changeEstimate();
+        if (spouse) {
+          onlineEstimate.spouseCost += parseFloat(price * num);
+        } else {
+          onlineEstimate.cost += parseFloat(price * num);
+        }
+        // onlineEstimate.cost += parseFloat(price);
+        onlineEstimate.changeEstimate(spouse);
       }
     },
-    decreaseTotalAmount: function(name=null){
-      if (name == null) {
+    decreaseTotalAmount: function(name=null, spouse=false){
+      if (name === null && spouse === false) {
         name = form.dropDownValue()
+      } else if (name === null && spouse === true) {
+        name = form.spouseDropDownValue();
       }
 
-      var target = $('#js-total-row tr[data-name="' + name + '"]');
+      var target;
+
+      if (spouse) {
+        target = $('#js-spouse-total-row tr[data-name="' + name + '"]');
+      } else {
+        target = $('#js-total-row tr[data-name="' + name + '"]');
+      }
+
       var tr = $(target);
       var numOfForms = tr.data('number');
 
@@ -15230,15 +15327,25 @@ var initializeOnlineEstimate = function(){
         }
       }
     },
-    decreaseAmount: function(name=null){
+    decreaseAmount: function(name=null, spouse=false){
       if (name == null) {
         name = form.dropDownValue()
       }
-      var target = $('tr[data-name="' + name + '"]');
+
+      var target;
+
+      if (spouse) {
+        target = $('#spouseAddedData tr[data-name="' + name + '"]');
+      } else {
+        target = $('#addedData tr[data-name="' + name + '"]');  
+      }
+
       var tr = $(target);
 
-      // increase number of forms
+      // decrease number of forms
       var number = tr.data('number') - 1;
+      tr.data('number', number);
+
 
       if (number == 0) {
         this.removeForm(target);
@@ -15263,8 +15370,14 @@ var initializeOnlineEstimate = function(){
 
         // we are adding 1 to numOfForms because we subtracted 1 from data-number above
         if ((numOfForms + 1) > includedForms) {
-          onlineEstimate.cost -= tr.data('price');
-          onlineEstimate.changeEstimate(); 
+          if (spouse) {
+            onlineEstimate.spouseCost -= tr.data('price');            
+          } else {
+            onlineEstimate.cost -= tr.data('price');            
+          }
+
+          onlineEstimate.changeEstimate(spouse);
+          
         }
       }
       
@@ -15277,10 +15390,11 @@ var initializeOnlineEstimate = function(){
 
   onlineEstimate = {
     cost: 49.99,
+    spouseCost: 0,
     eFileFee: 3.99,
     totalCost: this.cost + this.eFileFee,
     totalSpouseCost: 0.00,
-    totalFamilyCost: this.cost + this.eFileFee + this.totalSpouseCost,
+    totalFamilyCost: this.cost + (this.eFileFee * this.spouseMultiplier) + this.totalSpouseCost,
     hst: 1.13,
     spouseMultiplier: 1,
     toggleHelperText: function(){
@@ -15292,6 +15406,17 @@ var initializeOnlineEstimate = function(){
         $('#helperText').remove();
       }
     },
+
+    toggleSpouseHelperText: function(){
+      var tableLength = $('#spouse-table-data tr').length;
+      if (tableLength === 0) {
+        $('#spouse-table-data').append('<p id="spouseHelperText">No Data Added</p>');
+      }
+      else {
+        $('#spouseHelperText').remove();
+      }
+    },
+
     appendToTable: function() {
       var actionButtons;
       if (form.dropDownText() !== "StudentT2202") {
@@ -15325,6 +15450,41 @@ var initializeOnlineEstimate = function(){
         '</tr>'
       );
     },
+
+    appendToSpouseTable: function() {
+      var actionButtons;
+      if (form.dropDownText() !== "StudentT2202") {
+        actionButtons = `<td class="col-xs-3">
+              <button type="button" class="btn btn-success btn-xs" id="spouse-add">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-danger btn-xs" id="spouse-minus">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-xs" id="spouse-delete">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+             </td>`
+      } else {
+        actionButtons = `<td class="col-xs-3">
+              <button type="button" class="btn btn-danger btn-xs" id="spouse-minus">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-xs" id="spouse-delete">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+             </td>`
+      }
+      $('#spouse-table-data').append(
+        '<tr data-number="' +  form.spouseNumOfForms() + '" data-price="' + form.spousePrice() + '" data-name="' + form.spouseDropDownText() + '" data-included="' + form.spouseIncludedForms() + '">' +
+          '<td>'+ form.spouseDropDownValue() + '</td>' +
+          '<td>'+ form.spouseNumOfForms() + '</td>' +
+          '<td>'+ '$' + form.spousePrice() + '</td>' +
+          actionButtons +
+        '</tr>'
+      );
+    },
+
     appendToTotalTable: function(){
       var price;
       if (form.numOfForms() > form.includedForms()) {
@@ -15342,21 +15502,71 @@ var initializeOnlineEstimate = function(){
         '</tr>'
       );
     },
-    changeEstimate: function(){
-      var hst = ((this.cost + this.eFileFee) * 0.13).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+
+    appendToSpouseTotalTable: function(){
+      var price;
+      if (form.spouseNumOfForms() > form.spouseIncludedForms()) {
+        price = (form.spouseNumOfForms() - form.spouseIncludedForms()) * form.spousePrice();
+      } else if (form.spouseIncludedForms() == 0) {
+        price = form.spousePrice();
+      } else {
+        price = 0
+      }
+
+      $('#js-spouse-total-row').append(
+        '<tr data-number="' +  form.spouseNumOfForms() + '" data-price="' + form.spousePrice() + '" data-name="' + form.spouseDropDownText() + '" data-included="' + form.spouseIncludedForms() + '">' +
+          '<td>'+ form.spouseDropDownValue() + ' (<span class="js-total-num-of-forms">' + form.spouseNumOfForms() + '</span>) ' + '</td>' +          
+          '<td class="js-total-price">'+ '$' + price + '</td>' +          
+        '</tr>'
+      );
+    },
+
+    changeEstimate: function(spouse=false){
+      var hst;
+
+      if (spouse) {
+        hst = ((this.spouseCost + this.eFileFee) * 0.13).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+      } else {
+        hst = ((this.cost + this.eFileFee) * 0.13).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+      }
+
       $('#errorMessage').css('display','none');
       $('#costDisplay').text( (this.cost).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0] );
-      this.totalCost = (this.calculateTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+
+      if (spouse) {        
+        this.totalSpouseCost = (this.calculateTotalSpouseCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+      } else {
+        this.totalCost = (this.calculateTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]; 
+      }
+      
       this.totalFamilyCost = (this.calculateFamilyTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
-      $('#hst').text(hst);
-      $('.totalCost').text( this.totalCost );
+
+      if (spouse) {
+        $('#spouse-hst').text(hst);
+      } else {
+        $('#hst').text(hst);
+      }
+      
+      if (spouse) {
+        $('#spouseTotalCost').text( this.totalSpouseCost );
+      } else {
+        $('#totalCost').text( this.totalCost );
+      }
+       
       $('#totalFamilyCost').text( this.totalFamilyCost );
     },
     calculateTotalCost: function(){
       return (this.cost + this.eFileFee) * 100 * this.hst;
     },
+    calculateTotalSpouseCost: function(){
+      if (this.spouseCost > 0) {        
+        return (this.spouseCost + this.eFileFee) * 100 * this.hst;
+      } else {
+        return 0;
+      }
+    },
     calculateFamilyTotalCost: function(){            
-      return (this.cost + this.eFileFee + this.totalSpouseCost) * 100 * this.hst;
+      return this.calculateTotalCost() + this.calculateTotalSpouseCost();
     },
     calculateCost: function() {
       if (form.includedForms() < form.numOfForms()) {
@@ -15365,6 +15575,17 @@ var initializeOnlineEstimate = function(){
         this.cost += parseFloat(form.price());
       }
     },
+
+    calculateSpouseCost: function() {
+      if (form.spouseIncludedForms() < form.spouseNumOfForms()) {
+        console.log(form.spouseIncludedForms() + " " + form.spouseNumOfForms() + " " + form.spousePrice())
+        this.spouseCost += ((form.spouseNumOfForms() - form.spouseIncludedForms()) * form.spousePrice());  
+      } else if (form.spouseIncludedForms() == 0) {
+        console.log(form.spouseIncludedForms() + " " + form.spouseNumOfForms() + " " + form.spousePrice())
+        this.spouseCost += parseFloat(form.spousePrice());
+      }      
+    },
+
     displayError: function(){
       $('#errorMessage').css('display','block');
     },
@@ -15380,8 +15601,17 @@ var initializeOnlineEstimate = function(){
       $('<input />').attr('type', 'hidden')
         .attr('id',  form.dropDownValue().replace(/ /g,"_"))
         .attr('data-number', form.numOfForms())
-        .attr('name', 'form_quantity')
-        .attr('value', form.numOfForms() + " " + form.dropDownValue() + " forms")
+        .attr('name', form.dropDownValue())
+        .attr('value', form.numOfForms())
+        .appendTo('form');
+    },
+
+    addSpouseFormInput: function(){
+      $('<input />').attr('type', 'hidden')
+        .attr('id',  $('#spouse-form-select option:selected').val().replace(/ /g,"_"))
+        .attr('data-number', form.spouseNumOfForms())
+        .attr('name', $('#spouse-form-select option:selected').val())
+        .attr('value', form.spouseNumOfForms())
         .appendTo('form');
     }
   }
@@ -15403,8 +15633,13 @@ var initializeOnlineEstimate = function(){
   });
 
   $(document).on('click','button#form-add',function(){
-    $("#add_forms_for_spouse").prop("disabled", true);
+    // $("#add_forms_for_spouse").prop("disabled", true);
     form.addToForm();
+  });
+
+  $(document).on('click','button#spouse-form-add',function(){
+    // $("#add_forms_for_spouse").prop("disabled", true);
+    form.addToSpouseForm();
   });
 
   $(document).on('change', '.js-other-forms', function(e){
@@ -15443,8 +15678,48 @@ var initializeOnlineEstimate = function(){
     onlineEstimate.changeEstimate();
   });
 
+  $(document).on('change', '.js-spouse-other-forms', function(e){
+    // form.addToForm(); 
+    var that = $(e.target);
+    var numOfForms = 1;
+    var includedForms = that.data("included");
+    var formName = that.data("name");    
+    
+    var price;
+    if (numOfForms > includedForms) {
+      price = (numOfForms - includedForms) * that.data("price");
+    } else {
+      price = 0
+    }
+
+    if($(this).prop('checked') == true) {
+      $('#js-spouse-total-row').append(
+        '<tr data-number="' +  numOfForms + '" data-price="' + that.data("price") * numOfForms + '" data-name="' + formName + '" data-included="' + includedForms + '">' +
+          '<td>'+ formName + ' (<span class="js-total-num-of-forms">' + numOfForms + '</span>) ' + '</td>' +          
+          '<td class="js-total-price">'+ '$' + price + '</td>' +          
+        '</tr>'
+      );
+
+      if (includedForms < numOfForms) {
+        onlineEstimate.cost += (numOfForms * that.data("price"));  
+      }
+    } else {
+      $('#js-spouse-total-row').find('[data-name="' + formName + '"]').remove();
+
+      if (includedForms < numOfForms) {
+        onlineEstimate.cost -= (numOfForms * that.data("price"));  
+      }
+    } 
+
+    onlineEstimate.changeEstimate();
+  });
+
   $(document).on('click','button#delete',function(){    
     form.removeForm(this);
+  });
+
+  $(document).on('click','button#spouse-delete',function(){    
+    form.removeForm(this, true);
   });
 
   $(document).on('click','button#add',function(e){
@@ -15454,11 +15729,25 @@ var initializeOnlineEstimate = function(){
     form.increaseTotalAmount(1, name);
   });
 
+  $(document).on('click','button#spouse-add',function(e){
+    var name = $(e.target).closest('tr').data('name');
+
+    form.increaseAmount(1, name, true);
+    form.increaseTotalAmount(1, name, true);
+  });
+
   $(document).on('click','button#minus',function(e){
     var name = $(e.target).closest('tr').data('name');
 
     form.decreaseAmount(name);
     form.decreaseTotalAmount(name);
+  });
+
+  $(document).on('click','button#spouse-minus',function(e){
+    var name = $(e.target).closest('tr').data('name');
+
+    form.decreaseAmount(name, true);
+    form.decreaseTotalAmount(name, true);
   });
 
 }

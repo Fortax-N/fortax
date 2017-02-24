@@ -13,7 +13,7 @@ class OnlineEstimatesController < ApplicationController
     files["t_1013"] = Upload.create(file: params["t_1013"]).file if params["t_1013"]
     files["t_183"] = Upload.create(file: params["t_183"]).file if params["t_183"]    
 
-    send_mail_to_user(form_params: params, pdf: pdf)
+    # send_mail_to_user(form_params: params, pdf: pdf)
     send_mail_to_admin(form_params: params, pdf: pdf, files: files)
 
     flash[:success] = "Thank you! We have received your application and will reach out to you shortly."

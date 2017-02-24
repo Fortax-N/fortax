@@ -8,18 +8,7 @@ fieldset id="dataClient_forms"
         | (Contact us for previous years)
       p Put in the number of forms you have to get an estimate.
       hr/
-      h4 style="text-align: left"
-        | Step 1 <small>Would you like to add a spouse?</small>
-      label for="add_forms_for_spouse"
-        input.add_forms_for_spouse#add_forms_for_spouse name="add_forms_for_spouse" type="checkbox" value="true"
-        |  Yes
-        br
-        input.add_forms_for_spouse#add_forms_for_spouse name="add_forms_for_spouse" type="checkbox" value="false"
-        |  No
-      hr/
 
-      h4 style="text-align: left"
-        | Step 2 <small>Add Forms</small>
       #addedData.table-responsive
         table.table
           thead
@@ -88,7 +77,75 @@ fieldset id="dataClient_forms"
           label for="rental_properties"
             input name="rental_properties" onchange="triggerConfirm(this)" type="checkbox" value="true"
             |  Rental Properties
-          br/          
+          br/
+          label for="add_forms_for_spouse"
+            input.add_forms_for_spouse#add_forms_for_spouse name="add_forms_for_spouse" type="checkbox" value="true"
+            |  Add Spouse
+            
+          br/
+      #js-spouse-table style="display:none"
+        #spouseAddedData.table-responsive
+          table.table
+            thead
+              tr
+                th Form Type
+                th Form Number
+                th Cost <br>(per each)
+                th
+            tr data-name=("Basic tax return") data-number="1" data-price="49.99"
+              td Basic tax return
+              td 1
+              td $49.99
+              td.col-xs-3
+            tbody#spouse-table-data
+        span style="font-size:20px;font-weight:bold;"  Add Form:
+        .row
+          .col-lg-6
+            label for="form-select"  Select Form
+            .form-group.personalInformation
+              .form-group.select.required.form_form_type
+                select#spouse-form-select.form-control.select.required.form-control name="form[form_type]"
+                  option data-cost=(" ") id=("Select Form") value=(" ")  Select Form
+                  - Form.where.not(name: "Basic tax return").all.order(id: :asc).each do |form|
+                    - break if form.name == "Disability"
+                    option data-cost="#{number_with_precision(form.price, precision: 2)}" value="spouse_#{form.name}" data-included="#{form.included_forms}"
+                      = form.name
+          .col-lg-3
+            label for="numberOfForm"  Quantity
+            .form-group.personalInformation
+              input#spouseNumberOfForm.form-control min="1" type="number" value="1" /
+          .col-lg-3.text-center
+            .form-group
+              button#spouse-form-add.addFormButton type="button"
+                i.fa.fa-plus aria-hidden="true"
+        #errorMessage.alert.alert-danger
+          strong Error!
+          | Select at least one form.
+        .row
+          .col-xs-12 style=("text-align: left")          
+            label for="disability"
+              - form = Form.find_by_name("Disability")
+              input.js-spouse-other-forms name="spouse_disability" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
+              |  Disability
+            br
+            label for="first_time_home_buyer"
+              - form = Form.find_by_name("First time home buyer")
+              input.js-spouse-other-forms name="spouse_first_time_home_buyer" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
+              |  First Time Home Buyer
+            br
+            label for="moving_expense"
+              - form = Form.find_by_name("Moving expenses")
+              input.js-spouse-other-forms name="spouse_moving_expense" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
+              |  Moving Expense (must be at least 40 km from old residence)
+            br
+            label for="sole_proprietorship"
+              input name="spouse_sole_proprietorship" onchange="triggerConfirm(this)" type="checkbox" value="true"
+              |  Sole Proprietorship
+            br/
+            label for="rental_properties"
+              input name="spouse_rental_properties" onchange="triggerConfirm(this)" type="checkbox" value="true"
+              |  Rental Properties
+            br/      
     .col-lg-4
       h2 Estimate
       p  
@@ -119,17 +176,18 @@ fieldset id="dataClient_forms"
             | Total:
           td.col-xs-6
             | $
-            span.totalCost = number_with_precision((@basic_tax_return_price + 3.99) * 1.13, precision: 2)
+            span#totalCost = number_with_precision((@basic_tax_return_price + 3.99) * 1.13, precision: 2)
         tr.spouse-row style="display: none; border-top: 1px solid #ddd;"
           th.col-xs-6
             | Spouse
           th.col-xs-6
-        tr.spouse-row style="display: none;"
-          td.col-xs-6
-            | Basic Tax Return
-          td.col-xs-6
-            | $
-            span = @basic_tax_return_price
+        tbody#js-spouse-total-row
+          tr.spouse-row style="display: none;"
+            td.col-xs-6
+              | Basic Tax Return
+            td.col-xs-6
+              | $
+              span = @basic_tax_return_price
         tr.spouse-row style="display: none;"
           td.col-xs-6
             | eFile Fee
@@ -148,7 +206,7 @@ fieldset id="dataClient_forms"
             | Spouse Total:
           td.col-xs-6
             | $
-            span.spouseTotalCost = number_with_precision((@basic_tax_return_price + 3.99) * 1.13, precision: 2)
+            span#spouseTotalCost = number_with_precision((@basic_tax_return_price + 3.99) * 1.13, precision: 2)
 
         tr
           td
