@@ -75,7 +75,7 @@ var initializeOnlineEstimate = function(){
     addToForm: function(){
       if(form.dropDownValue() !== " " && form.numOfForms() !== 0)
       { 
-        var tr = $('tr[data-name="' + form.dropDownValue() + '"]');
+        var tr = $('#table-data tr[data-name="' + form.dropDownValue() + '"]');
 
         if (tr.length) {
           form.increaseAmount(form.numOfForms());
@@ -151,6 +151,12 @@ var initializeOnlineEstimate = function(){
       var includedForms = $(target).closest('tr').data('included');
 
       $(target).closest('tr[data-name="' + name + '"]').remove();    
+
+      if (spouse) {
+        $('#js-spouse-total-row tr[data-name="' + name + '"]').remove();
+      } else {
+        $('#js-total-row tr[data-name="' + name + '"]').remove();
+      }
 
       if(form.isStudentForm()) {
         form.reenableStudentForm();
@@ -252,7 +258,7 @@ var initializeOnlineEstimate = function(){
 
       // update form value
       var input = $("#" + formName.replace(/ /g,"_"));
-      input.attr('value', numOfForms + " " + formName + " forms");
+      input.attr('value', numOfForms);
 
       // if number of forms exceed number of included forms
       if (numOfForms > includedForms) {
@@ -510,36 +516,53 @@ var initializeOnlineEstimate = function(){
     changeEstimate: function(spouse=false){
       var hst;
 
-      if (spouse) {
-        hst = ((this.spouseCost + this.eFileFee) * 0.13).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
-      } else {
-        hst = ((this.cost + this.eFileFee) * 0.13).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
-      }
-
       $('#errorMessage').css('display','none');
       $('#costDisplay').text( (this.cost).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0] );
 
-      if (spouse) {        
-        this.totalSpouseCost = (this.calculateTotalSpouseCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
-      } else {
-        this.totalCost = (this.calculateTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]; 
-      }
-      
       this.totalFamilyCost = (this.calculateFamilyTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
 
       if (spouse) {
+        hst = ((this.spouseCost + this.eFileFee) * 0.13).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+        this.totalSpouseCost = (this.calculateTotalSpouseCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+
         $('#spouse-hst').text(hst);
-      } else {
-        $('#hst').text(hst);
-      }
-      
-      if (spouse) {
         $('#spouseTotalCost').text( this.totalSpouseCost );
+
+        // change form inputs
+        $('<input />').attr('type', 'hidden')
+          .attr('name', 'spouse_hst')
+          .attr('value', hst)
+          .appendTo('form');
+
+        $('<input />').attr('type', 'hidden')
+          .attr('name', 'spouse_total_cost')
+          .attr('value', this.totalSpouseCost)
+          .appendTo('form');
       } else {
+        hst = ((this.cost + this.eFileFee) * 0.13).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+        this.totalCost = (this.calculateTotalCost() / 100).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]; 
+
+        $('#hst').text(hst);
         $('#totalCost').text( this.totalCost );
+
+        $('<input />').attr('type', 'hidden')
+          .attr('name', 'hst')
+          .attr('value', hst)
+          .appendTo('form');
+
+        $('<input />').attr('type', 'hidden')
+          .attr('name', 'total_cost')
+          .attr('value', this.totalCost)
+          .appendTo('form');
       }
        
       $('#totalFamilyCost').text( this.totalFamilyCost );
+
+      $('<input />').attr('type', 'hidden')
+        .attr('name', 'total_family_cost')
+        .attr('value', this.totalFamilyCost)
+        .appendTo('form');
+      
     },
     calculateTotalCost: function(){
       return (this.cost + this.eFileFee) * 100 * this.hst;
