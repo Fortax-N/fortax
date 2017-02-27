@@ -1,0 +1,162 @@
+<section class="pricing-1" id="ourPriceBook">
+   <div class="container">
+      <div class="row text-center">
+         <div class="col-md-8 col-md-offset-2">
+            <h2>BOOKKEEPING</h2>
+            <hr class="primary">
+            <p>Affordable prices for starters to big companies. <a href=
+               "#contact">Contact us</a> should you need a different package to
+               suit your business needs.</p>
+            </div>
+         </div>
+         <div class="row bookkeeping-price-col wow fadeIn">
+            <div class="col-md-3 pricing-col" data-scrollreveal=
+            "enter right over 1.5s">
+            <div class="pricing-table">
+               <div class="pricing-heading" style=
+               "background-image: url('images/1.jpg')">
+               <h2>Starter</h2>
+            </div>
+            <div class="content">
+               <div class="price">
+                  <span class="amount">$150</span> <span class="period">per
+                     month</span>
+                  </div>
+                  <ul class="pricing-items list-unstyled text-center">
+                     <li class="item"><span class="text-primary">25</span>
+                        Transactions</li>
+                        <li class="item"><span class="text-primary">2</span>
+                           Employees</li>
+                           <li class="item"><span class="text-primary">2</span>
+                              Credit/Bank accounts</li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-3 pricing-col" data-scrollreveal=
+                  "enter bottom over 1.5s">
+                  <div class="pricing-table featured">
+                     <div class="pricing-heading" style=
+                     "background-image: url('images/2.jpg')">
+                     <h2>Small Business</h2>
+                  </div>
+                  <div class="content">
+                     <div class="price">
+                        <span class="amount">$250</span> <span class="period">per
+                           month</span>
+                        </div>
+                        <ul class="pricing-items list-unstyled text-center">
+                           <li class="item"><span class="text-primary">50</span>
+                              Transactions</li>
+                              <li class="item"><span class="text-primary">4</span>
+                                 Employees</li>
+                                 <li class="item"><span class="text-primary">2</span>
+                                    Credit/Bank accounts</li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-3 pricing-col" data-scrollreveal=
+                        "enter right over 1.5s">
+                        <div class="pricing-table">
+                           <div class="pricing-heading" style=
+                           "background-image: url('images/1.jpg')">
+                           <h2>Pro</h2>
+                        </div>
+                        <div class="content">
+                           <div class="price">
+                              <span class="amount">$300</span> <span class="period">per
+                                 month</span>
+                              </div>
+                              <ul class="pricing-items list-unstyled text-center">
+                                 <li class="item"><span class="text-primary">75</span>
+                                    Transactions</li>
+                                    <li class="item"><span class="text-primary">6</span>
+                                       Employees</li>
+                                       <li class="item"><span class="text-primary">2</span>
+                                          Credit/Bank accounts</li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 pricing-col" data-scrollreveal=
+                              "enter right over 1.5s">
+                              <div class="pricing-table">
+                                 <div class="pricing-heading" style=
+                                 "background-image: url('images/1.jpg')">
+                                 <h2>Ultimate</h2>
+                              </div>
+                              <div class="content">
+                                 <div class="price">
+                                    <span class="amount">$500</span> <span class="period">per
+                                       month</span>
+                                    </div>
+                                    <ul class="pricing-items list-unstyled text-center">
+                                       <li class="item"><span class="text-primary">150</span>
+                                          Transactions</li>
+                                          <li class="item"><span class="text-primary">8</span>
+                                             Employees</li>
+                                             <li class="item"><span class="text-primary">4</span>
+                                                Credit/Bank accounts</li>
+                                             </ul>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <hr>
+                                 <div class="row text-center">
+                                    <div class="col-md-8 col-md-offset-2">
+                                       <h4>All packages include</h4>
+                                    </div>
+                                 </div>
+                                 <div class="row bookkeeping-price-col">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-4 pricing-col wow fadeInRight" data-scrollreveal=
+                                    "enter right over 1.5s">
+                                    <div class="pricing-table">
+                                       <div class="content">
+                                          <ul class=
+                                          "pricing-items list-unstyled text-center no-padding-top" style=
+                                          "padding-top:0;">
+                                          <li class="item"><i class="fa fa-check"></i> Sales tax
+                                             filling (HST)</li>
+                                             <li class="item-dark"><i class="fa fa-check"></i> Payroll tax
+                                                filling</li>
+                                                <li class="item"><i class="fa fa-check"></i> Expense
+                                                   reports</li>
+                                                   <li class="item-dark"><i class="fa fa-check"></i> Account
+                                                      payable</li>
+                                                      <li class="item"><i class="fa fa-check"></i> Financial
+                                                         statements</li>
+                                                         <li class="item-dark"><i class="fa fa-check"></i> Ledger</li>
+                                                      </ul>
+                                                   </div>
+                                                </div>
+                                             </div> -->
+                                             <div class="col-md-4 pricing-col wow fadeInLeft" data-scrollreveal=
+                                             "enter right over 1.5s">
+                                             <div class="pricing-table">
+                                                <div class="content">
+                                                   <ul class=
+                                                   "pricing-items list-unstyled text-center no-padding-top" style=
+                                                   "padding-top:0;">
+                                                   <li class="item"><i class="fa fa-check"></i> Cheques
+                                                      preparation</li>
+                                                      <li class="item-dark"><i class="fa fa-check"></i> Bank
+                                                         reconciliations</li>
+                                                         <li class="item"><i class="fa fa-check"></i> Online Access
+                                                            24/7</li>
+                                                            <li class="item-dark"><i class="fa fa-check"></i>
+                                                               Email/telephone support</li>
+                                                               <li class="item"><i class="fa fa-check"></i> 1 user
+                                                                  included</li>
+                                                                  <li class="item-dark"><i class="fa fa-check"></i>
+                                                                     Hosting</li>
+                                                                  </ul>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="col-md-2"></div>
+                                                      </div>
+                                                   </div>
+                                                </section>

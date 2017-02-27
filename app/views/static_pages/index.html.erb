@@ -34,390 +34,243 @@
                data-wow-duration="3s" src="images/bg-3.jpg">
                <div class="carousel-caption">
                   <h3 class="wow bounceInLeft" data-wow-duration="2s">Bookkeeping/Accounting</h3><br>
-                     <span class="wow bounceInRight" data-wow-duration="2s">We have affordable prices for all your company needs.</span>
-                     </div>
-                  </div>
-               </div><a class="left carousel-control" data-slide="prev" href=
-               "#carousel-example-captions"><span class="fa fa-chevron-left"></span></a>
-               <a class="right carousel-control" data-slide="next" href=
-               "#carousel-example-captions"><span class=
-               "fa fa-chevron-right"></span></a>
-            </div><!-- FORTAX, Here for you! -->
-            <section id="fortax">
-               <div class="container">
-                  <br/>
-                  <div class="row">
-                     <!-- <div class="col-md-12">
-                     <h3>FORTAX, Here for you!</h3>
-                  </div> -->
-                  <!-- <div class="col-md-3 col-sm-3 wow bounceInLeft">
-                  <div class="col-md-12 col_img_fortax"><img alt=
-                  "Quick book certified" class="img-responsive intro-img" src=
-                  "images/col_new_clients.png"></div>
-                  <h4>New Clients</h4>
-                  <p class="col-pargraph">First time with FORTAX? Please bring your
-                  last year Income Tax Return.</p>
-               </div> -->
-               <div class="col-md-2 col-sm-2">
-
-               </div>
-               <div class="col-md-4 col-sm-4 wow bounceInUp">
-                  <div class="col-md-12 col_img_fortax">
-                     <img alt="We speak your language" class="img-responsive intro-img" src="images/col_multilingual_banner.png" style="height: 200px; margin-bottom: 10px;"></img>
-                     <h4 class="text-center">Multi-Language Services</h4>
-                     <p class="col-pargraph">As a Multilingual Company, FORTAX is proud
-                        to serve you in English, French and Spanish.</p>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-4 wow bounceInDown">
-                  <div class="col-md-12 col_img_fortax">
-                     <%= image_tag 'receipt.png', class: 'img-responsive intro-img', style: 'height: 200px; margin-bottom: 10px;' %>
-                  </div>
-                  <h4>Free Online Estimate</h4>
-
-                  <%= link_to 'Online Estimate', '', class: 'btn btn-primary btn-lg btn-block jello',  data: {toggle: "modal", target: "#myModal"} %>
-               </div>
-               <div class="col-md-2 col-sm-2">
-
-               </div>
-                     <!-- <div class="col-md-3 col-sm-3 wow bounceInRight">
-                     <div class="col-md-12 col_img_fortax"><img alt="tax is painful"
-                     class="img-responsive intro-img" src=
-                     "images/col_tax_painful.jpg"></div>
-                     <h4>Is Tax time painful?</h4>
-                     <p class="col-pargraph">Are you tired of spending hours trying to
-                     do your Income tax return? FORTAX will take the load off your
-                     shoulders.</p>
-                  </div> -->
+                  <span class="wow bounceInRight" data-wow-duration="2s">We have affordable prices for all your company needs.</span>
                </div>
             </div>
-         </section>
-         <section id="services">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12">
-                     <h3>Our Services</h3>
-                  </div>
-                  <div class="col-md-3 col-sm-3 wow bounceInLeft">
-                     <p><span><i class="fa fa-file"></i></span></p>
-                     <h4>Preparation of Tax Returns</h4>
-                     <p>Our services include the preparation of your income tax return,
-                        EFILE to Government, communication with the ministry if required,
-                        assistance with audit should you need it.</p>
-                     </div>
-                     <div class="col-md-3 col-sm-3 wow bounceInUp">
-                        <p><span><i class="fa fa-line-chart"></i></span></p>
-                        <h4>MAXIMISE YOUR TAX REFUND</h4>
-                        <p>We can answer your tax questions, and off course provide a
-                           guaranteed maximum refund. Our goal is to offer high quality
-                           services to ascertain that everyone is satisfied with his/her
-                           return.</p>
-                        </div>
-                        <div class="col-md-3 col-sm-3 wow bounceInDown">
-                           <p><span><i class="fa fa-user"></i></span></p>
-                           <h4>INDIVIDUAL TAX FILING</h4>
-                           <p>We take care of numerous filing for individuals. Income tax
-                              return for individual (T1)<br>
-                              Student Income tax return (T1)<br>
-                              Sole proprietorship filling (T2125)</p>
-                           </div>
-                           <div class="col-md-3 col-sm-3 wow bounceInRight">
-                              <p><span><i class="fa fa-users"></i></span></p>
-                              <h4>Corporate Tax filing</h4>
-                              <p>We can also take care of your tax filing at your company.
-                                 Contact us and we will be able to help you.<br>
-                                 Tax return (T2)<br>
-                                 Annual Resolutions<br>
-                                 Financial Statements </p>
-                              </div>
-                           </div>
-                        </div>
-                     </section><!-- ABOUT US -->
-                     <section id="about">
-                        <div class="container">
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <h3>About Us</h3>
-                              </div>
-                              <div class="col-md-6 col-sm-6" id="about_us_col">
-                                 <p class="about_us_text"><%= simple_format(@company.about_us) %></p><br>
-                                 <p class="icon-about">
-                                    <!-- <a href="#"><i class="fa fa-weibo"></i></a> -->
-                                    <a href="https://www.facebook.com/Fortaxcorp"><i class=
-                                       "fa fa-facebook-square"></i></a>
-                                       <!-- <a href=""><i class="fa fa-twitter-square"></i></a>
-                                       <a href="#"><i class="fa fa-google-plus-square"></i></a>
-                                       <a href="#"><i class="fa fa-pinterest-square"></i></a> -->
-                                       <a href="https://www.linkedin.com/company/fortax-corp-"><i class=
-                                          "fa fa-linkedin"></i></a></p>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </section><!-- price -->
-                              <section class="pricing-1" id="ourPriceTax">
-                                 <div class="container">
-                                    <div class="row text-center">
-                                       <div class="col-md-8 col-md-offset-2">
-                                          <h2>TAX RETURNS</h2>
-                                          <hr class="primary">
-                                          <p>We have prices to meet all your needs. Our prices for your current year start at $49.99</p>
-                                       </div>
-                                    </div>
-                                    <div class="row">
-                                       <div class="col-md-2"></div>
-                                       <div class="col-md-4 pricing-col wow fadeInLeft animated"
-                                       data-scrollreveal="enter left over 1.5s" style=
-                                       "visibility: visible;">
-                                       <div class="pricing-table">
-                                          <div class="pricing-heading" style=
-                                          "background-image: url('./images/1.jpg')">
-                                          <h2>Basic Tax Return</h2>
-                                       </div>
-                                       <div class="content">
-                                          <div class="price">
-                                             <% income_tax_return = LandingPageVariable.find_by_name("Income Tax Return") %>
-                                             <span class="amount"><%= income_tax_return.amount %></span> <span class="period"><%= income_tax_return.unit %></span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4 pricing-col wow fadeInRight animated"
-                                 data-scrollreveal="enter right over 1.5s" style=
-                                 "visibility: visible;">
-                                 <div class="pricing-table">
-                                    <div class="pricing-heading" style=
-                                    "background-image: url('./images/2.jpg')">
-                                    <h2>Student Tax Return</h2>
-                                 </div>
-                                 <div class="content">
-                                    <div class="price">
-                                       <% student_tax_return = LandingPageVariable.find_by_name("Student Tax Return") %>
-                                       <span class="amount"><%= student_tax_return.amount %></span> <span class="period"><%= student_tax_return.unit %></span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div><!-- end of row -->
-                     </div><!-- End of container -->
-                  </section>
-                  <hr class="primary-hr">
-                  <!-- <section class="pricing-1" id="ourPriceBook">
-                  <div class="container">
-                  <div class="row text-center">
-                  <div class="col-md-8 col-md-offset-2">
-                  <h2>BOOKKEEPING</h2>
-                  <hr class="primary">
-                  <p>Affordable prices for starters to big companies. <a href=
-                  "#contact">Contact us</a> should you need a different package to
-                  suit your business needs.</p>
+         </div><a class="left carousel-control" data-slide="prev" href=
+         "#carousel-example-captions"><span class="fa fa-chevron-left"></span></a>
+         <a class="right carousel-control" data-slide="next" href=
+         "#carousel-example-captions"><span class=
+         "fa fa-chevron-right"></span></a>
+      </div><!-- FORTAX, Here for you! -->
+      <section id="fortax">
+         <div class="container">
+            <br/>
+            <div class="row">
+               <!-- <div class="col-md-12">
+               <h3>FORTAX, Here for you!</h3>
+            </div> -->
+            <!-- <div class="col-md-3 col-sm-3 wow bounceInLeft">
+            <div class="col-md-12 col_img_fortax"><img alt=
+            "Quick book certified" class="img-responsive intro-img" src=
+            "images/col_new_clients.png"></div>
+            <h4>New Clients</h4>
+            <p class="col-pargraph">First time with FORTAX? Please bring your
+            last year Income Tax Return.</p>
+         </div> -->
+         <div class="col-md-2 col-sm-2">
+
+         </div>
+         <div class="col-md-4 col-sm-4 wow bounceInUp">
+            <div class="col-md-12 col_img_fortax">
+               <img alt="We speak your language" class="img-responsive intro-img" src="images/col_multilingual_banner.png" style="height: 200px; margin-bottom: 10px;"></img>
+               <h4 class="text-center">Multi-Language Services</h4>
+               <p class="col-pargraph">As a Multilingual Company, FORTAX is proud
+                  to serve you in English, French and Spanish.</p>
                </div>
             </div>
-            <div class="row bookkeeping-price-col wow fadeIn">
-            <div class="col-md-3 pricing-col" data-scrollreveal=
-            "enter right over 1.5s">
-            <div class="pricing-table">
-            <div class="pricing-heading" style=
-            "background-image: url('images/1.jpg')">
-            <h2>Starter</h2>
-         </div>
-         <div class="content">
-         <div class="price">
-         <span class="amount">$150</span> <span class="period">per
-         month</span>
-      </div>
-      <ul class="pricing-items list-unstyled text-center">
-      <li class="item"><span class="text-primary">25</span>
-      Transactions</li>
-      <li class="item"><span class="text-primary">2</span>
-      Employees</li>
-      <li class="item"><span class="text-primary">2</span>
-      Credit/Bank accounts</li>
-   </ul>
-</div>
-</div>
-</div>
-<div class="col-md-3 pricing-col" data-scrollreveal=
-"enter bottom over 1.5s">
-<div class="pricing-table featured">
-<div class="pricing-heading" style=
-"background-image: url('images/2.jpg')">
-<h2>Small Business</h2>
-</div>
-<div class="content">
-<div class="price">
-<span class="amount">$250</span> <span class="period">per
-month</span>
-</div>
-<ul class="pricing-items list-unstyled text-center">
-<li class="item"><span class="text-primary">50</span>
-Transactions</li>
-<li class="item"><span class="text-primary">4</span>
-Employees</li>
-<li class="item"><span class="text-primary">2</span>
-Credit/Bank accounts</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-3 pricing-col" data-scrollreveal=
-"enter right over 1.5s">
-<div class="pricing-table">
-<div class="pricing-heading" style=
-"background-image: url('images/1.jpg')">
-<h2>Pro</h2>
-</div>
-<div class="content">
-<div class="price">
-<span class="amount">$300</span> <span class="period">per
-month</span>
-</div>
-<ul class="pricing-items list-unstyled text-center">
-<li class="item"><span class="text-primary">75</span>
-Transactions</li>
-<li class="item"><span class="text-primary">6</span>
-Employees</li>
-<li class="item"><span class="text-primary">2</span>
-Credit/Bank accounts</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-3 pricing-col" data-scrollreveal=
-"enter right over 1.5s">
-<div class="pricing-table">
-<div class="pricing-heading" style=
-"background-image: url('images/1.jpg')">
-<h2>Ultimate</h2>
-</div>
-<div class="content">
-<div class="price">
-<span class="amount">$500</span> <span class="period">per
-month</span>
-</div>
-<ul class="pricing-items list-unstyled text-center">
-<li class="item"><span class="text-primary">150</span>
-Transactions</li>
-<li class="item"><span class="text-primary">8</span>
-Employees</li>
-<li class="item"><span class="text-primary">4</span>
-Credit/Bank accounts</li>
-</ul>
-</div>
-</div>
-</div>
-</div> -->
-<!-- <hr> -->
-<!-- <div class="row text-center">
-<div class="col-md-8 col-md-offset-2">
-<h4>All packages include</h4>
-</div>
-</div>
-<div class="row bookkeeping-price-col">
-<div class="col-md-2"></div>
-<div class="col-md-4 pricing-col wow fadeInRight" data-scrollreveal=
-"enter right over 1.5s">
-<div class="pricing-table">
-<div class="content">
-<ul class=
-"pricing-items list-unstyled text-center no-padding-top" style=
-"padding-top:0;">
-<li class="item"><i class="fa fa-check"></i> Sales tax
-filling (HST)</li>
-<li class="item-dark"><i class="fa fa-check"></i> Payroll tax
-filling</li>
-<li class="item"><i class="fa fa-check"></i> Expense
-reports</li>
-<li class="item-dark"><i class="fa fa-check"></i> Account
-payable</li>
-<li class="item"><i class="fa fa-check"></i> Financial
-statements</li>
-<li class="item-dark"><i class="fa fa-check"></i> Ledger</li>
-</ul>
-</div>
-</div>
-</div> -->
-<!-- <div class="col-md-4 pricing-col wow fadeInLeft" data-scrollreveal=
-"enter right over 1.5s">
-<div class="pricing-table">
-<div class="content">
-<ul class=
-"pricing-items list-unstyled text-center no-padding-top" style=
-"padding-top:0;">
-<li class="item"><i class="fa fa-check"></i> Cheques
-preparation</li>
-<li class="item-dark"><i class="fa fa-check"></i> Bank
-reconciliations</li>
-<li class="item"><i class="fa fa-check"></i> Online Access
-24/7</li>
-<li class="item-dark"><i class="fa fa-check"></i>
-Email/telephone support</li>
-<li class="item"><i class="fa fa-check"></i> 1 user
-included</li>
-<li class="item-dark"><i class="fa fa-check"></i>
-Hosting</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-2"></div>
-</div>
-</div>
-</section> -->
+            <div class="col-md-4 col-sm-4 wow bounceInDown">
+               <div class="col-md-12 col_img_fortax">
+                  <%= image_tag 'receipt.png', class: 'img-responsive intro-img', style: 'height: 200px; margin-bottom: 10px;' %>
+               </div>
+               <h4>Free Online Estimate</h4>
 
-<!-- <hr class="primary-hr"> -->
-<section class="pricing-1" id="ourPriceOther">
-   <div class="container">
-      <div class="row text-center">
-         <div class="col-md-8 col-md-offset-2">
-            <h2>OTHER SERVICES</h2>
-            <hr class="primary">
-            <!-- <p>Affordable prices for starters to big companies. <a href="#contact">Contact us</a> should you need a different package to suit your business needs.</p> -->
-         </div>
-      </div><!-- End of row -->
-      <div class="row">
-         <div class="col-md-2"></div>
-         <div class="col-md-4 pricing-col wow fadeInLeft animated"
-         data-scrollreveal="enter left over 1.5s" style=
-         "visibility: visible;">
-         <div class="pricing-table">
-            <div class="pricing-heading" style=
-            "background-image: url('images/1.jpg')">
-            <h2></h2>
-         </div>
-         <div class="content">
-            <ul class=
-            "pricing-items list-unstyled text-center no-padding-top" style=
-            "padding-top:0;">
-            <li class="item">Incorporation</li>
-            <li class="item-dark">Sole Proprietorship registration</li>
-            <li class="item">HST Registration</li>
-            <li class="item-dark">Payroll Account registration</li>
-         </ul>
+               <!-- <%= link_to 'Online Estimate', '', class: 'btn btn-primary btn-lg btn-block jello',  data: {toggle: "modal", target: "#myModal"} %> -->
+               <%= link_to 'Online Estimate', online_estimates_path, class: 'btn btn-primary btn-block' %>
+            </div>
+            <div class="col-md-2 col-sm-2">
+
+            </div>
+            <!-- <div class="col-md-3 col-sm-3 wow bounceInRight">
+            <div class="col-md-12 col_img_fortax"><img alt="tax is painful"
+            class="img-responsive intro-img" src=
+            "images/col_tax_painful.jpg"></div>
+            <h4>Is Tax time painful?</h4>
+            <p class="col-pargraph">Are you tired of spending hours trying to
+            do your Income tax return? FORTAX will take the load off your
+            shoulders.</p>
+         </div> -->
       </div>
    </div>
-</div>
-<div class="col-md-4 pricing-col wow fadeInRight animated"
-data-scrollreveal="enter right over 1.5s" style=
-"visibility: visible;">
-<div class="pricing-table">
-   <div class="pricing-heading" style=
-   "background-image: url('images/2.jpg')">
-   <h2></h2>
-</div>
-<div class="content">
-   <ul class=
-   "pricing-items list-unstyled text-center no-padding-top" style=
-   "padding-top:0;">
-   <li class="item">Corporate Tax Returns</li>
-   <li class="item-dark">Business Plans</li>
-   <li class="item">Statement of Real Estate Rentals</li>
-   <li class="item-dark">Statement Of Business or Professional
-      Activity</li>
-   </ul>
-</div>
-</div>
-</div>
-</div><!-- end of row -->
+</section>
+<section id="services">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <h3>Our Services</h3>
+         </div>
+         <div class="col-md-3 col-sm-3 wow bounceInLeft">
+            <p><span><i class="fa fa-file"></i></span></p>
+            <h4>Preparation of Tax Returns</h4>
+            <p>Our services include the preparation of your income tax return,
+               EFILE to Government, communication with the ministry if required,
+               assistance with audit should you need it.</p>
+            </div>
+            <div class="col-md-3 col-sm-3 wow bounceInUp">
+               <p><span><i class="fa fa-line-chart"></i></span></p>
+               <h4>MAXIMISE YOUR TAX REFUND</h4>
+               <p>We can answer your tax questions, and off course provide a
+                  guaranteed maximum refund. Our goal is to offer high quality
+                  services to ascertain that everyone is satisfied with his/her
+                  return.</p>
+               </div>
+               <div class="col-md-3 col-sm-3 wow bounceInDown">
+                  <p><span><i class="fa fa-user"></i></span></p>
+                  <h4>INDIVIDUAL TAX FILING</h4>
+                  <p>We take care of numerous filing for individuals. Income tax
+                     return for individual (T1)<br>
+                     Student Income tax return (T1)<br>
+                     Sole proprietorship filling (T2125)</p>
+                  </div>
+                  <div class="col-md-3 col-sm-3 wow bounceInRight">
+                     <p><span><i class="fa fa-users"></i></span></p>
+                     <h4>Corporate Tax filing</h4>
+                     <p>We can also take care of your tax filing at your company.
+                        Contact us and we will be able to help you.<br>
+                        Tax return (T2)<br>
+                        Annual Resolutions<br>
+                        Financial Statements </p>
+                     </div>
+                  </div>
+               </div>
+            </section><!-- ABOUT US -->
+            <section id="about">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <h3>About Us</h3>
+                     </div>
+                     <div class="col-md-6 col-sm-6" id="about_us_col">
+                        <p class="about_us_text"><%= simple_format(@company.about_us) %></p><br>
+                        <p class="icon-about">
+                           <!-- <a href="#"><i class="fa fa-weibo"></i></a> -->
+                           <a href="https://www.facebook.com/Fortaxcorp"><i class=
+                              "fa fa-facebook-square"></i></a>
+                              <!-- <a href=""><i class="fa fa-twitter-square"></i></a>
+                              <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                              <a href="#"><i class="fa fa-pinterest-square"></i></a> -->
+                              <a href="https://www.linkedin.com/company/fortax-corp-"><i class=
+                                 "fa fa-linkedin"></i></a></p>
+                              </div>
+                           </div>
+                        </div>
+                     </section><!-- price -->
+                     <section class="pricing-1" id="ourPriceTax">
+                        <div class="container">
+                           <div class="row text-center">
+                              <div class="col-md-8 col-md-offset-2">
+                                 <h2>TAX RETURNS</h2>
+                                 <hr class="primary">
+                                 <p>We have prices to meet all your needs. Our prices for your current year start at $49.99</p>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-2"></div>
+                              <div class="col-md-4 pricing-col wow fadeInLeft animated"
+                              data-scrollreveal="enter left over 1.5s" style=
+                              "visibility: visible;">
+                              <div class="pricing-table">
+                                 <div class="pricing-heading" style=
+                                 "background-image: url('./images/1.jpg')">
+                                 <h2>Basic Tax Return</h2>
+                              </div>
+                              <div class="content">
+                                 <div class="price">
+                                    <% income_tax_return = LandingPageVariable.find_by_name("Income Tax Return") %>
+                                    <span class="amount"><%= income_tax_return.amount %></span> <span class="period"><%= income_tax_return.unit %></span>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4 pricing-col wow fadeInRight animated"
+                        data-scrollreveal="enter right over 1.5s" style=
+                        "visibility: visible;">
+                        <div class="pricing-table">
+                           <div class="pricing-heading" style=
+                           "background-image: url('./images/2.jpg')">
+                           <h2>Student Tax Return</h2>
+                        </div>
+                        <div class="content">
+                           <div class="price">
+                              <% student_tax_return = LandingPageVariable.find_by_name("Student Tax Return") %>
+                              <span class="amount"><%= student_tax_return.amount %></span> <span class="period"><%= student_tax_return.unit %></span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div><!-- end of row -->
+            </div><!-- End of container -->
+         </section>
+         <!-- <hr class="primary-hr"> -->
+
+         <section class="pricing-1" id="ourPriceBook">
+            <div class="container">
+               <div class="row text-center">
+                  <div class="col-md-8 col-md-offset-2">
+                     <h2>BOOKKEEPING/ACCOUNTING</h2>
+                     <hr class="primary">
+                     <p>Affordable prices for starters to big companies. <a href=
+                        "#contact">Contact us</a> should you need a different package to
+                        suit your business needs.</p>
+                     </div>
+                  </div>
+               </div>
+            </section>
+
+            <!-- <hr class="primary-hr"> -->
+            <section class="pricing-1" id="ourPriceOther">
+               <div class="container">
+                  <div class="row text-center">
+                     <div class="col-md-8 col-md-offset-2">
+                        <h2>OTHER SERVICES</h2>
+                        <hr class="primary">
+                        <!-- <p>Affordable prices for starters to big companies. <a href="#contact">Contact us</a> should you need a different package to suit your business needs.</p> -->
+                     </div>
+                  </div><!-- End of row -->
+                  <div class="row">
+                     <div class="col-md-2"></div>
+                     <div class="col-md-4 pricing-col wow fadeInLeft animated"
+                     data-scrollreveal="enter left over 1.5s" style=
+                     "visibility: visible;">
+                     <div class="pricing-table">
+                        <div class="pricing-heading" style=
+                        "background-image: url('images/1.jpg')">
+                        <h2></h2>
+                     </div>
+                     <div class="content">
+                        <ul class=
+                        "pricing-items list-unstyled text-center no-padding-top" style=
+                        "padding-top:0;">
+                        <li class="item">Incorporation</li>
+                        <li class="item-dark">Sole Proprietorship registration</li>
+                        <li class="item">HST Registration</li>
+                        <li class="item-dark">Payroll Account registration</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4 pricing-col wow fadeInRight animated"
+            data-scrollreveal="enter right over 1.5s" style=
+            "visibility: visible;">
+            <div class="pricing-table">
+               <div class="pricing-heading" style=
+               "background-image: url('images/2.jpg')">
+               <h2></h2>
+            </div>
+            <div class="content">
+               <ul class=
+               "pricing-items list-unstyled text-center no-padding-top" style=
+               "padding-top:0;">
+               <li class="item">Corporate Tax Returns</li>
+               <li class="item-dark">Business Plans</li>
+               <li class="item">Statement of Real Estate Rentals</li>
+               <li class="item-dark">Statement Of Business or Professional
+                  Activity</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div><!-- end of row -->
 </div><!-- End of container -->
 </section><!-- End of section -->
 <!-- CONTACT US -->
@@ -506,26 +359,26 @@ data-scrollreveal="enter right over 1.5s" style=
                   </div>
                </main>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Online Estimates Coming Soon</h4>
-      </div>
-      <div class="modal-body">
-         <div class="row">
-            <div class="col-xs-12">
-               <p style="padding: 10px">
-                  This feature will be available on March 1st.
-               </p>
-            </div>
-         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+               <!-- Modal -->
+               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                           <h4 class="modal-title" id="myModalLabel">Online Estimates Coming Soon</h4>
+                        </div>
+                        <div class="modal-body">
+                           <div class="row">
+                              <div class="col-xs-12">
+                                 <p style="padding: 10px">
+                                    This feature will be available on March 1st.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>

@@ -127,8 +127,8 @@ fieldset id="dataClient_forms"
               - form = Form.find_by_name("Disability")
               input.js-spouse-other-forms name="spouse_disability" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
               |  Disability
-            br
-            <!-- label for="first_time_home_buyer"
+            <!-- br
+            label for="first_time_home_buyer"
               - form = Form.find_by_name("First time home buyer")
               input.js-spouse-other-forms name="spouse_first_time_home_buyer" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
               |  First Time Home Buyer
