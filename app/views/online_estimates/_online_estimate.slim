@@ -3,8 +3,8 @@ fieldset id="dataClient_forms"
     .col-lg-3
       h1 Get your estimate online here.
     .col-lg-5
-      h2 Find your tax filing cost for this tax year 
-      p 
+      h2 Find your tax filing cost for this tax year
+      p
         | (Contact us for previous years)
       p Put in the number of forms you have to get an estimate.
       hr/
@@ -54,7 +54,7 @@ fieldset id="dataClient_forms"
         strong Error!
         | Select at least one form.
       .row
-        .col-xs-12 style=("text-align: left")          
+        .col-xs-12 style=("text-align: left")
           label for="disability"
             - form = Form.find_by_name("Disability")
             input.js-other-forms name="disability" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
@@ -81,7 +81,7 @@ fieldset id="dataClient_forms"
           label for="add_forms_for_spouse"
             input.add_forms_for_spouse#add_forms_for_spouse name="add_forms_for_spouse" type="checkbox" value="true"
             |  Add Spouse
-            
+
           br/
       #js-spouse-table style="display:none"
         #spouseAddedData.table-responsive
@@ -122,13 +122,13 @@ fieldset id="dataClient_forms"
           strong Error!
           | Select at least one form.
         .row
-          .col-xs-12 style=("text-align: left")          
+          .col-xs-12 style=("text-align: left")
             label for="disability"
               - form = Form.find_by_name("Disability")
               input.js-spouse-other-forms name="spouse_disability" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
               |  Disability
             br
-            label for="first_time_home_buyer"
+            <!-- label for="first_time_home_buyer"
               - form = Form.find_by_name("First time home buyer")
               input.js-spouse-other-forms name="spouse_first_time_home_buyer" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
               |  First Time Home Buyer
@@ -137,7 +137,7 @@ fieldset id="dataClient_forms"
               - form = Form.find_by_name("Moving expenses")
               input.js-spouse-other-forms name="spouse_moving_expense" type="checkbox" value="true" data-price="#{number_with_precision(form.price, precision: 2)}" data-included="#{form.included_forms}" data-name="#{form.name}"
               |  Moving Expense (must be at least 40 km from old residence)
-            br
+            br -->
             label for="sole_proprietorship"
               input name="spouse_sole_proprietorship" onchange="triggerConfirm(this)" type="checkbox" value="true"
               |  Sole Proprietorship
@@ -145,7 +145,7 @@ fieldset id="dataClient_forms"
             label for="rental_properties"
               input name="spouse_rental_properties" onchange="triggerConfirm(this)" type="checkbox" value="true"
               |  Rental Properties
-            br/      
+            br/
     .col-lg-4
       h2 Estimate
       p  
@@ -163,7 +163,7 @@ fieldset id="dataClient_forms"
           td.col-xs-6
             | eFile Fee
           td.col-xs-6
-            | $3.99          
+            | $3.99
         tr style="border-bottom: 1px solid #ddd;"
           td.col-xs-6
             | HST (13%)
@@ -192,7 +192,7 @@ fieldset id="dataClient_forms"
           td.col-xs-6
             | eFile Fee
           td.col-xs-6
-            | $3.99 
+            | $3.99
 
         tr.spouse-row style="display: none;"
           td.col-xs-6
