@@ -25,6 +25,8 @@
       <%= render 'extra_info' %>      
 
       <%= render 'signatures' %>
+
+      <%= render 'email_modal' %>
       
     </form>
   </section>
@@ -37,5 +39,9 @@ function triggerConfirm(box) {
         box.checked = true;
     }
   }
+}
+
+function changeEmail(){
+  $("input[name='email']").value($("placeholder_email").val())
 }
 </script>
