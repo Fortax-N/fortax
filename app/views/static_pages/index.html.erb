@@ -518,8 +518,13 @@ data-scrollreveal="enter right over 1.5s" style=
          <div class="row">
             <div class="col-xs-12">
                <p style="padding: 10px">
-                  This feature will be available on March 1st.
+                  Enter your email to have your FREE estimate
                </p>
+
+               <%= simple_form_for UserInfo.new do |f| %> 
+                  <%= f.input :email %>
+                  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+               <% end %>
             </div>
          </div>      
       </div>

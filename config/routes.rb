@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user_infos/create'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   #route for homepage
@@ -10,4 +12,5 @@ Rails.application.routes.draw do
   resources :companies
   match '/contact_forms',     to: 'contact_forms#new',             via: 'get'
   resources :contact_forms, only: [:new, :create]
+  resources :user_infos, only: :create
 end

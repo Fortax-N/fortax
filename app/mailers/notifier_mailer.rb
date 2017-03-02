@@ -20,4 +20,9 @@ class NotifierMailer < ApplicationMailer
     
   	mail(to: Setting.first.email, subject: 'New Form Submission')
   end
+
+  def new_user_info(user_info)
+    @email = user_info.email
+    mail(to: Setting.first.email, subject: 'New email signup')
+  end
 end
