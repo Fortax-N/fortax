@@ -44,4 +44,24 @@ function triggerConfirm(box) {
 function changeEmail(){
   $("input[name='email']").value($("placeholder_email").val())
 }
+
+$("form").on("submit", function(){
+  var emailInput, phoneNumberInput;
+  emailInput = $("input[name='email']");
+  phoneNumberInput = $("input[name='phone_number']");
+  
+  emailInput.css('border', 'none');
+  phoneNumberInput.css('border', 'none');
+
+  if (!emailInput.val()) {
+    alert('Please enter your email address.');
+    emailInput.css('border', '1px solid red');
+    return false;
+  }
+  else if (!phoneNumberInput.val()) {
+    alert('Please enter your phone number.')
+    phoneNumberInput.css('border', '1px solid red');
+    return false;
+  }
+})
 </script>
